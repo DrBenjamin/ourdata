@@ -13,10 +13,10 @@ Data Frames des Kurses Technical Applications & Data Analytics:\cr
 - [kopfumfang] Kopfümfänge und andere Merkmal aus Studiengängen GD und AVM\cr
 }
 \examples{
-help(ourdata)\cr
-print(imr)\cr
-print(hdi)\cr
-print(koelsch)\cr
-print(kirche)\cr
+help(ourdata)
+print(imr)
+print(hdi)
+print(koelsch)
+print(kirche)
 print(kopfumfang)
 }
