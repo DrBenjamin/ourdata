@@ -8,5 +8,5 @@ koelsch
 Data frame mit dem Kölschkonsum von 2017 bis 2020.
 }
 \examples{
-koelsch
+print(koelsch)
 }

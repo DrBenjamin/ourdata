@@ -8,5 +8,5 @@ hdi
 Data frame with human development indexes.
 }
 \examples{
-hdi
+print(hdi)
 }

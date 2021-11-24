@@ -1,8 +1,8 @@
-\name{kopfumfang}
-\alias{kopfumfang}
-\title{Kopfumfang der Studiengänge GD und AVM!}
+\name{fragebogen}
+\alias{fragebogen}
+\title{Kopfumfang und andere Merkmale der Studiengänge GD und AVM!}
 \usage{
-kopfumfang
+fragebogen
 }
 \description{
 Data frame mit den Kopfumfängen und weiteren Merkmalen:\cr
@@ -17,5 +17,5 @@ Data frame mit den Kopfumfängen und weiteren Merkmalen:\cr
 der Studiengänge Gamedesign & Management und Audio-Visuelle Medien (5. Semester, 2021).
 }
 \examples{
-kopfumfang
+print(fragebogen)
 }

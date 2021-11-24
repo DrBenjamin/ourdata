@@ -8,5 +8,5 @@ imr
 Data frame with infant mortality rates.
 }
 \examples{
-imr
+print(imr)
 }
