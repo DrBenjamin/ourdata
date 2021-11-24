@@ -1,6 +1,6 @@
 \name{ourdata}
 \alias{ourdata}
-\title{Hello Students!}
+\title{Hallo Studenten!}
 \usage{
 help(ourdata)
 }
