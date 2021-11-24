@@ -1,6 +1,6 @@
 \name{ourdata}
 \alias{ourdata}
-\title{Hello students!}
+\title{Hello Students!}
 \usage{
 help(ourdata)
 }
@@ -10,12 +10,12 @@ Data Frames des Kurses Technical Applications & Data Analytics:\cr
 - [hdi] human development index\cr
 - [koelsch] Koelschkonsum 2017 bis 2020\cr
 - [kirche] Kirchaustritte 2017 bis 2020\cr
-- [kopfumfang] Kopfumfang und andere Merkmale aus Studiengaengen GD und AVM
+- [fragebogen] Kopfumfang und andere Merkmale aus Studiengaengen GD und AVM
 }
 \examples{
 print(imr)
 print(hdi)
 print(koelsch)
 print(kirche)
-print(kopfumfang)
+print(fragebogen)
 }
