@@ -10,7 +10,7 @@ Data frames of the Technical Applications & Data Analytics course, containing\cr
 - [fragebogen] Head circumference and other featrues of the GD und AVM courses\cr\cr
 Functions of the course, containing\cr
 - [ourddata()] Prints a welcome message.
-- [combine(id, foreign_key, list1, list2, ...)] Combines two data frames.\cr
+- [combine(id, foreign_key, list1, list2, ...)] Combines two data frames.
 }
 \usage{
 \code{help(ourdata)
