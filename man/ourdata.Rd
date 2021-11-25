@@ -1,16 +1,16 @@
 \name{ourdata}
 \alias{ourdata}
-\title{Hallo Studenten!}
+\title{Hello Students!}
+\description{
+Data frames of the Technical Applications & Data Analytics course, containing\cr
+- [imr] Infant mortality rates\cr
+- [hdi] Human development index\cr
+- [koelsch] Colgone brewed beer (Koelsch) consumption from 2017 to 2020\cr
+- [kirche] Church exits in Germany from 2017 to 2020\cr
+- [fragebogen] Head circumference and other featrues of the GD und AVM courses
+}
 \usage{
 help(ourdata)
-}
-\description{
-Data Frames des Kurses Technical Applications & Data Analytics:\cr
-- [imr] infant mortality rates\cr
-- [hdi] human development index\cr
-- [koelsch] Koelschkonsum 2017 bis 2020\cr
-- [kirche] Kirchaustritte 2017 bis 2020\cr
-- [fragebogen] Kopfumfang und andere Merkmale aus Studiengaengen GD und AVM
 }
 \examples{
 print(imr)

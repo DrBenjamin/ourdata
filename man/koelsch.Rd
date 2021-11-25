@@ -1,11 +1,12 @@
 \name{koelsch}
 \alias{koelsch}
-\title{Koelschkonsum 2017 bis 2020!}
+\title{Colgone brewed beer (Koelsch) consumption from 2017 to 2020!}
+\description{
+Data frame contains Colgone brewed beer (Koelsch) consumption from 2017 to 2020 from\cr
+https://de.statista.com/statistik/daten/studie/172265/umfrage/haeufigkeit-konsum-von-koelsch/
+}
 \usage{
 koelsch
-}
-\description{
-Data frame mit dem Koelschkonsum von 2017 bis 2020.
 }
 \examples{
 print(koelsch)
