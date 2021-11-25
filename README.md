@@ -23,9 +23,9 @@ Functions:
 
 
 ## Getting started
-
 In R (or RStudio) type
 `library("ourdata")`
+
 `ourdata()`
 
 

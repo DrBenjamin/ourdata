@@ -1,12 +1,12 @@
 Package: ourdata
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Functions and Data frames used in the Technical Applications & Data Analytics course in the study of Gamedesign & Management and Audio-Visuelle Medien at Hochschule Fresenius University of Applied Sciences in Cologne (2021).
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Author: Benjamin Groß
+Maintainer: Benjamin Groß <ben@benbox.org>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: Open Source
 Encoding: UTF-8
 LazyData: true
 Depends: 
