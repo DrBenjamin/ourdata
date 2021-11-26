@@ -8,7 +8,7 @@ Data frames contains data:
 - [imr] Infant mortality rates worldwide
 - [hdi] Human development index world wide
 - [koelsch] Colgone brewed beer (Koelsch) consumption from 2017 to 2020
-- [kirche] Church exits in Germany from 2017 to 2020\cr
+- [kirche] Church exits in Germany from 2017 to 2020
 - [fragebogen] Head circumference and other characteristics from GD and AVM courses
 
 Notes that some (most) of these data sets were not published by the author of this pacakge. The original authors and the respective licences can be found in the desription of each data set.
