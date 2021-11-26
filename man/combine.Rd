@@ -2,7 +2,7 @@
 \alias{combine}
 \title{Combines two Lists}
 \description{
-\strong{combine} combines two data frames. In each data frame must be an equal (matchable) identifier.
+\sQutoe{combine} combines two data frames. In each data frame must be an equal (matchable) identifier.
 }
 \usage{
 combine(id, foreign_key, list1, list2, ...)
