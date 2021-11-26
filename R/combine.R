@@ -1,5 +1,5 @@
 # combine function
-# combines two data sets using id and foreign key matching
+# combines two data frames (numeric values) using id and foreign_key for matching
 
 combine <- function(id, foreign_key, list1, list2, col1 = "C1", col2 = "C2", col3 = "C3") {
   # Two For-Loops for matchting two lists
