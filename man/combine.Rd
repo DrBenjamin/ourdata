@@ -2,11 +2,10 @@
 \alias{combine}
 \title{Combines two Lists}
 \description{
-\code{combine} combines two data frames. In each data frame must be an equal (matchable) identifier.
+\strong{combine} combines two data frames. In each data frame must be an equal (matchable) identifier.
 }
 \usage{
-\code{combine(id, foreign_key, list1, list2, ...)
-}
+combine(id, foreign_key, list1, list2, ...)
 }
 \arguments{
 \tabular{rll}{
