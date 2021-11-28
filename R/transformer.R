@@ -30,7 +30,7 @@ transformer <- function(x, verbose = FALSE) {
     print(paste0(length(x), " values in list."))
     print(paste0("Count of unique values: ", counterValues))
     for(c in 1:counterValues)
-      print(paste0("Unique vaulue ", charValues[c]," has ", counterUniques[c]), " hits.")
+      print(paste0("Unique vaulue ", charValues[c]," has ", counterUniques[c], " hits."))
   }
   return(transformed_data)
 }
