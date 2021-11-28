@@ -35,7 +35,7 @@ transformer <- function(x, verbose = FALSE) {
     }
   }
   if(verbose == TRUE) {
-    print(paste0(length(x), " values in list."))
+    print(paste0(length(x), " values in vector."))
     print(paste0("Count of unique values: ", counterValues))
     for(c in 1:counterValues)
       print(paste0("Unique vaulue '", charValues[c],"' has ", counterUniques[c], " hits."))
