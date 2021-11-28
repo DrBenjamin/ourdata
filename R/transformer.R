@@ -3,7 +3,9 @@
 # e.g. "female" to 1
 
 transformer <- function(x, verbose = FALSE) {
-  transformed_data <- data.frame(col = numeric(), stringsAsFactors = FALSE)
+  trans_data <- data.frame(col = numeric(), stringsAsFactors = FALSE)
+  print(names(x))
+  col_name <- names(x)
   x <- as.vector(unlist(x))
 
   # Search for different values which should be transformed
@@ -40,6 +42,6 @@ transformer <- function(x, verbose = FALSE) {
     for(c in 1:counterValues)
       print(paste0("Unique vaulue '", charValues[c],"' has ", counterUniques[c], " hits."))
   }
-  colnames(trans_data) <- names(x)
+  colnames(trans_data) <- col_name
   return(trans_data)
 }
