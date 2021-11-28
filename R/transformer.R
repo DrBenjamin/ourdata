@@ -12,6 +12,7 @@ transformer <- function(x, verbose = FALSE) {
   for (c in 1:length(x)) {
     for (cc in 1:counterValues)
       if(x[c] != charValues[cc]) {
+        charValues <- c(charValues, "")
         charValues[counterValues] = x[c]
       }
     counterValues <- length(charValues)
