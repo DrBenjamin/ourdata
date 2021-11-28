@@ -4,9 +4,9 @@
 
 transformer <- function(x, verbose = FALSE) {
   transformed_data <- data.frame(col = numeric(), stringsAsFactors = FALSE)
-  View(x)
+  print(sapply(x, class))
   x <- as.vector(unlist(x))
-  View(x)
+  print(sapply(x, class))
   i <- 0
   ii <- 0
   for (vItem in x) {
