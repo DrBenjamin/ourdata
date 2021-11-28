@@ -4,7 +4,6 @@
 
 transformer <- function(x, verbose = FALSE) {
   trans_data <- data.frame(col = numeric(), stringsAsFactors = FALSE)
-  print(names(x))
   col_name <- names(x)
   x <- as.vector(unlist(x))
 
