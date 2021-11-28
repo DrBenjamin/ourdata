@@ -8,16 +8,23 @@ transformer <- function(x, verbose = FALSE) {
 
   # Search for different values which should be transformed
   counterValues <- 1
-  charValues <- c("", "")
+  charValues <- c("")
+  counterBool <- TRUE
   for (c in 1:length(x)) {
-    for (cc in 1:counterValues)
-      if(x[c] != charValues[cc]) {
-        charValues <- c(charValues, "")
-        charValues[counterValues] = x[c]
+    for (cc in 1:counterValues) {
+      if(x[c] == charValues[cc]) {
+        counterBool = FALSE
       }
-    counterValues <- length(charValues)
+    }
+    if(counterBool == TRUE) {
+      if(c > 1) { counterValues <- counterValues + 1 }
+      if(counterValues > 1) { charValues <- c(charValues, "") }
+      charValues[counterValues] = x[c]
+    }
+    counterBool <- TRUE
   }
 
+  #counterValues <- counterValues - 1
   counterUniques <- c(as.numeric(0), as.numeric(0))
   for (vItem in x) {
     for (c in 1:counterValues) {
@@ -31,7 +38,7 @@ transformer <- function(x, verbose = FALSE) {
     print(paste0(length(x), " values in list."))
     print(paste0("Count of unique values: ", counterValues))
     for(c in 1:counterValues)
-      print(paste0("Unique vaulue ", charValues[c]," has ", counterUniques[c], " hits."))
+      print(paste0("Unique vaulue '", charValues[c],"' has ", counterUniques[c], " hits."))
   }
   return(transformed_data)
 }
