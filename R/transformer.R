@@ -29,9 +29,7 @@ transformer <- function(x, verbose = FALSE) {
     for (c in 1:counterValues) {
       if(vItem == charValues[c]) {
         counterUniques[c] <- counterUniques[c] + 1
-        #trans_data <- rbind.data.frame(trans_data, as.numeric(c), stringsAsFactors = FALSE)
         trans_data <- c(as.vector(unlist(trans_data)), as.numeric(c))
-        str(trans_data)
       }
       counterUniques <- c(counterUniques, as.numeric(0))
     }
