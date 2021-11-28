@@ -11,9 +11,13 @@ transformer(list, ...)
 \tabular{rll}{
 \tab \code{x} \tab list which contains the values of type char.\cr\cr
 \tab \code{...} \tab further arguments passed to or from other methods.\cr\cr
-\tab \code{verbose} \tab logical, indicating whether or not the transformation should be printed in console.\cr\cr
+\tab \code{verbose} \tab logical, indicating whether or not transformation details should be printed in console.
 }
 }
 \examples{
-transformed_list <- transformer(dating$comm_type, verbose = TRUE)
+library(pradadata)
+trans_data <- transformer(subset())
+
+## With verbose output
+trans_data <- transformer(dating$comm_type, verbose = TRUE)
 }
