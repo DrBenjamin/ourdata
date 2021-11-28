@@ -4,6 +4,7 @@
 
 transformer <- function(x, verbose = FALSE) {
   trans_data <- c(as.numeric())
+  x_name <- names(x)
   x <- as.vector(unlist(x))
 
   # Search for different values which should be transformed
@@ -35,8 +36,8 @@ transformer <- function(x, verbose = FALSE) {
     }
   }
   if(verbose == TRUE) {
-    print(paste0(length(x), " values in vector."))
-    print(paste0("Count of unique values: ", counterValues))
+    print(paste0(length(x), " values in vector '", x_name, "'."))
+    print(paste0("Count of unique (different) values: ", counterValues))
     for(c in 1:counterValues)
       print(paste0("Unique vaulue '", charValues[c],"' has ", counterUniques[c], " hits."))
   }
