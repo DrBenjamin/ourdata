@@ -29,7 +29,7 @@ transformer <- function(x, verbose = FALSE) {
     for (c in 1:counterValues) {
       if(vItem == charValues[c]) {
         counterUniques[c] <- counterUniques[c] + 1
-        transformed_data <- rbind.data.frame(transformed_data, as.numeric(c), stringsAsFactors = FALSE)
+        trans_data <- rbind.data.frame(trans_data, as.numeric(c), stringsAsFactors = FALSE)
       }
       counterUniques <- c(counterUniques, as.numeric(0))
     }
@@ -40,5 +40,6 @@ transformer <- function(x, verbose = FALSE) {
     for(c in 1:counterValues)
       print(paste0("Unique vaulue '", charValues[c],"' has ", counterUniques[c], " hits."))
   }
-  return(transformed_data)
+  colnames(trans_data) <- names(x)
+  return(trans_data)
 }
