@@ -1,6 +1,6 @@
 \name{transformer}
 \alias{transformer}
-\title{Transforms vaules}
+\title{Transforms values}
 \description{
 \sQuote{transformer} converts values of type char to numeric, e.g. "female" to '1'.
 }
