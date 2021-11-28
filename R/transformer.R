@@ -24,14 +24,14 @@ transformer <- function(x, verbose = FALSE) {
     counterBool <- TRUE
   }
 
-  #counterValues <- counterValues - 1
-  counterUniques <- c(as.numeric(0), as.numeric(0))
+  counterUniques <- c(as.numeric(0))
   for (vItem in x) {
     for (c in 1:counterValues) {
       if(vItem == charValues[c]) {
         counterUniques[c] <- counterUniques[c] + 1
         transformed_data <- rbind.data.frame(transformed_data, as.numeric(c), stringsAsFactors = FALSE)
       }
+      counterUniques <- c(counterUniques, as.numeric(0))
     }
   }
   if(verbose == TRUE) {
