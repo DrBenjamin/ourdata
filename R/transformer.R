@@ -41,6 +41,6 @@ transformer <- function(x, verbose = FALSE) {
     for(c in 1:counterValues)
       print(paste0("Unique vaulue '", charValues[c],"' has ", counterUniques[c], " hits."))
   }
-  rownames(trans_data, x_name)
+  row.names(trans_data) <- x_name
   return(trans_data)
 }
