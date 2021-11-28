@@ -1,4 +1,5 @@
-# Hello, World!
+# R/zzz.R
+# Startup message and load of functions
 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage("This is version ", packageVersion(pkgname),
