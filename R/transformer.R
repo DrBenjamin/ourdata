@@ -4,10 +4,7 @@
 
 transformer <- function(x, verbose = FALSE) {
   trans_data <- c(as.numeric())
-  str(trans_data)
-  col_name <- names(x)
   x <- as.vector(unlist(x))
-  str(x)
 
   # Search for different values which should be transformed
   counterValues <- 1
