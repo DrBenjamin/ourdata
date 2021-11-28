@@ -4,6 +4,7 @@
 
 transformer <- function(x, verbose = FALSE) {
   transformed_data <- data.frame(col = numeric(), stringsAsFactors = FALSE)
+  x <- as.vector(unlist(x))
   i <- 0
   ii <- 0
   for (vItem in x) {
