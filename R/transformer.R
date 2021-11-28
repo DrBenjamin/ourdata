@@ -6,9 +6,7 @@ transformer <- function(x, verbose = FALSE) {
   transformed_data <- data.frame(col = numeric(), stringsAsFactors = FALSE)
   i <- 0
   ii <- 0
-  x <- as.list(x)
   for (vItem in x) {
-    print(paste0("vItem:", vItem))
     if(vItem == "female") {
       i <- i + 1
       transformed_data <- rbind.data.frame(transformed_data, as.numeric("1"), stringsAsFactors = FALSE)
