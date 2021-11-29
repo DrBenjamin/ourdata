@@ -9,8 +9,8 @@ plotter <- function(x, y = "None", verbose = FALSE) {
   y <- as.vector(unlist(y))
 
   # plotting
-  if(y == "None") barplot(x)
-  if(y != "None") plot(x ~ y)
+  if(y == 'None') barplot(x)
+  if(y != 'None') plot(x ~ y)
 
   # verbose messages
   if(verbose == TRUE) {
