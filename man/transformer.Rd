@@ -2,7 +2,7 @@
 \alias{transformer}
 \title{Transforms values}
 \description{
-\sQuote{transformer} converts values of type char to numeric, e.g. "female" to '1'.
+\sQuote{transformer} converts values of type char to numeric, e.g. 'female' to '1' and 'male' to '2'.
 }
 \usage{
 transformer(list, ...)
