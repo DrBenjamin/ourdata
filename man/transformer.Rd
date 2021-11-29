@@ -16,7 +16,7 @@ transformer(list, ...)
 }
 \examples{
 library(pradadata)
-trans_data <- transformer(subset())
+trans_data <- transformer(subset(dating, select = comm_type))
 
 ## With verbose output
 trans_data <- transformer(dating$comm_type, verbose = TRUE)
