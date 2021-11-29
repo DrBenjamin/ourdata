@@ -1,6 +1,6 @@
 # R/transformer.R
 # function transformer converts values of type char to a numeric style
-# e.g. "female" to 1
+# e.g. "female" to 1 and "male" to 2
 
 transformer <- function(x, verbose = FALSE) {
   trans_data <- c(as.numeric())
@@ -39,7 +39,7 @@ transformer <- function(x, verbose = FALSE) {
     print(paste0(length(x), " values in vector '", x_name, "'."))
     print(paste0("Count of unique (different) values: ", counterValues))
     for(c in 1:counterValues)
-      print(paste0("Unique vaulue '", charValues[c],"' has ", counterUniques[c], " hits."))
+      print(paste0("Unique vaulue '", charValues[c], "' was converted to '", c, "' with ", counterUniques[c], " hits."))
   }
   return(trans_data)
 }
