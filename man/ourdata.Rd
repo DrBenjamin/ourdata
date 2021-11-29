@@ -11,7 +11,8 @@ Data frames and functions of the Technical Applications & Data Analytics course.
 Functions of the course contains\cr\cr
 - \sQuote{ourddata()} Prints a welcome message.\cr\cr
 - \sQuote{combine(id, foreign_key, list1, list2, ...)} Combines two data frames.\cr\cr
-- \sQuote{transformer(x, ...)} Transforms char type values in numeric values.
+- \sQuote{transformer(x, ...)} Transforms char type values in numeric values.\cr\cr
+- \sQuote{plotter(x, ...)} Plotting data with a menu to choose different plotting types.
 }
 \usage{
 help(ourdata)
@@ -27,4 +28,5 @@ print(fragebogen)
 ## Functions
 help(combine)
 help(transformer)
+help(plotter)
 }
