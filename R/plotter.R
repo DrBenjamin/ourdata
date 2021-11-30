@@ -43,6 +43,9 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       } else {
         user_inputx <- readline(prompt = "Name des Data Frames oder Vektors? ")
       }
+      if(!exists(user_inputx)) {
+        user_inputx <- ""
+      }
     }
     # problems with 'data_frame$column' writing in a variable with name of vector, solution ->
     if(grepl("$", user_inputx, fixed = TRUE)) {
@@ -50,21 +53,22 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       x <- as.vector(unlist(eval(parse(text=paste0(user_inputx)))))
     } else {
       if(is.data.frame(get(user_inputx))) {
-        # read a data frame from input from console
+        # read a data frame name from input from console
         x <- get(user_inputx)
         x <- as.vector(unlist(x))
       } else {
-        # read a vector from input from console
+        # read a vector name from input from console
         x <- get(user_inputx)
       }
     }
   } else {
-      if(is.data.frame(x)) {
-        # got a data frame as 'x' in function load
-        x <- as.vector(unlist(x))
-      } else {
-        # got a vector as 'x' in function load
-      }
+    if(is.data.frame(x)) {
+      # got a data frame when function was loaded
+      x <- as.vector(unlist(x))
+    } else {
+      # got a vector when function was loaded
+      # all fine, nothing needed :)
+    }
   }
 
   ## checking if plot_type is choosen
@@ -86,7 +90,11 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
           user_inputp <- readline(prompt = "(S)treudiagramm? ")
         }
       }
-      plot_type <- user_inputp
+      if(user_inputp == 'B' | user_inputp == 'b' | user_inputp == 'D' | user_inputp == 'd' | user_inputp == 'S' | user_inputp == 's') {
+        plot_type <- user_inputp
+      } else {
+        user_inputp <- ""
+      }
     }
   }
 
