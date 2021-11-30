@@ -20,6 +20,9 @@ combine(id, foreign_key, list1, list2, ...)
 }
 }
 \examples{
+library(ourdata)
+
+# combines two data frames
 combined_list <- combine(imr$name, hdi$country, imr$value, hdi$hdi)
 
 ## With column names spezified

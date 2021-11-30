@@ -2,7 +2,7 @@
 \alias{plotter}
 \title{Plotting data}
 \description{
-\sQuote{plotter} plotting data with a menu to choose different plotting types.
+\sQuote{plotter} is plotting data with a menu to choose different plotting types.
 }
 \usage{
 plotter(...)
@@ -22,13 +22,14 @@ plotter(...)
 }
 }
 \examples{
-library(pradadata)
+library(ourdata)
+
 # it will ask you for all data and information
 plotter()
 
 ## With x data
-plotter(subset(fragebogen, select = alter))
+plotter(subset(fragebogen$alter)
 
 ### With x & y data, language and verbose option set
-plotter(subset(fragebogen, select = alter), subset(fragebogen, select = kopf), language = "ger", verbose = TRUE)
+plotter(subset(fragebogen, select = alter), subset(fragebogen, select = kopf), plot_type = "S", language = "ger", verbose = TRUE)
 }

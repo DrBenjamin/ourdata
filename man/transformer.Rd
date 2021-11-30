@@ -15,7 +15,10 @@ transformer(list, ...)
 }
 }
 \examples{
+library(ourdata)
 library(pradadata)
+
+# converts a vector
 trans_data <- transformer(subset(dating, select = comm_type))
 
 ## With verbose output

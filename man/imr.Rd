@@ -11,5 +11,7 @@ imr
 The data was downloaded from: https://www.cia.gov/the-world-factbook/field/infant-mortality-rate/country-comparison
 }
 \examples{
+library(ourdata)
+
 print(imr)
 }

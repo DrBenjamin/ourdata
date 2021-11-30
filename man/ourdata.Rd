@@ -18,7 +18,9 @@ Functions of the course contains\cr\cr
 help(ourdata)
 }
 \examples{
-## Data frames
+library(ourdata)
+
+# Data frames
 print(imr)
 print(hdi)
 print(koelsch)

@@ -11,5 +11,7 @@ hdi
 The data was downloaded from: https://worldpopulationreview.com/country-rankings/hdi-by-country
 }
 \examples{
+library(ourdata)
+
 print(hdi)
 }

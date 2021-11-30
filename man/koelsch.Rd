@@ -11,5 +11,7 @@ koelsch
 The data was downloaded from: https://de.statista.com/statistik/daten/studie/172265/umfrage/haeufigkeit-konsum-von-koelsch/
 }
 \examples{
+library(ourdata)
+
 print(koelsch)
 }

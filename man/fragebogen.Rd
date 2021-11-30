@@ -19,5 +19,7 @@ fragebogen
 The data was self generated from a survey in the course Technical Applications & Data Analytics in the study of Game Design & Management and Audio-Visuelle Medien (5th semester, 2021) at Hochschule Fresenius University of Applied Sciences in Cologne.
 }
 \examples{
+library(ourdata)
+
 print(fragebogen)
 }
