@@ -9,15 +9,15 @@ plotter(...)
 }
 \arguments{
 \tabular{rll}{
-\tab \code{no args} \tab without any arguments, \sQuote{plotter} will take you through a menu to find out.\cr\cr
+\tab \code{no args} \tab without any arguments, \sQuote{plotter} will take you through a menu to find out what you want and with which data it should be done.\cr\cr
 \tab \code{...} \tab further arguments passed to or from other methods.\cr\cr
 \tab \code{x} \tab data which should be used.\cr\cr
 \tab \code{y} \tab more data e.g. for correlation analysis.\cr\cr
 \tab \code{plot_type} \tab chose a plotting type.\cr
-\tab \tab \code{B} \tab for a (B)arplot.\cr
-\tab \tab \code{D} \tab for a (D)ensity plot.\cr
-\tab \tab \code{S} \tab for a (S)catter plot.\cr\cr
-\tab \code{language} \tab 'ger' for German, 'eng' for English.\cr\cr
+\tab \tab \code{B} for a (B)arplot.\cr
+\tab \tab \code{D} for a (D)ensity plot.\cr
+\tab \tab \code{S} for a (S)catter plot.\cr\cr
+\tab \code{language} \tab \sQuote{ger} for German, \sQuote{eng} for English.\cr\cr
 \tab \code{verbose} \tab logical, indicating whether or not output details should be printed in console.
 }
 }
