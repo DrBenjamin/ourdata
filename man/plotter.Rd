@@ -18,6 +18,7 @@ plotter(...)
 \tab \tab \code{D} for a (D)ensity plot.\cr
 \tab \tab \code{S} for a (S)catter plot.\cr\cr
 \tab \code{language} \tab \sQuote{ger} for German, \sQuote{eng} for English.\cr\cr
+\tab \code{pdf} \tab logical, indicating whether or not output of plots should be exported to a PDF file (on devices without a graphical interface like an iPad.\cr\cr
 \tab \code{verbose} \tab logical, indicating whether or not output details should be printed in console.
 }
 }
