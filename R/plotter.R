@@ -89,10 +89,15 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         no_datay <- TRUE
         user_inputy <- "NO"
       } else {
-        if(!exists(user_inputy)) {
-          user_inputy <- ""
-        } else {
+        if(grepl("$", user_inputy, fixed = TRUE)) {
+          # nicht prüfen ob vorhanden!
           no_datay <- FALSE
+        } else {
+          if(!exists(user_inputy)) {
+            user_inputy <- ""
+          } else {
+            no_datay <- FALSE
+          }
         }
       }
     }
@@ -155,7 +160,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     user_inputh <- ""
     while (user_inputh == "") {
       if(language == 'eng') {
-        user_inputh <- readline(prompt = "Please enter the name for the header of the diagram \n(just type <Enter> for no header): ")
+        user_inputh <- readline(prompt = "Please enter the name for the header of the diagram: \n(just type <Enter> for no header) ")
       } else {
         user_inputh <- readline(prompt = "Bitte die Bezeichnung für die Kopfzeile des Diagramms eingeben: \n(<Enter> drücken für keinen Header) ")
       }
