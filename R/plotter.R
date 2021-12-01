@@ -43,8 +43,12 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         user_inputx <- readline(prompt = "Name des Data Frames oder Vektors ('x')? ")
       }
-      if(!exists(user_inputx)) {
-        user_inputx <- ""
+      if(grepl("$", user_inputx, fixed = TRUE)) {
+        # nicht prüfen ob vorhanden!
+      } else {
+        if(!exists(user_inputx)) {
+          user_inputx <- ""
+        }
       }
     }
     # problems with 'data_frame$column' writing in a variable with name of vector, solution ->
