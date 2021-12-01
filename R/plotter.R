@@ -8,8 +8,16 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   # Language
   if(is.null(language)) {
     user_inputl <- readline(prompt = "Language ('ger' or 'eng')? ")
-    if(user_inputl == "") { user_inputl = "eng"}
+    if(user_inputl == "ger" | user_inputl == "Ger" | user_inputl == "GER") {
+      user_inputl <- "ger"
+    } else {
+      user_inputl <- "eng"
+    }
     language <- user_inputl
+  } else {
+    if(!language == "ger" | !language == "eng") {
+      language <- "eng"
+    }
   }
 
   # PDF Export
@@ -19,19 +27,16 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     } else {
       user_inputgfx <- readline(prompt = "PDF Export ('TRUE' oder 'FALSE')? ")
     }
-    if(user_inputgfx == "") { user_inputgfx = FALSE }
-    pdf <- user_inputgfx
-  }
-
-  # verbose output
-  if(is.null(verbose)) {
-    if(language == 'eng') {
-      user_inputv <- readline(prompt = "Verbose output ('TRUE' or 'FALSE')? ")
+    if(user_inputgfx == "TRUE" | user_inputgfx == "true" | user_inputgfx == "True") {
+      user_inputgfx <- TRUE
     } else {
-      user_inputv <- readline(prompt = "Ausführliche Ausgabe ('TRUE' oder 'FALSE')? ")
+      user_inputgfx <- FALSE
     }
-    if(user_inputv == "") { user_inputv = FALSE }
-    verbose <- user_inputv
+    pdf <- user_inputgfx
+  } else {
+    if(!pdf == TRUE | !language == FALSE) {
+      pdf <- FALSE
+    }
   }
 
   ## checking if 'x' data is available
@@ -414,6 +419,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   if(pdf == TRUE) { dev.off() }
 
   ## verbose output
+  if(is.null(verbose)) { verbose <- FALSE}
   if(verbose == TRUE) {
     if(language == 'eng') {
       return(print("Done."))
