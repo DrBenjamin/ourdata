@@ -2,7 +2,7 @@
 # function plotter' for plotting data with a menu to choose different plotting types
 # e.g. 'plot' for a Scatter plot
 
-plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf = NULL, verbose = NULL) {
+plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline = NULL, language = NULL, pdf = NULL, verbose = NULL) {
 
   ## User input
   # Language
@@ -77,11 +77,11 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
     user_inputy <- ""
     while (user_inputy == "") {
       if(language == 'eng') {
-        user_inputy <- readline(prompt = "Is there more data ('y') for calculating (just type 'Enter' for NO)? ")
+        user_inputy <- readline(prompt = "Is there more data ('y') for calculating (just type <Enter> for 'NO')? ")
       } else {
-        user_inputy <- readline(prompt = "Sind noch mehr Daten ('y') zuberechnen ('Enter' drücken für NEIN)? ")
+        user_inputy <- readline(prompt = "Sind noch mehr Daten ('y') zuberechnen (<Enter> drücken für 'NEIN')? ")
       }
-      if(user_inputy == "" | user_inputy == "NO" | user_inputy == "no" | user_inputy == "No") {
+      if(user_inputy == "" | user_inputy == "NO" | user_inputy == "no" | user_inputy == "No"| user_inputy == "NEIN" | user_inputy == "nein" | user_inputy == "Nein") {
         no_datay <- TRUE
         user_inputy <- "NO"
       } else {
@@ -146,6 +146,22 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
   }
 
   ## do the plotting
+  # ask for a header
+  if(is.null(header)) {
+    user_inputh <- ""
+    while (user_inputh == "") {
+      if(language == 'eng') {
+        user_inputh <- readline(prompt = "Please enter the name for the header of the diagram \n(just type <Enter> for no header): ")
+      } else {
+        user_inputh <- readline(prompt = "Bitte die Bezeichnung für die Kopfzeile des Diagramms eingeben: \n(<Enter> drücken für keinen Header) ")
+      }
+      if(user_inputh == "" | user_inputh == "FALSE" | user_inputh == "NO" | user_inputh == "no" | user_inputh == "Nein"| user_inputh == "NEIN" | user_inputh == "nein" | user_inputh == "No") {
+        user_inputh <- "FALSE"
+      } else {
+        header = user_inputh
+      }
+    }
+  }
   if(plot_type == 'BA' | plot_type == 'Ba' | plot_type == 'ba') {
     if(pdf == TRUE) {
       if(language == 'eng') {
@@ -155,9 +171,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      barplot(x)
+      if(is.null(header)) {
+        barplot(x)
+      } else {
+        barplot(x, main = header)
+      }
     } else {
-      barplot(x, y)
+      if(is.null(header)) {
+        barplot(x, y)
+      } else {
+        barplot(x, y, main = header)
+      }
     }
   }
   if(plot_type == 'BO' | plot_type == 'Bo' | plot_type == 'bo') {
@@ -169,9 +193,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      boxplot(x)
+      if(is.null(header)) {
+        boxplot(x)
+      } else {
+        boxplot(x, main = header)
+      }
     } else {
-      boxplot(x, y)
+      if(is.null(header)) {
+        boxplot(x, y)
+      } else {
+        boxplot(x, y, main = header)
+      }
     }
   }
   if(plot_type == 'D' | plot_type == 'd') {
@@ -183,23 +215,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      plot(density(x))
-    } else {
-      plot(density(x, y))
-    }
-  }
-  if(plot_type == 'S' | plot_type == 's') {
-    if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Scatterplot.pdf")
+      if(is.null(header)) {
+        plot(density(x))
       } else {
-        pdf("Streudiagramm.pdf")
+        plot(density(x), main = header)
       }
-    }
-    if(is.null(y)) {
-      plot(x)
     } else {
-      plot(x, y)
+      if(is.null(header)) {
+        plot(density(x, y))
+      } else {
+        plot(density(x, y), main = header)
+      }
     }
   }
   if(plot_type == 'HE' | plot_type == 'He' | plot_type == 'he') {
@@ -211,9 +237,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      heatmap(x)
+      if(is.null(header)) {
+        heatmap(x)
+      } else {
+        heatmap(x, main = header)
+      }
     } else {
-      heatmap(cbind(x, y))
+      if(is.null(header)) {
+        heatmap(cbind(x, y))
+      } else {
+        heatmap(cbind(x, y), main = header)
+      }
     }
   }
   if(plot_type == 'HI' | plot_type == 'Hi' | plot_type == 'hi') {
@@ -225,9 +259,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      hist(x)
+      if(is.null(header)) {
+        hist(x)
+      } else {
+        hist(x, main = header)
+      }
     } else {
-      hist(x, y)
+      if(is.null(header)) {
+        hist(x, y)
+      } else {
+        hist(x, y, main = header)
+      }
     }
   }
   if(plot_type == 'L' | plot_type == 'l') {
@@ -239,9 +281,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      plot(x, type = "l")
+      if(is.null(header)) {
+        plot(x, type = "l")
+      } else {
+        plot(x, type = "l", main = header)
+      }
     } else {
-      plot(x, y, type = "l")
+      if(is.null(header)) {
+        plot(x, y, type = "l")
+      } else {
+        plot(x, y, type = "l", main = header)
+      }
     }
   }
   if(plot_type == 'P' | plot_type == 'p') {
@@ -253,9 +303,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      pairs(data.frame(x))
+      if(is.null(header)) {
+        pairs(data.frame(x))
+      } else {
+        pairs(data.frame(x), line.main = header)
+      }
     } else {
-      pairs(data.frame(x, y))
+      if(is.null(header)) {
+        pairs(data.frame(x, y))
+      } else {
+        pairs(data.frame(x, y), line.main = header)
+      }
     }
   }
   if(plot_type == 'Q' | plot_type == 'q') {
@@ -267,9 +325,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      qqplot(x)
+      if(is.null(header)) {
+        qqplot(x)
+      } else {
+        qqplot(x, main = header)
+      }
     } else {
-      qqplot(x, y)
+      if(is.null(header)) {
+        qqplot(x, y)
+      } else {
+        qqplot(x, y, main = header)
+      }
     }
   }
   if(plot_type == 'S' | plot_type == 's') {
@@ -281,9 +347,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
       }
     }
     if(is.null(y)) {
-      plot(x)
+      if(is.null(header)) {
+        plot(x)
+      } else {
+        plot(x, main = header)
+      }
     } else {
-      plot(x, y)
+      if(is.null(header)) {
+        plot(x, y)
+      } else {
+        plot(x, y, main = header)
+      }
     }
   }
   if(plot_type == 'V' | plot_type == 'v') {
@@ -304,6 +378,30 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, language = NULL, pdf =
                          cross.area = 2)
     }
   }
+  # should the regression line be printed?
+  if(!is.null(y)) {
+    if(is.null(regline)) {
+      user_inputrl <- ""
+      while (user_inputrl == "") {
+        if(language == 'eng') {
+          user_inputrl <- readline(prompt = "Should a regression line be printed ('TRUE' or 'FALSE')? ")
+        } else {
+          user_inputrl <- readline(prompt = "Soll eine Regressionsgrade gezeichnet werden ('TRUE' oder 'FALSE')? ")
+        }
+        if(user_inputrl == "" | user_inputrl == "FALSE" | user_inputrl == "NO" | user_inputrl == "no" | user_inputrl == "Nein"| user_inputrl == "NEIN" | user_inputrl == "nein" | user_inputrl == "No") {
+          user_inputrl <- FALSE
+        } else {
+          user_inputrl <- TRUE
+        }
+      }
+      regline = user_inputrl
+    }
+  } else {
+    regline = FALSE
+  }
+  # print a regression line
+  if(regline == TRUE) { abline(lm(y ~ x), col = "red") }
+  # end pdf printing if activated
   if(pdf == TRUE) { dev.off() }
 
   ## verbose output
