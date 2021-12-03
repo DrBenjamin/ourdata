@@ -15,7 +15,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     }
     language <- user_inputl
   } else {
-    if(!language == "ger" | !language == "eng") {
+    if(!(language == "ger") & !(language == "eng")) {
       language <- "eng"
     }
   }
@@ -408,13 +408,29 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
           user_inputrl <- TRUE
         }
       }
-      regline = user_inputrl
+      regline <- user_inputrl
     }
   } else {
     regline = FALSE
   }
   # print a regression line
-  if(regline == TRUE) { abline(lm(y ~ x), col = "red") }
+  if(regline == TRUE) {
+    abline(lm(y ~ x), col = "red")
+    user_inputcoe <- ""
+    while (user_inputcoe == "") {
+      if(language == 'eng') {
+        user_inputcoe <- readline(prompt = "Should a calculation of the p-value and the \ncorrelation coefficient be carried out ('TRUE' or 'FALSE')? ")
+      } else {
+        user_inputcoe <- readline(prompt = "Soll eine Berechnung des p-Wertes und des \nKorrelationskoeffizenten durchgeführt werden ('TRUE' oder 'FALSE')? ")
+      }
+      if(user_inputcoe == "" | user_inputcoe == "FALSE" | user_inputcoe == "NO" | user_inputcoe == "no" | user_inputcoe == "Nein"| user_inputcoe == "NEIN" | user_inputcoe == "nein" | user_inputcoe == "No") {
+        user_inputcoe <- FALSE
+      } else {
+        user_inputcoe <- TRUE
+        print(cor.test(x, y, method="spearman", exact=FALSE))
+      }
+    }
+  }
   # end pdf printing if activated
   if(pdf == TRUE) { dev.off() }
 
