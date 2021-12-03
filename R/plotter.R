@@ -23,9 +23,9 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   # PDF Export
   if(is.null(pdf)) {
     if(language == 'eng') {
-      user_inputgfx <- readline(prompt = "PDF Export ('TRUE' or 'FALSE')? ")
+      user_inputgfx <- readline(prompt = "PDF Export - if iPad User it is needed! ('TRUE' or 'FALSE')? ")
     } else {
-      user_inputgfx <- readline(prompt = "PDF Export ('TRUE' oder 'FALSE')? ")
+      user_inputgfx <- readline(prompt = "PDF Export - bei iPad Benutzung benötigt! ('TRUE' oder 'FALSE')? ")
     }
     if(user_inputgfx == "TRUE" | user_inputgfx == "true" | user_inputgfx == "True") {
       user_inputgfx <- TRUE
