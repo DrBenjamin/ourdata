@@ -25,7 +25,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   if(is.null(pdf)) {
     user_text <- "PDF Export - wenn keine Grafikausgabe möglich! ('TRUE' oder 'FALSE')?"
     if(!language == 'DE') {
-      user_text <- translater(dataset = user_text, target.lang = language)
+      user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
     }
     user_inputgfx <- readline(prompt = paste0(user_text, " "))
     if(user_inputgfx == "TRUE" | user_inputgfx == "true" | user_inputgfx == "True") {
@@ -46,7 +46,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputx == "") {
       user_text <- "Bezeichnung des Data Frames oder Vektors ('x')?"
       if(!language == 'DE') {
-        user_text <- translater(dataset = user_text, target.lang = language)
+        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
       }
       user_inputx <- readline(prompt = paste0(user_text, " "))
       if(grepl("$", user_inputx, fixed = TRUE)) {
@@ -88,7 +88,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputy == "") {
       user_text <- "Sind noch mehr Daten ('y') einzubeziehen (<Enter> drücken für 'FALSE')?"
       if(!language == 'DE') {
-        user_text <- translater(dataset = user_text, target.lang = language)
+        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
       }
       user_inputy <- readline(prompt = paste0(user_text, " "))
       if(user_inputy == "" | user_inputy == "FALSE" | user_inputy == "False" | user_inputy == "false"| user_inputy == "f" | user_inputy == "F") {
@@ -142,17 +142,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       if(is.null(y)) {
         user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Diagramm, 'D' - Dichtediagramm, 'Hi' - Histogramm, 'L' - Linien-Diagramm, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
         if(!language == 'DE') {
-          user_text <- translater(dataset = user_text, target.lang = language)
+          user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
         }
       } else {
         user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Plot, 'He' - Heatmap, 'P' - Paar-Diagramm, 'Q' - Qqplot, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
         if(!language == 'DE') {
-          user_text <- translater(dataset = user_text, target.lang = language)
+          user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
         }
       }
       cat(user_text)
       if(!language == 'DE') {
-        user_text <- translater(dataset = "Welcher Diagramm Typ soll verwendet werden?", target.lang = language)
+        user_text <- translate_func_inside_plotter(dataset = "Welcher Diagramm Typ soll verwendet werden?", target.lang = language)
       } else {
         user_text <- "Welcher Diagramm Typ soll verwendet werden?"
       }
@@ -172,7 +172,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputh == "") {
       user_text <- "Bitte die Bezeichnung für die Kopfzeile des Diagramms eingeben (<Enter> drücken für keinen Header):"
       if(!language == 'DE') {
-        user_text <- translater(dataset = user_text, target.lang = language)
+        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
       }
       user_inputh <- readline(prompt = paste0(user_text, " "))
       if(user_inputh == "" | user_inputh == "FALSE" | user_inputh == "False" | user_inputh == "false" | user_inputh == "F"| user_inputh == "f") {
@@ -397,7 +397,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       while (user_inputrl == "") {
         user_text <- "Soll eine Regressionsgrade gezeichnet werden ('TRUE' oder 'FALSE')?"
         if(!language == 'DE') {
-          user_text <- translater(dataset = user_text, target.lang = language)
+          user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
         }
         user_inputrl <- readline(prompt = paste0(user_text, " "))
         if(user_inputrl == "" | user_inputrl == "FALSE" | user_inputrl == "False" | user_inputrl == "false" | user_inputrl == "F"| user_inputrl == "f") {
@@ -418,7 +418,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputcoe == "") {
       user_text <- "Soll der p-Wert und Korrelationskoeffizent berechnet werden ('TRUE' oder 'FALSE')?"
       if(!language == 'DE') {
-        user_text <- translater(dataset = user_text, target.lang = language)
+        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
       }
       user_inputcoe <- readline(prompt = paste0(user_text, " "))
 
@@ -444,7 +444,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
 }
 
-translater <- function(dataset = NULL,
+translate_func_inside_plotter <- function(dataset = NULL,
                       target.lang = "EN"
                       )
 {
