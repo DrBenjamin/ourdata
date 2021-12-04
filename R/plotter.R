@@ -5,6 +5,10 @@
 plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline = NULL, language = NULL, pdf = NULL, verbose = NULL) {
 
   ## User input
+  # Checking verbose
+  if(is.null(verbose)) {
+    verbose <- FALSE
+  }
   # Checking Language
   if(is.null(language)) {
     cat("'BG' Bulgarian, 'CS' - Czech, 'DA' - Danish, 'DE' - German, 'EL' - Greek, 'EN' - English, 'ES' - Spanish, 'ET' - Estonia, 'FI' - Finnish, 'FR' - French, 'HU' - Hungarian, 'IT' - Italian, 'JA' - Japanese, 'LT' - Lithuanian, 'LV' - Latvian, 'NL' - Dutch, 'PL' - Polish, 'PT' - Portuguese, 'RO' - Romanian, 'RU' - Russian, 'SK' - Slovak, 'SL' - Slovenian, 'SV' - Swedish or 'ZH' - Chinese)? ")
@@ -196,11 +200,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         barplot(x, main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("barplot(x)", "\n"))
+      }
     } else {
       if(is.null(header)) {
         barplot(x, y)
       } else {
         barplot(x, y, main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("barplot(x, y)", "\n"))
       }
     }
   }
@@ -218,11 +228,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         boxplot(x, main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("boxplot(x)", "\n"))
+      }
     } else {
       if(is.null(header)) {
         boxplot(x, y)
       } else {
         boxplot(x, y, main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("boxplot(x, y)", "\n"))
       }
     }
   }
@@ -240,11 +256,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         plot(density(x), main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("plot(density(x))", "\n"))
+      }
     } else {
       if(is.null(header)) {
         plot(density(x, y))
       } else {
         plot(density(x, y), main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("plot(density(x, y))", "\n"))
       }
     }
   }
@@ -258,11 +280,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         heatmap(x, main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("heatmap(x)", "\n"))
+      }
     } else {
       if(is.null(header)) {
         heatmap(cbind(x, y))
       } else {
         heatmap(cbind(x, y), main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("heatmap(cbind(x, y))", "\n"))
       }
     }
   }
@@ -280,11 +308,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         hist(x, main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("hist(x)", "\n"))
+      }
     } else {
       if(is.null(header)) {
         hist(x, y)
       } else {
         hist(x, y, main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("hist(x, y)", "\n"))
       }
     }
   }
@@ -302,11 +336,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         plot(x, type = "l", main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("plot(x, type = 'l')", "\n"))
+      }
     } else {
       if(is.null(header)) {
         plot(x, y, type = "l")
       } else {
         plot(x, y, type = "l", main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("plot(x, y, type = 'l')", "\n"))
       }
     }
   }
@@ -324,11 +364,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         pairs(data.frame(x), line.main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("pairs(data.frame(x))", "\n"))
+      }
     } else {
       if(is.null(header)) {
         pairs(data.frame(x, y))
       } else {
         pairs(data.frame(x, y), line.main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("pairs(data.frame(x, y))", "\n"))
       }
     }
   }
@@ -342,11 +388,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         qqplot(x, main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("qqplot(x)", "\n"))
+      }
     } else {
       if(is.null(header)) {
         qqplot(x, y)
       } else {
         qqplot(x, y, main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("qqplot(x, y)", "\n"))
       }
     }
   }
@@ -364,11 +416,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       } else {
         plot(x, main = header)
       }
+      if(verbose == TRUE) {
+        cat(paste0("plot(x)", "\n"))
+      }
     } else {
       if(is.null(header)) {
         plot(x, y)
       } else {
         plot(x, y, main = header)
+      }
+      if(verbose == TRUE) {
+        cat(paste0("plot(x, y)", "\n"))
       }
     }
   }
@@ -384,10 +442,16 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     plot.new()
     if(is.null(y)) {
       draw.single.venn(area = 10)
+      if(verbose == TRUE) {
+        cat(paste0("draw.single.venn(area = 10)", "\n"))
+      }
     } else {
       draw.pairwise.venn(area1 = 10,
                          area2 = 20,
                          cross.area = 2)
+      if(verbose == TRUE) {
+        cat(paste0("draw.pairwise.venn(area1 = 10, area2 = 20, cross.area = 2)", "\n"))
+      }
     }
   }
   # should the regression line be printed?
@@ -414,6 +478,9 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   # print a regression line
   if(regline == TRUE) {
     abline(lm(y ~ x), col = "red")
+    if(verbose == TRUE) {
+      cat(paste0("abline(lm(y ~ x), col = 'red'", "\n"))
+    }
     user_inputcoe <- ""
     while (user_inputcoe == "") {
       user_text <- "Soll der p-Wert und Korrelationskoeffizent berechnet werden ('TRUE' oder 'FALSE')?"
@@ -426,21 +493,23 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         user_inputcoe <- FALSE
       } else {
         user_inputcoe <- TRUE
-        print(cor.test(x, y, method="spearman", exact=FALSE))
+        print(cor.test(x, y, method = "spearman", exact = FALSE))
+        if(verbose == TRUE) {
+          cat(paste0("cor.test(x, y, method = 'spearman')", "\n"))
+        }
       }
     }
   }
   # End pdf printing if it was activated
   if(pdf == TRUE) { dev.off() }
 
-  ## verbose output
-  if(is.null(verbose)) { verbose <- FALSE}
+  ## Close function
   if(verbose == TRUE) {
-    if(language == 'eng') {
-      return(print("Done."))
-    } else {
-      return(print("Erledigt."))
+    user_text <- "Erledigt."
+    if(!language == 'DE') {
+      user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
     }
+    return(cat(paste0(user_text, "\n")))
   }
 }
 
