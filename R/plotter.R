@@ -5,28 +5,29 @@
 plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline = NULL, language = NULL, pdf = NULL, verbose = NULL) {
 
   ## User input
-  # Language
+  # Checking Language
   if(is.null(language)) {
-    user_inputl <- readline(prompt = "Language ('ger' or 'eng')? ")
-    if(user_inputl == "ger" | user_inputl == "Ger" | user_inputl == "GER") {
-      user_inputl <- "ger"
+    cat("'BG' Bulgarian, 'CS' - Czech, 'DA' - Danish, 'DE' - German, 'EL' - Greek, 'EN' - English, 'ES' - Spanish, 'ET' - Estonia, 'FI' - Finnish, 'FR' - French, 'HU' - Hungarian, 'IT' - Italian, 'JA' - Japanese, 'LT' - Lithuanian, 'LV' - Latvian, 'NL' - Dutch, 'PL' - Polish, 'PT' - Portuguese, 'RO' - Romanian, 'RU' - Russian, 'SK' - Slovak, 'SL' - Slovenian, 'SV' - Swedish or 'ZH' - Chinese)? ")
+    user_inputl <- readline(prompt = "Which language? ")
+    if(user_inputl == "BG" | user_inputl == "CS" | user_inputl == "DA" | user_inputl == "DE" | user_inputl == "EL" | user_inputl == "EN" | user_inputl == "ES" | user_inputl == "ET" | user_inputl == "FI" | user_inputl == "FR" | user_inputl == "HU" | user_inputl == "IT" | user_inputl == "JA" | user_inputl == "LT" | user_inputl == "LV" | user_inputl == "NL" | user_inputl == "PL" | user_inputl == "PT" | user_inputl == "RO" | user_inputl == "RU" | user_inputl == "SK" | user_inputl == "SL" | user_inputl == "SV" | user_inputl == "ZH") {
+      # all fine, nothing to do!
     } else {
-      user_inputl <- "eng"
+      user_inputl <- "EN"
     }
     language <- user_inputl
   } else {
-    if(!(language == "ger") & !(language == "eng")) {
-      language <- "eng"
+    if(!user_inputl == "BG" & !user_inputl == "CS" & !user_inputl == "DA" & !user_inputl == "DE" & !user_inputl == "EL" & !user_inputl == "EN" & !user_inputl == "ES" & !user_inputl == "ET" & !user_inputl == "FI" & !user_inputl == "FR" & !user_inputl == "HU" & !user_inputl == "IT" & !user_inputl == "JA" & !user_inputl == "LT" & !user_inputl == "LV" & !user_inputl == "NL" & !user_inputl == "PL" & !user_inputl == "PT" & !user_inputl == "RO" & !user_inputl == "RU" & !user_inputl == "SK" & !user_inputl == "SL" & !user_inputl == "SV" & !user_inputl == "ZH") {
+      language <- "EN"
     }
   }
 
   # PDF Export
   if(is.null(pdf)) {
-    if(language == 'eng') {
-      user_inputgfx <- readline(prompt = "PDF Export - if iPad User it is needed! ('TRUE' or 'FALSE')? ")
-    } else {
-      user_inputgfx <- readline(prompt = "PDF Export - bei iPad Benutzung benötigt! ('TRUE' oder 'FALSE')? ")
+    user_text <- "PDF Export - wenn keine Grafikausgabe möglich! ('TRUE' oder 'FALSE')?"
+    if(!language == 'DE') {
+      user_text <- translater(dataset = user_text, target.lang = language)
     }
+    user_inputgfx <- readline(prompt = paste0(user_text, " "))
     if(user_inputgfx == "TRUE" | user_inputgfx == "true" | user_inputgfx == "True") {
       user_inputgfx <- TRUE
     } else {
@@ -39,15 +40,15 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     }
   }
 
-  ## checking if 'x' data is available
+  ## Checking if 'x' data is available
   if(is.null(x)) {
     user_inputx <- ""
     while (user_inputx == "") {
-      if(language == 'eng') {
-        user_inputx <- readline(prompt = "Name of the data frame or vector ('x')? ")
-      } else {
-        user_inputx <- readline(prompt = "Name des Data Frames oder Vektors ('x')? ")
+      user_text <- "Bezeichnung des Data Frames oder Vektors ('x')?"
+      if(!language == 'DE') {
+        user_text <- translater(dataset = user_text, target.lang = language)
       }
+      user_inputx <- readline(prompt = paste0(user_text, " "))
       if(grepl("$", user_inputx, fixed = TRUE)) {
         # nicht prüfen ob vorhanden!
       } else {
@@ -85,12 +86,12 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     no_datay <- TRUE
     user_inputy <- ""
     while (user_inputy == "") {
-      if(language == 'eng') {
-        user_inputy <- readline(prompt = "Is there more data ('y') for calculating (just type <Enter> for 'NO')? ")
-      } else {
-        user_inputy <- readline(prompt = "Sind noch mehr Daten ('y') zuberechnen (<Enter> drücken für 'NEIN')? ")
+      user_text <- "Sind noch mehr Daten ('y') einzubeziehen (<Enter> drücken für 'FALSE')?"
+      if(!language == 'DE') {
+        user_text <- translater(dataset = user_text, target.lang = language)
       }
-      if(user_inputy == "" | user_inputy == "NO" | user_inputy == "no" | user_inputy == "No"| user_inputy == "NEIN" | user_inputy == "nein" | user_inputy == "Nein") {
+      user_inputy <- readline(prompt = paste0(user_text, " "))
+      if(user_inputy == "" | user_inputy == "FALSE" | user_inputy == "False" | user_inputy == "false"| user_inputy == "f" | user_inputy == "F") {
         no_datay <- TRUE
         user_inputy <- "NO"
       } else {
@@ -139,18 +140,23 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputp == "") {
       # checking if y data is available or not
       if(is.null(y)) {
-        if(language == 'eng') {
-          user_inputp <- readline(prompt = "(Ba)rplot, (Bo)xplot, (D)ensity Plot, (Hi)stogram, \n(L)ine Plot, (S)catterplot or (V)enn Diagram? ")
-        } else {
-          user_inputp <- readline(prompt = "(Ba)lkendiagramm, (Bo)x-Diagramm, (D)ichtediagramm, (Hi)stogramm, \n(L)inien-Diagramm, (S)treudiagramm oder (V)enn-Diagramm? ")
+        user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Diagramm, 'D' - Dichtediagramm, 'Hi' - Histogramm, 'L' - Linien-Diagramm, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
+        if(!language == 'DE') {
+          user_text <- translater(dataset = user_text, target.lang = language)
         }
       } else {
-        if(language == 'eng') {
-          user_inputp <- readline(prompt = "(Ba)rplot, (Bo)xplot, (He)atmap, (P)airs Plot, \n(Q)qplot, (S)catterplot or (V)enn Diagram? ")
-        } else {
-          user_inputp <- readline(prompt = "(Ba)lkendiagramm, (Bo)x-Diagramm, (He)atmap, \n(P)aar-Diagramm, (Q)qplot, (S)treudiagramm oder (V)enn-Diagramm? ")
+        user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Plot, 'He' - Heatmap, 'P' - Paar-Diagramm, 'Q' - Qqplot, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
+        if(!language == 'DE') {
+          user_text <- translater(dataset = user_text, target.lang = language)
         }
       }
+      cat(user_text)
+      if(!language == 'DE') {
+        user_text <- translater(dataset = "Welcher Diagramm Typ soll verwendet werden?", target.lang = language)
+      } else {
+        user_text <- "Welcher Diagramm Typ soll verwendet werden?"
+      }
+      user_inputp <- readline(prompt = paste0(user_text, " "))
       if(user_inputp == 'BA' | user_inputp == 'Ba' | user_inputp == 'ba' | user_inputp == 'BO' | user_inputp == 'Bo' | user_inputp == 'bo' | user_inputp == 'D' | user_inputp == 'd' | user_inputp == 'HE' | user_inputp == 'He' | user_inputp == 'he' | user_inputp == 'HI' | user_inputp == 'Hi' | user_inputp == 'hi' | user_inputp == 'L' | user_inputp == 'l' | user_inputp == 'P' | user_inputp == 'p' | user_inputp == 'Q' | user_inputp == 'q' | user_inputp == 'S' | user_inputp == 's' | user_inputp == 'V' | user_inputp == 'v' ) {
         plot_type <- user_inputp
       } else {
@@ -159,17 +165,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     }
   }
 
-  ## do the plotting
-  # ask for a header
+  ## Do the plotting
+  # Ask for a header
   if(is.null(header)) {
     user_inputh <- ""
     while (user_inputh == "") {
-      if(language == 'eng') {
-        user_inputh <- readline(prompt = "Please enter the name for the header of the diagram: \n(just type <Enter> for no header) ")
-      } else {
-        user_inputh <- readline(prompt = "Bitte die Bezeichnung für die Kopfzeile des Diagramms eingeben: \n(<Enter> drücken für keinen Header) ")
+      user_text <- "Bitte die Bezeichnung für die Kopfzeile des Diagramms eingeben (<Enter> drücken für keinen Header):"
+      if(!language == 'DE') {
+        user_text <- translater(dataset = user_text, target.lang = language)
       }
-      if(user_inputh == "" | user_inputh == "FALSE" | user_inputh == "NO" | user_inputh == "no" | user_inputh == "Nein"| user_inputh == "NEIN" | user_inputh == "nein" | user_inputh == "No") {
+      user_inputh <- readline(prompt = paste0(user_text, " "))
+      if(user_inputh == "" | user_inputh == "FALSE" | user_inputh == "False" | user_inputh == "false" | user_inputh == "F"| user_inputh == "f") {
         user_inputh <- "FALSE"
       } else {
         header = user_inputh
@@ -178,10 +184,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'BA' | plot_type == 'Ba' | plot_type == 'ba') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Barplot.pdf")
-      } else {
+      if(language == 'DE') {
         pdf("Balkendiagramm.pdf")
+      } else {
+        pdf("Barplot.pdf")
       }
     }
     if(is.null(y)) {
@@ -200,10 +206,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'BO' | plot_type == 'Bo' | plot_type == 'bo') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Boxplot.pdf")
+      if(language == 'DE') {
+        pdf("Kastengrafik.pdf")
       } else {
-        pdf("Boxdiagramm.pdf")
+        pdf("Boxplot.pdf")
       }
     }
     if(is.null(y)) {
@@ -222,10 +228,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'D' | plot_type == 'd') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Densityplot.pdf")
-      } else {
+      if(language == 'DE') {
         pdf("Dichtediagramm.pdf")
+      } else {
+        pdf("Densityplot.pdf")
       }
     }
     if(is.null(y)) {
@@ -244,11 +250,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'HE' | plot_type == 'He' | plot_type == 'he') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Heatmap.pdf")
-      } else {
-        pdf("Heatmap.pdf")
-      }
+      pdf("Heatmap.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -266,10 +268,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'HI' | plot_type == 'Hi' | plot_type == 'hi') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Histogram.pdf")
-      } else {
+      if(language == 'DE') {
         pdf("Histogramm.pdf")
+      } else {
+        pdf("Histogram.pdf")
       }
     }
     if(is.null(y)) {
@@ -288,10 +290,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'L' | plot_type == 'l') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Lineplot.pdf")
-      } else {
+      if(language == 'DE') {
         pdf("Liniendiagramm.pdf")
+      } else {
+        pdf("Lineplot.pdf")
       }
     }
     if(is.null(y)) {
@@ -310,10 +312,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'P' | plot_type == 'p') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Pairdiagram.pdf")
+      if(language == 'DE') {
+        pdf("Paar-Diagramm.pdf")
       } else {
-        pdf("Paardiagramm.pdf")
+        pdf("Pairplot.pdf")
       }
     }
     if(is.null(y)) {
@@ -332,11 +334,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'Q' | plot_type == 'q') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Qqlot.pdf")
-      } else {
-        pdf("Qqplot.pdf")
-      }
+      pdf("Qqplot.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -354,10 +352,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'S' | plot_type == 's') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Scatterplot.pdf")
-      } else {
+      if(language == 'DE') {
         pdf("Streudiagramm.pdf")
+      } else {
+        pdf("Scatterplot.pdf")
       }
     }
     if(is.null(y)) {
@@ -376,10 +374,10 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'V' | plot_type == 'v') {
     if(pdf == TRUE) {
-      if(language == 'eng') {
-        pdf("Venndiagram.pdf")
-      } else {
+      if(language == 'DE') {
         pdf("Venndiagramm.pdf")
+      } else {
+        pdf("Venndiagram.pdf")
       }
     }
     library("VennDiagram")
@@ -397,12 +395,12 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     if(is.null(regline)) {
       user_inputrl <- ""
       while (user_inputrl == "") {
-        if(language == 'eng') {
-          user_inputrl <- readline(prompt = "Should a regression line be printed ('TRUE' or 'FALSE')? ")
-        } else {
-          user_inputrl <- readline(prompt = "Soll eine Regressionsgrade gezeichnet werden ('TRUE' oder 'FALSE')? ")
+        user_text <- "Soll eine Regressionsgrade gezeichnet werden ('TRUE' oder 'FALSE')?"
+        if(!language == 'DE') {
+          user_text <- translater(dataset = user_text, target.lang = language)
         }
-        if(user_inputrl == "" | user_inputrl == "FALSE" | user_inputrl == "NO" | user_inputrl == "no" | user_inputrl == "Nein"| user_inputrl == "NEIN" | user_inputrl == "nein" | user_inputrl == "No") {
+        user_inputrl <- readline(prompt = paste0(user_text, " "))
+        if(user_inputrl == "" | user_inputrl == "FALSE" | user_inputrl == "False" | user_inputrl == "false" | user_inputrl == "F"| user_inputrl == "f") {
           user_inputrl <- FALSE
         } else {
           user_inputrl <- TRUE
@@ -418,12 +416,13 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     abline(lm(y ~ x), col = "red")
     user_inputcoe <- ""
     while (user_inputcoe == "") {
-      if(language == 'eng') {
-        user_inputcoe <- readline(prompt = "Should a calculation of the p-value and the \ncorrelation coefficient be carried out ('TRUE' or 'FALSE')? ")
-      } else {
-        user_inputcoe <- readline(prompt = "Soll eine Berechnung des p-Wertes und des \nKorrelationskoeffizenten durchgeführt werden ('TRUE' oder 'FALSE')? ")
+      user_text <- "Soll der p-Wert und Korrelationskoeffizent berechnet werden ('TRUE' oder 'FALSE')?"
+      if(!language == 'DE') {
+        user_text <- translater(dataset = user_text, target.lang = language)
       }
-      if(user_inputcoe == "" | user_inputcoe == "FALSE" | user_inputcoe == "NO" | user_inputcoe == "no" | user_inputcoe == "Nein"| user_inputcoe == "NEIN" | user_inputcoe == "nein" | user_inputcoe == "No") {
+      user_inputcoe <- readline(prompt = paste0(user_text, " "))
+
+      if(user_inputcoe == "" | user_inputcoe == "FALSE" | user_inputcoe == "False" | user_inputcoe == "false" | user_inputcoe == "F"| user_inputcoe == "f") {
         user_inputcoe <- FALSE
       } else {
         user_inputcoe <- TRUE
@@ -431,7 +430,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       }
     }
   }
-  # end pdf printing if activated
+  # End pdf printing if it was activated
   if(pdf == TRUE) { dev.off() }
 
   ## verbose output
@@ -443,4 +442,27 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       return(print("Erledigt."))
     }
   }
+}
+
+translater <- function(dataset = NULL,
+                      target.lang = "EN"
+                      )
+{
+  responses <- NULL
+  source_lang <- NULL
+  text <- stringr::str_replace(gsub("\\s+", "%20", stringr::str_trim(dataset)), "B", "b")
+  url <- "https://api-free.deepl.com/v2/translate?"
+  auth_key <- "c52a9c7d-3198-063c-2bbf-8f67173820ce:fx"
+  urlx <- paste0(url,
+                "auth_key=", auth_key,
+                "&text=", text,
+                "&target_lang=", target.lang
+                )
+  response <- httr::GET(urlx)
+  respcontent <- httr::content(response, as = "text", encoding = "UTF-8")
+  result <- jsonlite::fromJSON(respcontent)$translations$text
+  responses <- c(responses, result)
+  source.lang <- jsonlite::fromJSON(respcontent)$translations$detected_source_language
+  source_lang <- c(source_lang, source.lang)
+  return(responses)
 }
