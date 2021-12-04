@@ -14,10 +14,12 @@ Data frames contains data:
 Notes that some (most) of these data sets were not published by the author of this pacakge. The original authors and the respective licences can be found in the desription of each data set.
 
 Functions:
-- 'ourdata()' Prints out a welcome message.
 - 'combine(x, y, ...)' Combines two data sets using id and foreign key matching.
-- 'transformer(x, ...)' Transforms char type values in numeric values.
+- 'ourdata()' Prints out a welcome message.
 - 'plotter(...)' Plotts the data in different plotts.
+- 'transformer(x, ...)' Transforms char type values in numeric values.
+- 'translate(text, target_lang)' Translates text to target language with deepl api.
+
 
 ## Installation
 `devtools::install_github("DrBenjamin/ourdata")`
