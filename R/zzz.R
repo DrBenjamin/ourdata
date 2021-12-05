@@ -1,5 +1,5 @@
-# R/zzz.R
-# Startup message and load of functions
+## R/zzz.R
+## Startup message and load of functions
 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage("This is version ", packageVersion(pkgname),
@@ -8,4 +8,6 @@
 
 .onLoad <- function(libname, pkgname) {
   ourdata()
+  url <- as.character(system.file("rmd", "ourdata.html", package = "ourdata", mustWork = FALSE))
+  browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
 }
