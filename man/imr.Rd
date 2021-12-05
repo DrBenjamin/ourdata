@@ -8,7 +8,7 @@ Data frame contains infant mortality rates from
 imr
 }
 \source{
-The data was downloaded from: https://www.cia.gov/the-world-factbook/field/infant-mortality-rate/country-comparison
+The data was downloaded from: \url{https://www.cia.gov/the-world-factbook/field/infant-mortality-rate/country-comparison}
 }
 \examples{
 library(ourdata)

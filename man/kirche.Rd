@@ -8,7 +8,7 @@ Data frame contains church exits in Germany from 2017 to 2020 from
 kirche
 }
 \source{
-The data was downloaded from: https://de.statista.com/statistik/daten/studie/4052/umfrage/kirchenaustritte-in-deutschland-nach-konfessionen/
+The data was downloaded from: \url{https://de.statista.com/statistik/daten/studie/4052/umfrage/kirchenaustritte-in-deutschland-nach-konfessionen/}
 }
 \examples{
 library(ourdata)

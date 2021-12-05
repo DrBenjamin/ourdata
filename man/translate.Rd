@@ -37,6 +37,9 @@ translate(text, target_lang)
 \tab \tab \code{ZH} for Chinese.\cr\cr
 }
 }
+\source{
+Some code was used from the github project \sQuote{paulcbauer/deeplr}, you find it here: \url{https://github.com/paulcbauer/deeplr}
+}
 \examples{
 library(ourdata)
 

@@ -8,7 +8,7 @@ Data frame contains human development indexes from
 hdi
 }
 \source{
-The data was downloaded from: https://worldpopulationreview.com/country-rankings/hdi-by-country
+The data was downloaded from: \url{https://worldpopulationreview.com/country-rankings/hdi-by-country}
 }
 \examples{
 library(ourdata)
