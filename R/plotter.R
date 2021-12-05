@@ -1,6 +1,6 @@
-# R/plotter.R
-# Function plotter' for plotting data with a menu to choose different
-# plotting types, e.g. 'plot(x)' for a Scatter plot
+## R/plotter.R
+## Function plotter' for plotting data with a menu to choose different
+## plotting types, e.g. 'plot(x)' for a Scatter plot
 
 plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline = NULL, language = NULL, pdf = NULL, verbose = NULL) {
 
@@ -16,6 +16,9 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     if(user_inputl == "BG" | user_inputl == "CS" | user_inputl == "DA" | user_inputl == "DE" | user_inputl == "EL" | user_inputl == "EN-GB" | user_inputl == "EN-US" | user_inputl == "ES" | user_inputl == "ET" | user_inputl == "FI" | user_inputl == "FR" | user_inputl == "HU" | user_inputl == "IT" | user_inputl == "JA" | user_inputl == "LT" | user_inputl == "LV" | user_inputl == "NL" | user_inputl == "PL" | user_inputl == "PT" | user_inputl == "RO" | user_inputl == "RU" | user_inputl == "SK" | user_inputl == "SL" | user_inputl == "SV" | user_inputl == "ZH") {
       if(!user_inputl == "DE") {
         # Load reticulate libraries
+        if(verbose == TRUE) {
+          cat("Type 'install.packages('reticulate', dependencies = TRUE)' if not working cause of missing library!")
+        }
         library(reticulate)
         # Set enviroment
         use_virtualenv("inst/extdata/my_env")
