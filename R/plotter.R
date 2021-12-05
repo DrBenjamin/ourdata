@@ -4,14 +4,6 @@
 
 plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline = NULL, language = NULL, pdf = NULL, verbose = NULL) {
 
-  ## Load python deepl api
-  # Load reticulate libraries
-  library(reticulate)
-  # Set enviroment
-  use_virtualenv("my_env")
-  # Load python function for using later
-  source_python("./py/py_deepl.py")
-
   ## User input
   # Checking verbose
   if(is.null(verbose)) {
@@ -22,11 +14,13 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     cat("'BG' Bulgarian, 'CS' - Czech, 'DA' - Danish, 'DE' - German, 'EL' - Greek, 'EN-GB' - British English, 'EN-US' - American English, 'ES' - Spanish, 'ET' - Estonia, 'FI' - Finnish, 'FR' - French, 'HU' - Hungarian, 'IT' - Italian, 'JA' - Japanese, 'LT' - Lithuanian, 'LV' - Latvian, 'NL' - Dutch, 'PL' - Polish, 'PT' - Portuguese, 'RO' - Romanian, 'RU' - Russian, 'SK' - Slovak, 'SL' - Slovenian, 'SV' - Swedish or 'ZH' - Chinese)? ")
     user_inputl <- readline(prompt = "Which language? ")
     if(user_inputl == "BG" | user_inputl == "CS" | user_inputl == "DA" | user_inputl == "DE" | user_inputl == "EL" | user_inputl == "EN-GB" | user_inputl == "EN-US" | user_inputl == "ES" | user_inputl == "ET" | user_inputl == "FI" | user_inputl == "FR" | user_inputl == "HU" | user_inputl == "IT" | user_inputl == "JA" | user_inputl == "LT" | user_inputl == "LV" | user_inputl == "NL" | user_inputl == "PL" | user_inputl == "PT" | user_inputl == "RO" | user_inputl == "RU" | user_inputl == "SK" | user_inputl == "SL" | user_inputl == "SV" | user_inputl == "ZH") {
-      # all fine, nothing to do!
+      # Load reticulate libraries
+      library(reticulate)
+      # Set enviroment
+      use_virtualenv("my_env")
+      # Load python function for using later
+      source_python("py_deepl.py")
     } else {
-      if(user_inputl == "EN") {
-        user_inputl <- "EN-GB"
-      } else {
         user_inputl <- "DE"
       }
     }
