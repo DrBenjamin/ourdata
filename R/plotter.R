@@ -18,7 +18,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         # Load reticulate libraries
         library(reticulate)
         # Set enviroment
-        use_virtualenv("my_env")
+        use_virtualenv("inst/extdata/my_env")
         # Load python function for using later
         source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
@@ -34,7 +34,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         # Load reticulate libraries
         library(reticulate)
         # Set enviroment
-        use_virtualenv("my_env")
+        use_virtualenv("inst/extdata/my_env")
         # Load python function for using later
         print(system.file("extdata", "py_deepl.py", package = "ourdata"))
         source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
