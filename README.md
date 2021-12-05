@@ -5,11 +5,11 @@ Functions and Data frames used in the Technical Applications & Data Analytics co
 ## Contents
 Data frames contains data:
 
-- 'imr' Infant mortality rates worldwide
-- 'hdi' Human development index world wide
-- 'koelsch' Colgone brewed beer (Koelsch) consumption from 2017 to 2020
-- 'kirche' Church exits in Germany from 2017 to 2020
 - 'fragebogen' Head circumference and other characteristics from GD and AVM courses
+- 'hdi' Human development index world wide
+- 'imr' Infant mortality rates worldwide
+- 'kirche' Church exits in Germany from 2017 to 2020
+- 'koelsch' Colgone brewed beer (Koelsch) consumption from 2017 to 2020
 
 Notes that some (most) of these data sets were not published by the author of this pacakge. The original authors and the respective licences can be found in the desription of each data set.
 
@@ -17,8 +17,9 @@ Functions:
 - 'combine(x, y, ...)' Combines two data sets using id and foreign key matching.
 - 'ourdata()' Prints out a welcome message.
 - 'plotter(...)' Plotts the data in different plotts.
+- 'tminer(x, target_lang) A Simple text miner.
 - 'transformer(x, ...)' Transforms char type values in numeric values.
-- 'translate(text, target_lang)' Translates text to target language with deepl api.
+- 'translate(x, target_lang)' Translates text to target language with deepl api.
 
 
 ## Installation
