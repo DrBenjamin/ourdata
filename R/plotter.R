@@ -20,7 +20,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         # Set enviroment
         use_virtualenv("my_env")
         # Load python function for using later
-        source_python("py_deepl.py")
+        source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
     } else {
         user_inputl <- "DE"
@@ -36,7 +36,8 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         # Set enviroment
         use_virtualenv("my_env")
         # Load python function for using later
-        source_python("py_deepl.py")
+        print(system.file("extdata", "py_deepl.py", package = "ourdata"))
+        source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
     }
   }
