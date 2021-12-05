@@ -1,8 +1,16 @@
 # R/plotter.R
-# function plotter' for plotting data with a menu to choose different plotting types
-# e.g. 'plot' for a Scatter plot
+# Function plotter' for plotting data with a menu to choose different
+# plotting types, e.g. 'plot(x)' for a Scatter plot
 
 plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline = NULL, language = NULL, pdf = NULL, verbose = NULL) {
+
+  ## Load python deepl api
+  # Load reticulate libraries
+  library(reticulate)
+  # Set enviroment
+  use_virtualenv("my_env")
+  # Load python function for using later
+  source_python("./py/py_deepl.py")
 
   ## User input
   # Checking verbose
@@ -11,17 +19,25 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   # Checking Language
   if(is.null(language)) {
-    cat("'BG' Bulgarian, 'CS' - Czech, 'DA' - Danish, 'DE' - German, 'EL' - Greek, 'EN' - English, 'ES' - Spanish, 'ET' - Estonia, 'FI' - Finnish, 'FR' - French, 'HU' - Hungarian, 'IT' - Italian, 'JA' - Japanese, 'LT' - Lithuanian, 'LV' - Latvian, 'NL' - Dutch, 'PL' - Polish, 'PT' - Portuguese, 'RO' - Romanian, 'RU' - Russian, 'SK' - Slovak, 'SL' - Slovenian, 'SV' - Swedish or 'ZH' - Chinese)? ")
+    cat("'BG' Bulgarian, 'CS' - Czech, 'DA' - Danish, 'DE' - German, 'EL' - Greek, 'EN-GB' - British English, 'EN-US' - American English, 'ES' - Spanish, 'ET' - Estonia, 'FI' - Finnish, 'FR' - French, 'HU' - Hungarian, 'IT' - Italian, 'JA' - Japanese, 'LT' - Lithuanian, 'LV' - Latvian, 'NL' - Dutch, 'PL' - Polish, 'PT' - Portuguese, 'RO' - Romanian, 'RU' - Russian, 'SK' - Slovak, 'SL' - Slovenian, 'SV' - Swedish or 'ZH' - Chinese)? ")
     user_inputl <- readline(prompt = "Which language? ")
-    if(user_inputl == "BG" | user_inputl == "CS" | user_inputl == "DA" | user_inputl == "DE" | user_inputl == "EL" | user_inputl == "EN" | user_inputl == "ES" | user_inputl == "ET" | user_inputl == "FI" | user_inputl == "FR" | user_inputl == "HU" | user_inputl == "IT" | user_inputl == "JA" | user_inputl == "LT" | user_inputl == "LV" | user_inputl == "NL" | user_inputl == "PL" | user_inputl == "PT" | user_inputl == "RO" | user_inputl == "RU" | user_inputl == "SK" | user_inputl == "SL" | user_inputl == "SV" | user_inputl == "ZH") {
+    if(user_inputl == "BG" | user_inputl == "CS" | user_inputl == "DA" | user_inputl == "DE" | user_inputl == "EL" | user_inputl == "EN-GB" | user_inputl == "EN-US" | user_inputl == "ES" | user_inputl == "ET" | user_inputl == "FI" | user_inputl == "FR" | user_inputl == "HU" | user_inputl == "IT" | user_inputl == "JA" | user_inputl == "LT" | user_inputl == "LV" | user_inputl == "NL" | user_inputl == "PL" | user_inputl == "PT" | user_inputl == "RO" | user_inputl == "RU" | user_inputl == "SK" | user_inputl == "SL" | user_inputl == "SV" | user_inputl == "ZH") {
       # all fine, nothing to do!
     } else {
-      user_inputl <- "EN"
+      if(user_inputl == "EN") {
+        user_inputl <- "EN-GB"
+      } else {
+        user_inputl <- "DE"
+      }
     }
     language <- user_inputl
   } else {
-    if(!user_inputl == "BG" & !user_inputl == "CS" & !user_inputl == "DA" & !user_inputl == "DE" & !user_inputl == "EL" & !user_inputl == "EN" & !user_inputl == "ES" & !user_inputl == "ET" & !user_inputl == "FI" & !user_inputl == "FR" & !user_inputl == "HU" & !user_inputl == "IT" & !user_inputl == "JA" & !user_inputl == "LT" & !user_inputl == "LV" & !user_inputl == "NL" & !user_inputl == "PL" & !user_inputl == "PT" & !user_inputl == "RO" & !user_inputl == "RU" & !user_inputl == "SK" & !user_inputl == "SL" & !user_inputl == "SV" & !user_inputl == "ZH") {
-      language <- "EN"
+    if(!language == "BG" & !language == "CS" & !language == "DA" & !language == "DE" & !language == "EL" & !language == "EN-GB" & !language == "EN-US" & !language == "ES" & !language == "ET" & !language == "FI" & !language == "FR" & !language == "HU" & !language == "IT" & !language == "JA" & !language == "LT" & !language == "LV" & !language == "NL" & !language == "PL" & !language == "PT" & !language == "RO" & !language == "RU" & !language == "SK" & !language == "SL" & !language == "SV" & !language == "ZH") {
+      if(language == "EN") {
+        language <- "EN-GB"
+      } else {
+        language <- "DE"
+      }
     }
   }
 
@@ -29,7 +45,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   if(is.null(pdf)) {
     user_text <- "PDF Export - wenn keine Grafikausgabe möglich! ('TRUE' oder 'FALSE')?"
     if(!language == 'DE') {
-      user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+      user_text <- as.character(py_deepl(user_text, language))
     }
     user_inputgfx <- readline(prompt = paste0(user_text, " "))
     if(user_inputgfx == "TRUE" | user_inputgfx == "true" | user_inputgfx == "True") {
@@ -50,49 +66,49 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputx == "") {
       user_text <- "Bezeichnung des Data Frames oder Vektors ('x')?"
       if(!language == 'DE') {
-        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+        user_text <- as.character(py_deepl(user_text, language))
       }
       user_inputx <- readline(prompt = paste0(user_text, " "))
       if(grepl("$", user_inputx, fixed = TRUE)) {
-        # nicht prüfen ob vorhanden!
+        # To not check if file exists -> error
       } else {
         if(!exists(user_inputx)) {
           user_inputx <- ""
         }
       }
     }
-    # problems with 'data_frame$column' writing in a variable with name of vector, solution ->
+    # Problems with 'data_frame$column' writing in a variable with name of vector, solution ->
     if(grepl("$", user_inputx, fixed = TRUE)) {
       # data frame column to vector (x)
       x <- as.vector(unlist(eval(parse(text=paste0(user_inputx)))))
     } else {
       if(is.data.frame(get(user_inputx))) {
-        # read a data frame name from input from console
+        # Read a data frame name from input from console
         x <- get(user_inputx)
         x <- as.vector(unlist(x))
       } else {
-        # read a vector name from input from console
+        # Read a vector name from input from console
         x <- get(user_inputx)
       }
     }
   } else {
     if(is.data.frame(x)) {
-      # got a data frame when function was loaded
+      # Got a data frame when function was loaded
       x <- as.vector(unlist(x))
     } else {
-      # got a vector when function was loaded
-      # all fine, nothing needed :)
+      # Got a vector when function was loaded
+      # All fine, nothing needed :)
     }
   }
 
-  ## checking if 'y' data is available
+  ## Checking if 'y' data is available
   if(is.null(y)) {
     no_datay <- TRUE
     user_inputy <- ""
     while (user_inputy == "") {
       user_text <- "Sind noch mehr Daten ('y') einzubeziehen (<Enter> drücken für 'FALSE')?"
       if(!language == 'DE') {
-        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+        user_text <- as.character(py_deepl(user_text, language))
       }
       user_inputy <- readline(prompt = paste0(user_text, " "))
       if(user_inputy == "" | user_inputy == "FALSE" | user_inputy == "False" | user_inputy == "false"| user_inputy == "f" | user_inputy == "F") {
@@ -100,7 +116,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         user_inputy <- "NO"
       } else {
         if(grepl("$", user_inputy, fixed = TRUE)) {
-          # nicht prüfen ob vorhanden!
+          # To not check if file exists -> error
           no_datay <- FALSE
         } else {
           if(!exists(user_inputy)) {
@@ -111,7 +127,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         }
       }
     }
-    # just do when y data should be used
+    # Just do when y data should be used
     if(no_datay == FALSE) {
       #problems with 'data_frame$column' writing in a variable with name of vector, solution ->
         if(grepl("$", user_inputy, fixed = TRUE)) {
@@ -130,33 +146,33 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     }
   } else {
     if(is.data.frame(y)) {
-      # got a data frame when function was loaded
+      # Got a data frame when function was loaded
       y <- as.vector(unlist(y))
     } else {
-      # got a vector when function was loaded
-      # all fine, nothing needed :)
+      # Got a vector when function was loaded
+      # All fine, nothing needed :)
     }
   }
 
-  ## checking if plot_type is choosen
+  ## Checking if plot_type is choosen
   if(is.null(plot_type)) {
     user_inputp <- ""
     while (user_inputp == "") {
-      # checking if y data is available or not
+      # Checking if y data is available or not
       if(is.null(y)) {
         user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Diagramm, 'D' - Dichtediagramm, 'Hi' - Histogramm, 'L' - Linien-Diagramm, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
         if(!language == 'DE') {
-          user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+          user_text <- as.character(py_deepl(user_text, language))
         }
       } else {
         user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Plot, 'He' - Heatmap, 'P' - Paar-Diagramm, 'Q' - Qqplot, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
         if(!language == 'DE') {
-          user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+          user_text <- as.character(py_deepl(user_text, language))
         }
       }
       cat(user_text)
       if(!language == 'DE') {
-        user_text <- translate_func_inside_plotter(dataset = "Welcher Diagramm Typ soll verwendet werden?", target.lang = language)
+        user_text <- as.character(py_deepl("Welcher Diagramm Typ soll verwendet werden?", language))
       } else {
         user_text <- "Welcher Diagramm Typ soll verwendet werden?"
       }
@@ -176,7 +192,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputh == "") {
       user_text <- "Bitte die Bezeichnung für die Kopfzeile des Diagramms eingeben (<Enter> drücken für keinen Header):"
       if(!language == 'DE') {
-        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+        user_text <- as.character(py_deepl(user_text, language))
       }
       user_inputh <- readline(prompt = paste0(user_text, " "))
       if(user_inputh == "" | user_inputh == "FALSE" | user_inputh == "False" | user_inputh == "false" | user_inputh == "F"| user_inputh == "f") {
@@ -461,7 +477,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       while (user_inputrl == "") {
         user_text <- "Soll eine Regressionsgrade gezeichnet werden ('TRUE' oder 'FALSE')?"
         if(!language == 'DE') {
-          user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+          user_text <- as.character(py_deepl(user_text, language))
         }
         user_inputrl <- readline(prompt = paste0(user_text, " "))
         if(user_inputrl == "" | user_inputrl == "FALSE" | user_inputrl == "False" | user_inputrl == "false" | user_inputrl == "F"| user_inputrl == "f") {
@@ -485,7 +501,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputcoe == "") {
       user_text <- "Soll der p-Wert und Korrelationskoeffizent berechnet werden ('TRUE' oder 'FALSE')?"
       if(!language == 'DE') {
-        user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+        user_text <- as.character(py_deepl(user_text, language))
       }
       user_inputcoe <- readline(prompt = paste0(user_text, " "))
 
@@ -507,31 +523,8 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   if(verbose == TRUE) {
     user_text <- "Erledigt."
     if(!language == 'DE') {
-      user_text <- translate_func_inside_plotter(dataset = user_text, target.lang = language)
+      user_text <- as.character(py_deepl(user_text, language))
     }
     return(cat(paste0(user_text, "\n")))
   }
-}
-
-translate_func_inside_plotter <- function(dataset = NULL,
-                      target.lang = "EN"
-                      )
-{
-  responses <- NULL
-  source_lang <- NULL
-  text <- stringr::str_replace(gsub("\\s+", "%20", stringr::str_trim(dataset)), "B", "b")
-  url <- "https://api-free.deepl.com/v2/translate?"
-  auth_key <- "c52a9c7d-3198-063c-2bbf-8f67173820ce:fx"
-  urlx <- paste0(url,
-                "auth_key=", auth_key,
-                "&text=", text,
-                "&target_lang=", target.lang
-                )
-  response <- httr::GET(urlx)
-  respcontent <- httr::content(response, as = "text", encoding = "UTF-8")
-  result <- jsonlite::fromJSON(respcontent)$translations$text
-  responses <- c(responses, result)
-  source.lang <- jsonlite::fromJSON(respcontent)$translations$detected_source_language
-  source_lang <- c(source_lang, source.lang)
-  return(responses)
 }
