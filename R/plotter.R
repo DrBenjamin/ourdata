@@ -175,7 +175,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
           user_text <- as.character(py_deepl(user_text, language))
         }
       } else {
-        user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Plot, 'He' - Heatmap, 'P' - Paar-Diagramm, 'Q' - Qqplot, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
+        user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Diagramm, 'He' - Heatmap, 'P' - Paar-Diagramm, 'Q' - Qqplot, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
         if(!language == 'DE') {
           user_text <- as.character(py_deepl(user_text, language))
         }
