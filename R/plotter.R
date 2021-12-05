@@ -17,14 +17,14 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
       if(!user_inputl == "DE") {
         # Load reticulate libraries
         if(verbose == TRUE) {
-          cat("Type 'install.packages('reticulate', dependencies = TRUE)' if not working cause of missing library!")
+          cat("Type 'install.packages('reticulate', dependencies = TRUE)' if not working cause of missing library!\n")
         }
         library(reticulate)
         # Set enviroment
         use_virtualenv("inst/extdata/my_env")
         # Load python function for using later
         if(verbose == TRUE) {
-          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!")
+          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!\n")
         }
         source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
