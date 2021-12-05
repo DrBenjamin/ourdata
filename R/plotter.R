@@ -11,20 +11,20 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   # Checking Language
   if(is.null(language)) {
-    cat("'BG' Bulgarian, 'CS' - Czech, 'DA' - Danish, 'DE' - German, 'EL' - Greek, 'EN-GB' - British English, 'EN-US' - American English, 'ES' - Spanish, 'ET' - Estonia, 'FI' - Finnish, 'FR' - French, 'HU' - Hungarian, 'IT' - Italian, 'JA' - Japanese, 'LT' - Lithuanian, 'LV' - Latvian, 'NL' - Dutch, 'PL' - Polish, 'PT' - Portuguese, 'RO' - Romanian, 'RU' - Russian, 'SK' - Slovak, 'SL' - Slovenian, 'SV' - Swedish or 'ZH' - Chinese)? ")
+    cat("'BG' Bulgarian, 'CS' - Czech, 'DA' - Danish, 'DE' - German, 'EL' - Greek, 'EN-GB' - British English, 'EN-US' - American English, 'ES' - Spanish, 'ET' - Estonia, 'FI' - Finnish, 'FR' - French, 'HU' - Hungarian, 'IT' - Italian, 'JA' - Japanese, 'LT' - Lithuanian, 'LV' - Latvian, 'NL' - Dutch, 'PL' - Polish, 'PT' - Portuguese, 'RO' - Romanian, 'RU' - Russian, 'SK' - Slovak, 'SL' - Slovenian, 'SV' - Swedish or 'ZH' - Chinese)?", sep = "\n")
     user_inputl <- readline(prompt = "Which language? ")
     if(user_inputl == "BG" | user_inputl == "CS" | user_inputl == "DA" | user_inputl == "DE" | user_inputl == "EL" | user_inputl == "EN-GB" | user_inputl == "EN-US" | user_inputl == "ES" | user_inputl == "ET" | user_inputl == "FI" | user_inputl == "FR" | user_inputl == "HU" | user_inputl == "IT" | user_inputl == "JA" | user_inputl == "LT" | user_inputl == "LV" | user_inputl == "NL" | user_inputl == "PL" | user_inputl == "PT" | user_inputl == "RO" | user_inputl == "RU" | user_inputl == "SK" | user_inputl == "SL" | user_inputl == "SV" | user_inputl == "ZH") {
       if(!user_inputl == "DE") {
         # Load reticulate libraries
         if(verbose == TRUE) {
-          cat("Type 'install.packages('reticulate', dependencies = TRUE)' if not working cause of missing library!")
+          cat("Type 'install.packages('reticulate', dependencies = TRUE)' if not working cause of missing library!", sep = "\n")
         }
         library(reticulate)
         # Set enviroment
         use_virtualenv("inst/extdata/my_env")
         # Load python function for using later
         if(verbose == TRUE) {
-          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!")
+          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!", sep = "\n")
         }
         source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
@@ -44,7 +44,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         # Load python function for using later
         print(system.file("extdata", "py_deepl.py", package = "ourdata"))
         if(verbose == TRUE) {
-          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!")
+          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!", sep = "\n")
         }
         source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
@@ -180,7 +180,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
           user_text <- as.character(py_deepl(user_text, language))
         }
       }
-      cat(user_text)
+      cat(user_text, sep = "\n")
       if(!language == 'DE') {
         user_text <- as.character(py_deepl("Welcher Diagramm Typ soll verwendet werden?", language))
       } else {
@@ -227,7 +227,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         barplot(x, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("barplot(x)", "\n"))
+        cat("barplot(x)", sep = "\n")
       }
     } else {
       if(is.null(header)) {
@@ -236,7 +236,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         barplot(x, y, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("barplot(x, y)", "\n"))
+        cat("barplot(x, y)", sep = "\n")
       }
     }
   }
@@ -255,7 +255,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         boxplot(x, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("boxplot(x)", "\n"))
+        cat(paste0("boxplot(x)", sep = "\n"))
       }
     } else {
       if(is.null(header)) {
@@ -264,7 +264,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         boxplot(x, y, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("boxplot(x, y)", "\n"))
+        cat("boxplot(x, y)", sep = "\n")
       }
     }
   }
@@ -283,7 +283,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         plot(density(x), main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("plot(density(x))", "\n"))
+        cat(paste0("plot(density(x))", sep = "\n"))
       }
     } else {
       if(is.null(header)) {
@@ -292,7 +292,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         plot(density(x, y), main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("plot(density(x, y))", "\n"))
+        cat("plot(density(x, y))", sep = "\n")
       }
     }
   }
@@ -307,7 +307,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         heatmap(x, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("heatmap(x)", "\n"))
+        cat("heatmap(x)", sep = "\n")
       }
     } else {
       if(is.null(header)) {
@@ -316,7 +316,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         heatmap(cbind(x, y), main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("heatmap(cbind(x, y))", "\n"))
+        cat("heatmap(cbind(x, y))", sep = "\n")
       }
     }
   }
@@ -335,7 +335,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         hist(x, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("hist(x)", "\n"))
+        cat("hist(x)", sep = "\n")
       }
     } else {
       if(is.null(header)) {
@@ -344,7 +344,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         hist(x, y, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("hist(x, y)", "\n"))
+        cat("hist(x, y)", sep = "\n")
       }
     }
   }
@@ -363,7 +363,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         plot(x, type = "l", main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("plot(x, type = 'l')", "\n"))
+        cat("plot(x, type = 'l')", sep = "\n")
       }
     } else {
       if(is.null(header)) {
@@ -372,7 +372,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         plot(x, y, type = "l", main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("plot(x, y, type = 'l')", "\n"))
+        cat("plot(x, y, type = 'l')", sep = "\n")
       }
     }
   }
@@ -391,7 +391,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         pairs(data.frame(x), line.main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("pairs(data.frame(x))", "\n"))
+        cat("pairs(data.frame(x))", sep = "\n")
       }
     } else {
       if(is.null(header)) {
@@ -400,7 +400,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         pairs(data.frame(x, y), line.main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("pairs(data.frame(x, y))", "\n"))
+        cat("pairs(data.frame(x, y))", sep = "\n")
       }
     }
   }
@@ -415,7 +415,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         qqplot(x, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("qqplot(x)", "\n"))
+        cat("qqplot(x)", sep = "\n")
       }
     } else {
       if(is.null(header)) {
@@ -424,7 +424,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         qqplot(x, y, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("qqplot(x, y)", "\n"))
+        cat("qqplot(x, y)", sep = "\n")
       }
     }
   }
@@ -443,7 +443,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         plot(x, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("plot(x)", "\n"))
+        cat("plot(x)", sep = "\n")
       }
     } else {
       if(is.null(header)) {
@@ -452,7 +452,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         plot(x, y, main = header)
       }
       if(verbose == TRUE) {
-        cat(paste0("plot(x, y)", "\n"))
+        cat("plot(x, y)", sep = "\n")
       }
     }
   }
@@ -469,14 +469,14 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     if(is.null(y)) {
       draw.single.venn(area = 10)
       if(verbose == TRUE) {
-        cat(paste0("draw.single.venn(area = 10)", "\n"))
+        cat("draw.single.venn(area = 10)", sep = "\n")
       }
     } else {
       draw.pairwise.venn(area1 = 10,
                          area2 = 20,
                          cross.area = 2)
       if(verbose == TRUE) {
-        cat(paste0("draw.pairwise.venn(area1 = 10, area2 = 20, cross.area = 2)", "\n"))
+        cat("draw.pairwise.venn(area1 = 10, area2 = 20, cross.area = 2)", sep = "\n")
       }
     }
   }
@@ -505,7 +505,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   if(regline == TRUE) {
     abline(lm(y ~ x), col = "red")
     if(verbose == TRUE) {
-      cat(paste0("abline(lm(y ~ x), col = 'red'", "\n"))
+      cat("abline(lm(y ~ x), col = 'red'", sep = "\n")
     }
     user_inputcoe <- ""
     while (user_inputcoe == "") {
@@ -521,7 +521,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         user_inputcoe <- TRUE
         print(cor.test(x, y, method = "spearman", exact = FALSE))
         if(verbose == TRUE) {
-          cat(paste0("cor.test(x, y, method = 'spearman')", "\n"))
+          cat("cor.test(x, y, method = 'spearman')", sep = "\n")
         }
       }
     }
@@ -535,6 +535,6 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     if(!language == 'DE') {
       user_text <- as.character(py_deepl(user_text, language))
     }
-    return(cat(paste0(user_text, "\n")))
+    return(cat(user_text, sep = "\n"))
   }
 }
