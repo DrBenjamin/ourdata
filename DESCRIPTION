@@ -1,7 +1,7 @@
 Package: ourdata
 Type: Package
 Title: Functions and Data frames
-Version: 0.3.2
+Version: 0.3.3
 Author: Benjamin Groß
 Maintainer: Benjamin Groß <ben@benbox.org>
 Description: Functions and Data frames used in the Technical Applications & Data Analytics course in the study of Gamedesign & Management and Audio-Visuelle Medien at Hochschule Fresenius University of Applied Sciences in Cologne (2021).
