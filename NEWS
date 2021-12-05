@@ -1,8 +1,13 @@
 ourdata v0.3.3 (Release date: 2021-12-05)
-===============
+==============
 
 Changes:
 
-v.0.3.3:
---------
-* added new python deepl api function in function 'plotter'
+* Added python deepl api function
+
+ourdata v0.3.2 (Release date: 2021-12-04)
+==============
+
+Changes:
+
+* Added new tminer function
