@@ -9,8 +9,8 @@ UseSpacesForTab: Yes
 NumSpacesForTab: 2
 Encoding: UTF-8
 
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
+RnwWeave: knitr
+LaTeX: XeLaTeX
 
 AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
@@ -21,4 +21,6 @@ PackageInstallArgs: --no-multiarch --with-keep.source
 
 PythonType: virtualenv
 PythonVersion: 3.9.9
-PythonPath: ~/R/ourdata/my_env/bin/python3.9
+PythonPath: inst/extdata/my_env/bin/python
+
+SpellingDictionary: en_GB
