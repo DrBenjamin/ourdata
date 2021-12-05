@@ -29,11 +29,11 @@ translate(text, target_lang)
 \tab \tab \code{NL} for Dutch.\cr
 \tab \tab \code{PL} for Polish.\cr
 \tab \tab \code{PT} for Portuguese.\cr
-\tab \tab \code{RO} for Romanian.\cr\
+\tab \tab \code{RO} for Romanian.\cr
 \tab \tab \code{RU} for Russian.\cr
 \tab \tab \code{SK} for Slovak.\cr
 \tab \tab \code{SL} for Slovenian.\cr
-\tab \tab \code{SV} for Swedish.\cr\
+\tab \tab \code{SV} for Swedish.\cr
 \tab \tab \code{ZH} for Chinese.\cr\cr
 }
 }
