@@ -2,7 +2,7 @@
 \alias{kirche}
 \title{Church exits in Germany from 2017 to 2020!}
 \description{
-Data frame contains church exits in Germany from 2017 to 2020 from
+Data frame contains church exits in Germany from 2017 to 2020
 }
 \usage{
 kirche
