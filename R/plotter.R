@@ -20,7 +20,9 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         # Set enviroment
         use_virtualenv("inst/extdata/my_env")
         # Load python function for using later
-        cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!")
+        if(verbose == TRUE) {
+          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!")
+        }
         source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
     } else {
@@ -38,7 +40,9 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
         use_virtualenv("inst/extdata/my_env")
         # Load python function for using later
         print(system.file("extdata", "py_deepl.py", package = "ourdata"))
-        cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!")
+        if(verbose == TRUE) {
+          cat("Type 'py_install('deepl', pip = TRUE)' if not working cause of missing module!")
+        }
         source_python(system.file("extdata", "py_deepl.py", package = "ourdata"))
       }
     }
