@@ -23,15 +23,17 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     } else {
         user_inputl <- "DE"
       }
-    }
     language <- user_inputl
   } else {
     if(!language == "BG" & !language == "CS" & !language == "DA" & !language == "DE" & !language == "EL" & !language == "EN-GB" & !language == "EN-US" & !language == "ES" & !language == "ET" & !language == "FI" & !language == "FR" & !language == "HU" & !language == "IT" & !language == "JA" & !language == "LT" & !language == "LV" & !language == "NL" & !language == "PL" & !language == "PT" & !language == "RO" & !language == "RU" & !language == "SK" & !language == "SL" & !language == "SV" & !language == "ZH") {
-      if(language == "EN") {
-        language <- "EN-GB"
-      } else {
-        language <- "DE"
-      }
+      language <- "DE"
+    } else {
+      # Load reticulate libraries
+      library(reticulate)
+      # Set enviroment
+      use_virtualenv("my_env")
+      # Load python function for using later
+      source_python("py_deepl.py")
     }
   }
 
