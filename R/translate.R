@@ -6,7 +6,7 @@ translate <- function(text = NULL,
                       )
 {
     responses <- NULL
-    source_lang <- NULL
+
     text <- stringr::str_replace(gsub("\\s+", "%20", stringr::str_trim(text)), "B", "b")
     url <- "https://api-free.deepl.com/v2/translate?"
     auth_key <- "c52a9c7d-3198-063c-2bbf-8f67173820ce:fx"
@@ -19,7 +19,6 @@ translate <- function(text = NULL,
     respcontent <- httr::content(response, as = "text", encoding = "UTF-8")
     result <- jsonlite::fromJSON(respcontent)$translations$text
     responses <- c(responses, result)
-    source.lang <- jsonlite::fromJSON(respcontent)$translations$detected_source_language
-    source_lang <- c(source_lang, source.lang)
+
     return(responses)
 }
