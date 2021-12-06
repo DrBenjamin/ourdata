@@ -1,5 +1,5 @@
 ## inst/extdata/example.R
-## Beispiel Code zum veranschaulichen der externen Code-Ausführung in R Markdown
+## Beispiel Code zum Veranschaulichen der externen Code-Ausführung in R-Markdown
 
 ## @knitr variablesXY
 
