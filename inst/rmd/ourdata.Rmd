@@ -16,11 +16,12 @@ output:
     printcode: null
     label: 'Display Source-Code:'
     value: yes
+runtime: shiny
 ---
 
 ```{r setup, include = FALSE}
-if (requireNamespace("thematic")) 
-  thematic::thematic_rmd(font = "auto")
+if (requireNamespace("thematic")) thematic::thematic_rmd(font = "auto")
+if(!require("knitr")){install.packages("knitr")}
 library(knitr)
 knitr::opts_chunk$set(
   comment = NA,
@@ -28,19 +29,9 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE
 )
-library(ggplot2)
-library(png)
-library(VennDiagram)
-#library(arules)
-#library(arulesViz)
-#library(datasets)
-#library(tcltk)
-library(sqldf)
-library(gsubfn)
-library(proto)
-library(RSQLite)
-library(ourdata)
-header <- "Kirchenaustritte"
+if(!require("pacman")){ install.packages("pacman")}
+pacman::p_load(ourdata, VennDiagram, sqldf, shiny)
+#pacman::p_load(ggplot2, shiny, png, VennDiagram, arules, arulesViz, datasets, tcltk, sqldf, gsubfn, proto, RSQLite, ourdata)
 ```
 
 # R Markdown
@@ -90,7 +81,7 @@ Das **Balkendiagramm** veranschaulicht die Verbindung zwischen einer *numerische
 
 ```{r Bar-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 # Balkendiagramm erstellen
-barplot(kirche$Austritte, kirche$Jahr, main = header, col.main = "white", col.lab = "white", yaxt = "n", ylab = "Austritte (per 1.000)", xlab = "Jahreszahlen", names = c("2017", "2018", "2019", "2020"))
+barplot(kirche$Austritte, kirche$Jahr, main = "Kichenaustritte", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Austritte (per 1.000)", xlab = "Jahreszahlen", names = c("2017", "2018", "2019", "2020"))
 # Beschriftung für x- und y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
 axis(1, at = 1:4, lwd = 3, lwd.ticks = 3, col = "white", col.ticks = "white", col.lab = "white", col.axis = "white")
 ypos <- seq(0, 600000, by = 100000)
@@ -333,11 +324,26 @@ Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie au
 
 Hier findest Du **Code-Beispiele**, **Lustiges** und **Neuigkeiten** rund um das Thema *technische Applikationen & Datenanalyse*:
 
-### DeepL R-Code
+### Beispiel R-Code
 
 Dieses Beispiel zeigt die Verwendung von Schleifen in R.
 
-```{r deepLRCode, code = readLines(system.file("extdata", "Komplexeres_R.Skript.R", package = "ourdata", mustWork = FALSE))}
+```{r RloopCode, code = readLines(system.file("extdata", "Komplexeres_R_Skript.R", package = "ourdata", mustWork = FALSE))}
+```
+
+### selectInput
+
+Hier teste ich selectInput undd Weiteres:
+
+```{r RselectInput}
+mycities <- c("Köln", "Düsseldorf", "Rosenheim")
+selectInput(
+            "mycities",
+            "Choose 1 or more cities: ",
+            choices = sort(unique(mycities)),
+            multiple = TRUE,
+            selected = "Köln"
+)
 ```
 
 ### DeepL Übersetzung
@@ -360,14 +366,23 @@ print(result)
 ```{python DeepLPythonCode, code = readLines(system.file("extdata", "py_deepl.py", package = "ourdata", mustWork = FALSE))}
 ```
 
-### Ext. Code ausführen
+### Katzen-Statistik
 
-```{r ExtCode, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = FALSE))
+1000 **Wissenschaftler** haben ganz *unabhängig* voneinander (unter der Einhaltung aller wissenschaftlichen Voraussetzungen) herausgefunden:
+
+```{r AbbIIIa, echo = FALSE, fig.cap = "Abb. III.a: Katzen-Statistik", out.width = '100%'}
+include_graphics("images/cat.png")
 ```
-```{r variablesXY}
-```
-```{r plotXY}
+
+### BigData-Jobs
+
+Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) der die Jobs im **Big Data** Bereich auflistet und mögliche Gehälter (in Dollar) auflistet:
+
+```{r AbbIIIb, echo = FALSE, fig.cap = "Abb. III.a: Big Data Jobs", out.width = '100%'}
+include_graphics("images/Top_7_Big_Data_Jobs.pdf")
+
+url <- as.character(system.file("rmd/images", "Top_7_Big_Data_Jobs.pdf", package = "ourdata", mustWork = FALSE))
+browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
 ```
 
 ## IV - Literaturverzeichnis {.tabset}
