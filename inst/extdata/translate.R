@@ -1,5 +1,5 @@
 ## inst/extdata/translate.R
-## Function 'translate' for translating text using deepl (www.deepl.com)
+## Function 'translate' for translating text using DeepL (www.deepl.com)
 
 # Funktionsname und Parameter
 translate <- function(text = NULL,
