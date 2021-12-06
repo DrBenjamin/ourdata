@@ -8,6 +8,7 @@
 
 .onLoad <- function(libname, pkgname) {
   ourdata()
-  url <- as.character(system.file("rmd", "ourdata.html", package = "ourdata", mustWork = FALSE))
-  browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
+  #url <- as.character(system.file("rmd", "ourdata.html", package = "ourdata", mustWork = FALSE))
+  #browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
+  rmarkdown::run(system.file("rmd", "ourdata.Rmd", package = "ourdata", mustWork = FALSE))
 }
