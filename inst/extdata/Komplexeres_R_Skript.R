@@ -8,8 +8,8 @@ fruitVec <- c("Apfel", "Banane", "Orange", "Birne") # fruitVec wird mit 4 Werten
 # Der Vektor fruitVec kann wie ein Array angesprochen werden, um die einzelnen Werte auszulesen
 pos <- 1
 while (pos <= length(fruitVec)) {
-  print(paste0("Die Frucht Nr. ", pos, " ist : ", fruitVec[pos]))
-  pos <- pos+1
+  print(paste0("Die Frucht Nr.", pos, " ist : ", fruitVec[pos]))
+  pos <- pos + 1
 }
 
 # Einfache For-Schleife
