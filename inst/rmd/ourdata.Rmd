@@ -18,107 +18,331 @@ output:
     value: yes
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 if (requireNamespace("thematic")) 
   thematic::thematic_rmd(font = "auto")
 library(knitr)
+knitr::opts_chunk$set(
+  comment = NA,
+  error = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+library(ggplot2)
+library(png)
+library(VennDiagram)
+#library(arules)
+#library(arulesViz)
+#library(datasets)
+#library(tcltk)
+library(sqldf)
+library(gsubfn)
+library(proto)
+library(RSQLite)
 library(ourdata)
 header <- "Kirchenaustritte"
 ```
 
-## R Markdown
+# R Markdown
 
-Dies ist ein `R Markdown` Dokument. In einem Markdown Dokument kann man `Text` und `Code` `Diagramme` darstellen, `Code` ausführen und `Diagramme`zeichnen lassen. So kann man komplexe Auswertungen ansprechend, visuell und interaktiv gestalten und darüber hinaus die verwendete `R-Syntax` oder den `Python-Code` bereitstellen um auch nach einiger Zeit noch auf die Code und die Auswertungen zurückgreifen zu können und diese zu verstehen.
+Dies ist ein **R Markdown** Dokument. In einem Markdown Dokument kann man **Text**, **Code** und **Diagramme** darstellen. Es ist möglich den Code **ausführen** und die Diagramme **zeichnen** zu lassen. So kann man **komplexe Auswertungen** ansprechend, visuell und interaktiv gestalten und darüber hinaus die verwendete *R-Syntax* oder den *Python-Code* bereitstellen, um auch nach einiger Zeit noch auf den Code und die Auswertungen zurückgreifen zu können und diese zu verstehen.
 
-Ein `R- Markdown`Dokument kann als Word oder PDF Datei exportiert werden, sowie interaktiv als HTML Dokument erstellt werden. Mehrere Seiten umfassende Auswertungen kann man als eBook publizieren.
+Ein **R-Markdown** Dokument kann als `Word` oder `PDF` Datei exportiert werden, sowie interaktiv als `HTML` Dokument - *welches Du hier gerade siehst!* - erstellt werden. Mehrere Seiten umfassende Auswertungen kann man als **eBook** publizieren.
 
-## R-Paket `ourdata`
+# R-Paket `ourdata`
 
-Das R-Paket `ourdata` enthält folgende Daten:
+Das R-Paket `ourdata` enthält folgende **Daten**:
 
 <ul>
-<li>`fragebogen` Kopfumfang und andere Merkmale aus dem GD- und AVM-Kurs</li>
-<li>`hdi` Weltweiter Index der menschlichen Entwicklung</li>
-<li>`imr` Säuglingssterblichkeitsraten weltwei</li>
-<li>`kirche` Kirchenaustritte in Deutschland von 2017 bis 2020</li>
-<li>`Koelsch` Konsum von Kölsch von 2017 bis 2020</li>
+<li>`fragebogen` Kopfumfang und andere Merkmale aus dem **GD**- und **AVM-Kurs**</li>
+<li>`hdi` Weltweiter Index der **menschlichen Entwicklung**</li>
+<li>`imr` **Säuglingssterblichkeitsraten** weltweit</li>
+<li>`kirche` **Kirchenaustritte** in Deutschland von *2017* bis *2020*</li>
+<li>`koelsch` Konsum von **Kölsch** von *2017* bis *2020*</li>
 </ul>
 
-... und diese Funktionen:
+... und diese **Funktionen**:
 
 <ul>
-<li>`combine(x, y, ...)` Kombiniert zwei Datensätze mit ID und Fremdschlüsselabgleich.</li>
-<li>`ourdata()` Druckt eine Willkommensnachricht aus.</li>
-<li>`plotter(...)` Zeichnet interaktiv mit variablen Daten verschiedene Diagramme.</li>
-<li>`transformer(x, ...)` Transformiert Werte vom Typ char in numerische Werte,<br />z.B. `female` zu `1`, `male` zu `2` 
+<li>`combine(x, y, ...)` Kombiniert zwei Datensätze mit **ID** und **Fremdschlüsselabgleich**.</li>
+<li>`ourdata()` Druckt eine **Willkommensnachricht** aus.</li>
+<li>`plotter(...)` Zeichnet interaktiv mit variablen Daten verschiedene **Diagramme**.</li>
+<li>`transformer(x, ...)` Transformiert **Werte** vom **Typ** *char* in *numerische Werte*,<br />z.B. `female` zu `1`, `male` zu `2` 
 und `divers` zu `3`.</li>
-<li>`translate(x, target_lang)` Übersetzt Text in die Zielsprache mit der DeepL API.</li>
+<li>`translate(x, target_lang)` Übersetzt Text in die *Zielsprache* mit der **DeepL API**.</li>
 </ul>
 
-Mit der Funktion `help()` kannst Du Dir Hilfeseiten zu allen Datensätzen oder Fuktionen anzeigen lassen. Z.B. `help(plotter)` erklärt die Funktonsweise von der Funktion `plotter()`.
+Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Datensätzen* oder *Funktionen* anzeigen lassen. Z.B. `help(plotter)` erklärt die Funktonsweise von der Funktion `plotter()`.
 
-Viel Spaß!
+## I - Diagramme {.tabset .tabset-pills}
 
-## Diagramme {.tabset .tabset-pills}
+In `R` oder `RStudio` kann man verschiedene **Diagramm-Typen** zur Visualisation verwenden. Zur Hilfe dient die **Funktion** `plottter()` mit der man alle Diagramme (bis auf das Tortendiagramm) mit eigenen Daten ausführen kann.
 
-In `R` / `RStudio` kann man verschiedene Diagramm-Typen zum Visualisieren verwenden (siehe Funktion `plottter()`). Hier eine Auswahl davon, mit dem dazugehörigen Code:
+```{r AbbIa, echo = FALSE, fig.cap = "Abb. I.a: Heatmap", out.width = '100%'}
+include_graphics("images/heatmap.png")
+```
 
+Hier eine Auswahl der **Diagramm-Typen**, mit dem dazugehörigen **Code**:
+ 
 ### Balkendiagramm
 
-```{r, Balkendiagramm, fig.height=4, fig.showtext = TRUE, results = 'hide'}
-barplot(kirche$Austritte, koelsch$Koelsch, main = header)
+Das **Balkendiagramm** veranschaulicht die Verbindung zwischen einer *numerischen* und einer *kategorialen* **Variablen**. Das Balkendiagramm stellt jede **Kategorie** als **Balken** dar und spiegelt den entsprechenden *numerischen* Wert mit der **Größe** des Balkens wider.
+
+```{r Bar-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Balkendiagramm erstellen
+barplot(kirche$Austritte, kirche$Jahr, main = header, col.main = "white", col.lab = "white", yaxt = "n", ylab = "Austritte (per 1.000)", xlab = "Jahreszahlen", names = c("2017", "2018", "2019", "2020"))
+# Beschriftung für x- und y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+axis(1, at = 1:4, lwd = 3, lwd.ticks = 3, col = "white", col.ticks = "white", col.lab = "white", col.axis = "white")
+ypos <- seq(0, 600000, by = 100000)
+axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
 
 ### Box-Diagramm
 
-```{r, Box-Diagramm, results='hide', fig.height=4, fig.showtext = TRUE, error = FALSE, warning = FALSE, message = FALSE}
-boxplot(kirche$Austritte, koelsch$Koelsch, main = header)
+Das **Box-Diagramm** zeigt die **Verteilung** einer *numerischen* **Variablen** basierend auf fünf zusammenfassenden Statistiken: <ul>
+<li>minimaler Nicht-Ausreißer</li>
+<li>erstes Quartil</li>
+<li>Median</li>
+<li>drittes Quartil</li>
+<li>Nicht-Ausreißer</li>
+</ul>
+Außerdem zeigen Boxplots die Positionierung von Ausreißern und ob die Daten verzerrt sind.
+
+```{r Box-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Box-Diagramm erstellen
+boxplot(koelsch$Koelsch, main = "Kölschkonsum", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Kölschkonsum in Mil. Litern", xlab = "über den Zeitraum 2017 bis 2020", names = "2020")
+# Beschriftung für die y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+ypos <- seq(160000000, 200000000, by = 10000000)
+axis(2, at = ypos, labels = sprintf("%1.0fM.", ypos/1000000), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
 
 ### Dichtediagramm
 
-```{r}
-kirche
+Das **Dichtediagramm** zeigt die Verteilung einer *numerischen* **Variablen** über ein **kontinuierliches Intervall**. *Peaks* eines Dichtediagramms visualisieren, wo sich die Werte *numerischer* Variablen **konzentrieren**.
+
+```{r Denstiy-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Dichtediagramm erstellen
+plot(density(fragebogen$alter), main = "Verteilung des Alters im Kurs", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Personen (Dichte)", xlab = "Alter (in Jahren)")
+# Beschriftung für die y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+ypos <- c(0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06)
+axis(2, at = ypos, labels = sprintf("%1.0fP", ypos*50), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
 
 ### Heatmap
 
-```{r}
-koelsch
+Eine **Heatmap*-Diagramm** visualisiert einzelne Werte einer **Matrix** mit **Farben**. **Häufigere Werte** werden typischerweise durch *hellere rötliche* Farben angezeigt und **weniger häufige** Werte werden typischerweise durch *dunklere* Farben angezeigt.
+
+```{r Heatmap, fig.height=4, fig.showtext = TRUE}
+data <- matrix(rnorm(81, 0, 9), nrow = 9, ncol = 9)     # Beispiel Daten erstellen
+colnames(data) <- paste0("Spalte ", 1:9)                # Spaltennamen setzen
+rownames(data) <- paste0("Zeile ", 1:9)                 # Zeilennamen setzen
+# Heatmap erstellen
+heatmap(data, main = "Heatmap", col.main = "white", col.lab = "white")
 ```
 
 ### Histogramm
 
-```{r, code = readLines(system.file("extdata", "translate.R", package = "ourdata", mustWork = FALSE)), results = 'show'}
+Das **Histogramm** gruppiert *kontinuierliche* **Daten** in Bereiche und stellt diese Daten als **Balken** dar. Die **Höhe** jedes Balkens zeigt die **Anzahl** der **Beobachtungen** in jedem Bereich an.
+
+```{r Histogram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Histogramm erstellen
+hist(fragebogen$kopf, main = "Kopfumfänge", col.main = "white", col.lab = "white", ylab = "Personen (Anzahl)", xlab = "Kopfumfang (in cm)")
 ```
 
-### Linien-Diagramm
+### Liniendiagramm
 
-```{r}
-plot(pressure, col = thematic::thematic_get_option("accent"))
+Das **Liniendiagramm** visualisiert Werte entlang einer **Sequenz** (z.B. *über die Zeit*). Liniendiagramme bestehen aus einer *x-Achse* und einer *y-Achse*. Die x-Achse zeigt normalerweise die **Sequenz** und die y-Achse die Werte an, die jedem Punkt der Sequenz **entsprechen**.
+
+```{r Line-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Liniendiagramm erstellen
+plot(fragebogen$note_mathe, type = "l", main = "Mathenoten", ylab = "Noten", xlab = "Person x",  yaxt = "n", col.main = "white", col.lab = "white")
+# Beschriftung für die y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+ypos <- c(2, 3, 4, 5)
+axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
+```
+
+### Paar-Diagramm
+
+Das **Paar-Diagramm** ist eine Diagrammmatrix, die aus **Streudiagrammen** für jede **Variablenkombination** eines **Datenrahmens** besteht.
+
+```{r Pair-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Paar-Diagramm erstellen
+pairs(data.frame(fragebogen$interesse, fragebogen$note_annahme), main = "Zusammenhang Interesse und erwarteter Note", labels = c("Interesse", "erwartete Note"), col.main = "white", col.lab = "white")
 ```
 
 ### Qqplot
 
-```{r}
-plot(pressure, col = thematic::thematic_get_option("accent"))
+Ein **QQplot** (oder **Quantil-Quantil-Diagramm**), bestimmt ob *zwei* **Datenquellen** aus einer **gemeinsamen Verteilung** stammen. QQplots ziehen die **Quantile** der beiden *numerischen* Datenquellen gegeneinander. Wenn beide Datenquellen aus derselben Verteilung stammen, fallen die **Punkte** auf einen **Winkel** von *45°*.
+
+
+```{r Qqplot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Qqplot erstellen
+qqplot(fragebogen$geschlecht, fragebogen$note_mathe, main = "Geschlecht und Mathenote", yaxt = "n", ylab = "Mathenote", xaxt = "n", xlab = "Geschlecht (1 'weiblich', 2 'männlich')", col.main = "white", col.lab = "white")
+# Beschriftung für x- und y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+xpos <- c(1, 2)
+axis(1, at = xpos, labels = sprintf("%1.0f", xpos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
+ypos <- c(2, 3, 4 , 5)
+axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
 ```
 
 ### Streudiagramm
 
-```{r}
-plot(pressure, col = thematic::thematic_get_option("accent"))
+Das **Streudiagramm** zeigt zwei *numerische* **Variablen** mit **Punkten** an. Jeder Punkt zeigt den Wert einer Variablen auf der *x-Achse* und den Wert der anderen Variablen auf der *y-Achse* an.
+
+```{r Scatter-Plot, fig.height=4, fig.showtext = TRUE}
+# Daten zusammenfügen
+df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Land", col2 = "IMR", col3 = "HDI")
+# Streudiagramm erstellen
+plot(df$HDI, df$IMR, main = "Einfluss des HDI auf IMR", ylab = "IMR", xlab = "HDI", col.main = "white", col.lab = "white")
+```
+
+### Tortendiagramm
+
+**Kreis**- oder **Torten-Diagramm**, sind zwar weit verbreitet, weisen jedoch einige Nachteile auf: 
+<ul>
+<li>Unterschiede zwischen den Anteilswerte sind weniger gut erkennbar, da dazu die Fläche der Kreissegmente verglichen werden  muss</li>
+<li>bei vielen Kategorien wird die Darstellung schnell unübersichtlich</li>
+<li>sehr kleine Anteilswerte können oftmals nicht im Kreisdiagramm dargestellt werden</li>
+</ul>
+Aufgrund dieser **Nachteile** bietet sich die Verwendung von Kreisdiagramme nur in *selten Fällen* an, meist liefern **Punkt**- oder **Balkendiagramme** bessere Darstellungen.
+
+```{r Pie-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Beschriftung Gesamtzahl Jahr mit Prozentangabe erstellen
+pie_labels <- paste0(kirche$Austritte, " (", round(100 * kirche$Austritte/sum(kirche$Austritte), 2), "%)")
+# Kuchendiagramm erstellen
+pie(kirche$Austritte, main = paste0("Kirchenaustritte pro Jahr (insg. ", sum(kirche$Austritte), ")"), labels = pie_labels, col = c("white", "lightblue", "mistyrose", "brown"))
+# Legende erstellen
+legend("topleft", legend = c("2017", "2018", "2019", "2020"), fill =  c("white", "lightblue", "mistyrose", "brown"))
 ```
 
 ### Venn-Diagramm
 
-```{r}
-plot(pressure, col = thematic::thematic_get_option("accent"))
+Ein **Venn-Diagramm** (oder **Primärdiagramm**; **Mengendiagramm**; **Logikdiagramm**), veranschaulicht alle möglichen *logischen* **Beziehungen** zwischen bestimmten **Datenmerkmalen**. Jedes Merkmal wird als **Kreis** dargestellt, wobei *überlappende* Teile der Kreise **Elemente** darstellen, die beide Merkmale **gleichzeitig aufweisen**.
+
+```{r Venn-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hide', echo = TRUE}
+# Triple Venn Diagramm erstellen
+draw.triple.venn(area1 = koelsch$Koelsch[4], area2 = kirche$Austritte[4], area3 = 1000000, n12 = 220000, n23 = 50000, n13 = 600000, n123 = 40000, main = "Kölsch -> Kirchenaustritt -> Köln?", fill = c("yellow", "brown", "blue"), category = c("Kölsch", "Kirche", "Köln"), main.col = "white", sub.col = "white", col = "white")
+```
+
+## II - Methoden des Data Mining {.tabset .tabset-pills}
+
+Die **Methoden** des **Data Mining** lassen sich grundsätzlich in die Gruppen *Klassifikation*, *Prognose*, *Segmentierung* und *Abhängigkeitsentdeckung* einteilen. Dazu kommen **Algorithmen** zum Einsatz. 
+
+*Ein Algorithmus ist eine formale Handlungsvorschrift zur Lösung von Instanzen einer bestimmten Problemklasse.* ^[Sauer [2019]]
+
+```{r AbbIIa, echo = FALSE, fig.cap = "Abb. II.a: Heatmap", out.width = '50%'}
+include_graphics("images/Gruppen_DataMining.png")
+```
+
+Hier findest Du die Data **Mining Methoden** aus den Vorlesungen, mit dem dazugehörigen **Code**:
+
+### Korrelation Analyse
+
+Will man einen **Zusammenhang** zwischen zwei **metrischen Variablen** untersuchen, zum Beispiel zwischen dem Alter und dem Gewicht von Kindern, so berechnet man eine **Korrelation**. Diese besteht aus einem **Korrelationskoeffizienten** (`rho` bei Spearman) und einem **p-Wert**.
+
+Der **Korrelationskoeffizient** gibt die Stärke und die Richtung des Zusammenhangs an. Er liegt zwischen `-1` und `1`. Ein Wert nahe `-1` bezeichnet einen starken **negativen Zusammenhang** (z.B. *„Mehr zurückgelegte Strecke mit dem Auto, weniger Treibstoff im Tank“*). Ein Wert nahe `1` spricht für einen starken **positiven Zusammenhang** (z.B. *„mehr Futter, dickere Kühe“*). Kein Zusammenhang besteht, wenn der Wert nahe `0` liegt. 
+
+Der **p-Wert** sagt aus, ob es einen **signifikanten Zusammenhang** gibt. **p-Werte** kleiner als `0,05` werden als **statistisch signifikant** bezeichnet.
+
+```{r Korrelationsanalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Beide Listen mit 'SQL JOIN' kombinieren
+imr_hdi <- sqldf('SELECT imr.name AS "country", imr.value As "imr", hdi.hdi AS "hdi" FROM imr INNER JOIN hdi ON imr.name = hdi.country ORDER BY imr.value DESC')
+
+# Streudiagramm (Scatterplot)
+plot(imr_hdi$imr ~ imr_hdi$hdi, main = "HDI IMR Korrelation", ylab = "Säuglingssterblichkeit (per 1.000)", xlab = "Human Development Index", xlim = range(0:1), ylim = range(1:110))
+
+# Quantifizierung der Zusammenhänge mittels Spearman Korrelation Funktion
+cor.test(imr_hdi$imr, imr_hdi$hdi, method="spearman", exact=FALSE)
+```
+
+### Linear Regress Analyse
+
+**Lineare Regression** ist eines der nützlichsten Werkzeuge in der Statistik. Regressionsanalyse erlaubt es **Zusammenhänge** zwischen Parametern zu schätzen und somit ein erklärendes Model für das Auftreten gewisser Phänomene zu geben. Wirkliche Kausalität wird durch statistische Analysen dieser Art zwar nicht aufgedeckt, die Ergebnisse aus solchen Analysen können aber Hinweise in diese Richtung geben. ^[Wozabal [2007]]
+
+```{r LinearRegressAnalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Mittels Funktion 'combine' aus dem R-Paket 'ourdata' einen vergleichbaren Datensatz erstellen mit IMR und HDI
+df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Land", col2 = "IMR", col3 = "HDI")
+
+# Lineares Modell mit 'lm' erstellen
+mdl <- lm(IMR ~ HDI, data=df)
+
+# 'summary' Funktion
+summary(mdl)
+
+# Den p-Wert für 'HDI' errechnen
+matCoef <- summary(mdl)$coefficients
+pval <- matCoef["HDI", 4]
+print(paste0("Der Effekt vom HDI auf IMR ist statistisch signifikant p = ", round(pval, 2), " (", pval, ")."))
+
+# Diagramm erstellen
+plot(df$HDI, df$IMR, xlab = "Prädiktor", ylab = "Ergebnis", col = "darkblue", pch = 16, main = "Lineare Regression")
+# Regressionsgrade erstellen
+abline(mdl, col = "darkred")
+```
+
+### Basket Analyse
+
+Die **Basket Analyse** kann zur Entdeckung von **Assoziationen** und **Korrelationen** zwischen Elementen in riesigen transaktionalen oder relationalen Datensätzen führen.
+
+Das Aufsuchen von **Verbindungen** zwischen verschiedenen Artikeln, die Kunden in ihre „Warenkörbe“ legen ist ein häufiger Einsatz der Analyse. Das Wissen um diese Assoziationen kann für Einzelhändler oder Vermarkter hilfreich sein, um Marketingstrategien zu entwickeln. Das geschieht, indem sie Erkenntnisse darüber gewinnen, welche Artikel von Kunden häufig zusammen gekauft werden.
+
+Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie auf derselben Fahrt zum Supermarkt auch Brot (und welche Brotsorte) kaufen?* Diese Informationen können zu einer Umsatzsteigerung führen, indem sie Einzelhändlern helfen, **selektives Marketing** zu betreiben und ihren Verkaufsraum zu planen.
+
+```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Data frame laden
+#data(Groceries)
+
+# Frequenz Diagramm für die Top 20 Artikel erstellen
+#itemFrequencyPlot(Groceries, topN = 20, type = "absolute", horiz = TRUE)
+# nach Milch suchen
+#itemFrequency(Groceries)[grep("milk", itemLabels(Groceries))]
+
+# Die Regeln ableiten
+#rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8))
+
+# Zeige die Top 5 Regeln (nur 2 Nachkommastellen)
+#options(digits=2)
+#inspect(rules[1:5])
+#rules <- sort(rules, by="confidence", decreasing = TRUE)
+#rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8, maxlen=3))
+
+#subset.matrix <- is.subset(rules, rules)
+#subset.matrix[lower.tri(subset.matrix, diag = T)] <- NA
+#redundant <- colSums(subset.matrix, na.rm = T) >= 1
+#rules.pruned <- rules[!redundant]
+#rules<-rules.pruned
+
+# Diagramme ausgeben
+#plot(rules, method = "graph", engine= "interactive", shading = NA)
+#plot(rules, method = "graph", engine = "htmlwidget")
+```
+
+### Cluster Analyse K-Means
+
+```{r K-Means, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+
+```
+
+### Neuronale Netze-Analyse
+
+```{r NeuronaleNetze-Analyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+
+```
+
+## III - Sonstiges {.tabset .tabset-pills}
+
+Hier findest Du **Code-Beispiele**, **Lustiges** und **Neuigkeiten** rund um das Thema *technische Applikationen & Datenanalyse*:
+
+### DeepL R-Code
+
+Dieses Beispiel zeigt die Verwendung von Schleifen in R.
+
+```{r deepLRCode, code = readLines(system.file("extdata", "Komplexeres_R.Skript.R", package = "ourdata", mustWork = FALSE))}
 ```
 
 ### DeepL Übersetzung
 
-```{python, echo = FALSE, error = FALSE, warning = FALSE, message = FALSE}
+```{python DeepL, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 import deepl
 
 translator = deepl.Translator("c52a9c7d-3198-063c-2bbf-8f67173820ce:fx")
@@ -128,20 +352,42 @@ print(result)
 
 ### DeepL R-Code
 
-```{r, deepLRCode, code = readLines(system.file("extdata", "translate.R", package = "ourdata", mustWork = FALSE))}
+```{r deepLRCode, code = readLines(system.file("extdata", "translate.R", package = "ourdata", mustWork = FALSE))}
 ```
 
 ### DeepL Python-Code
 
-```{python, DeepLPythonCode, code = readLines(system.file("extdata", "py_deepl.py", package = "ourdata", mustWork = FALSE))}
+```{python DeepLPythonCode, code = readLines(system.file("extdata", "py_deepl.py", package = "ourdata", mustWork = FALSE))}
 ```
 
 ### Ext. Code ausführen
 
-```{r, ExtCode, echo = FALSE, fig.showtext = TRUE, error = FALSE, warning = FALSE, message = FALSE}
+```{r ExtCode, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = FALSE))
 ```
 ```{r variablesXY}
 ```
 ```{r plotXY}
 ```
+
+## IV - Literaturverzeichnis {.tabset}
+
+<ul>
+<li>Cleve, J/Lämmel, U. [2020]<br />
+*Data Mining*, 3. Auflage, Berlin/Boston 2020</li>
+
+<li>Romeijn, J. W. [2016]<br />
+*Philosophy of Statistics.* In E. N. Zalta (Hrsg.), The Stanford Encyclopedia of Philosophy, Stanford 2016</li>
+
+<li>Sauer, S. [2019]<br />
+*Moderne Datenanalyse mit R*, Wiesbaden 2019</li>
+
+<li>Tukey, J. W. [1962]<br />
+*The future of data analysis. The Annals of Mathematical Statistics*, Vol. 33, No. 1, Institute of Mathematical Statistics 1962</li>
+
+<li>Wickham, H./Garrett G. [2017]<br />
+*R for Data Science*, O‘Reilly Media 2017</li>
+
+<li>Wozabal, D. [2007]<br />
+*Statistisches Programmieren – Regressionen in R (Session 6)*, 2007</li>
+</ul>
