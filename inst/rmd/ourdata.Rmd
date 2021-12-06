@@ -16,7 +16,6 @@ output:
     printcode: null
     label: 'Display Source-Code:'
     value: yes
-runtime: shiny
 ---
 
 ```{r setup, include = FALSE}
@@ -30,8 +29,8 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 if(!require("pacman")){ install.packages("pacman")}
-pacman::p_load(ourdata, VennDiagram, sqldf, shiny)
-#pacman::p_load(ggplot2, shiny, png, VennDiagram, arules, arulesViz, datasets, tcltk, sqldf, gsubfn, proto, RSQLite, ourdata)
+pacman::p_load(ourdata, VennDiagram, sqldf)
+#pacman::p_load(ggplot2, png, VennDiagram, arules, arulesViz, datasets, tcltk, sqldf, gsubfn, proto, RSQLite, ourdata)
 ```
 
 # R Markdown
@@ -331,19 +330,14 @@ Dieses Beispiel zeigt die Verwendung von Schleifen in R.
 ```{r RloopCode, code = readLines(system.file("extdata", "Komplexeres_R_Skript.R", package = "ourdata", mustWork = FALSE))}
 ```
 
-### selectInput
+### Ext. Code ausführen
 
-Hier teste ich selectInput undd Weiteres:
-
-```{r RselectInput}
-mycities <- c("Köln", "Düsseldorf", "Rosenheim")
-selectInput(
-            "mycities",
-            "Choose 1 or more cities: ",
-            choices = sort(unique(mycities)),
-            multiple = TRUE,
-            selected = "Köln"
-)
+```{r ExtCode, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = FALSE))
+```
+```{r variablesXY}
+```
+```{r plotXY}
 ```
 
 ### DeepL Übersetzung
