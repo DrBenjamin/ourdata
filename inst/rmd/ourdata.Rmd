@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 if(!require("pacman")){ install.packages("pacman")}
-pacman::p_load(ourdata, VennDiagram, sqldf)
+pacman::p_load(ourdata, reticulate, VennDiagram, sqldf)
 #pacman::p_load(ggplot2, png, VennDiagram, arules, arulesViz, datasets, tcltk, sqldf, gsubfn, proto, RSQLite, ourdata)
 ```
 
@@ -325,12 +325,14 @@ Hier findest Du **Code-Beispiele**, **Lustiges** und **Neuigkeiten** rund um das
 
 ### Beispiel R-Code
 
-Dieses Beispiel zeigt die Verwendung von Schleifen in R.
+Dieses Beispiel zeigt die Verwendung von **Schleifen** in R. Schleifen kommen in der **Programmierung** häufig zum Einsatz, z.B. zum Überprüfen von **Übereinstimmungen** in zwei verschiedenen Datensätzen.
 
 ```{r RloopCode, code = readLines(system.file("extdata", "Komplexeres_R_Skript.R", package = "ourdata", mustWork = FALSE))}
 ```
 
-### Ext. Code ausführen
+### Ext. R-Code ausführen
+
+Dieser **Code** steht in der Datei `example.R` und wir von **R-Markdown** eingelesen und ausgeführt.
 
 ```{r ExtCode, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = FALSE))
@@ -340,22 +342,63 @@ read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = F
 ```{r plotXY}
 ```
 
-### DeepL Übersetzung
+### DeepL Übersetzung (P)
 
-```{python DeepL, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+Es gibt einen sehr interessanten Artikel auf [https://trends.rbc.ru](https://trends.rbc.ru) zum Thema ***´Big Data**. Nur leider in russischer Sprache :(... 
+
+**Textauszug:**
+
+Что такое Big Data?
+
+Big Data или большие данные — это структурированные или неструктурированные массивы данных большого объема. Их обрабатывают при помощи специальных автоматизированных инструментов, чтобы использовать для статистики, анализа, прогнозов и принятия решений.
+
+Сам термин «большие данные» предложил редактор журнала Nature Клиффорд Линч в спецвыпуске 2008 года [ ^1^ ](https://www.nature.com/nature/volumes/455/issues/7209). Он говорил о взрывном росте объемов информации в мире. К большим данным Линч отнес любые массивы неоднородных данных более 150 Гб в сутки, однако единого критерия до сих пор не существует.
+
+
+Hier wird gezeigt wie **Python Code** direkt ausgeführt werden kann:
+
+```{python pDeepL, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# Python Bibliothek 'DeepL' laden
 import deepl
 
+# Übersetzung mit DeepL API (Python)
 translator = deepl.Translator("c52a9c7d-3198-063c-2bbf-8f67173820ce:fx")
-result = translator.translate_text("This is a test!", target_lang="RU") 
+result = translator.translate_text("Что такое Big Data? Big Data или большие данные\n — это структурированные или неструктурированные массивы данных большого объема. \nИх обрабатывают при помощи специальных автоматизированных инструментов, \nчтобы использовать для статистики, анализа, \nпрогнозов и принятия решений. \nСам термин «большие данные» предложил редактор журнала Nature \nКлиффорд Линч в спецвыпуске 2008 года. \nОн говорил о взрывном росте объемов информации в мире. \nК большим данным Линч отнес любые массивы неоднородных данных более 150 Гб в сутки, \nоднако единого критерия до сих пор не существует.", target_lang="DE")
+
+# Übersetzung ausgeben
 print(result)
 ```
 
+### DeepL Übersetzung (R)
+
+Dieser Artikel kann [hier](https://trends.rbc.ru/trends/innovation/5d6c020b9a7947a740fea65c) vollständig gelesen werden ;)
+
+**Textauszug (Fortsetzung):**
+
+ЧДо 2011 года анализом больших данных занимались только в рамках научных и статистических исследований. Но к началу 2012-го объемы данных выросли до огромных масштабов, и возникла потребность в их систематизации и практическом применении.
+
+С 2014 на Big Data обратили внимание ведущие мировые вузы, где обучают прикладным инженерным и ИТ-специальностям. Затем к сбору и анализу подключились ИТ-корпорации — такие, как Microsoft, IBM, Oracle, EMC, а затем и Google, Apple, Facebook и Amazon. Сегодня большие данные используют крупные компании во всех отраслях, а также — госорганы. Подробнее об этом — в материале [Кто и зачем собирает большие данные?](https://trends.rbc.ru/trends/industry/5ea9bfdf9a7947678acbf8b1)
+
+Hier wird gezeigt wie eine **Python Funktion** aus **R** ausgeführt werden kann:
+
+```{r rDeepL, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+# R lädt mit 'reticulate::source_python' die Python Datei 'py_deepl.py'
+source_python(system.file("extdata", "py_deepl.py", package = "ourdata", mustWork = FALSE))
+
+# Ausführen der Python Funktion 'py_deepl'
+py_deepl("ЧДо 2011 года анализом больших данных занимались только в рамках научных и статистических исследований. \nНо к началу 2012-го объемы данных выросли до огромных масштабов, \nи возникла потребность в их систематизации и практическом применении. \nС 2014 на Big Data обратили внимание ведущие мировые вузы, \nгде обучают прикладным инженерным и ИТ-специальностям. \nЗатем к сбору и анализу подключились ИТ-корпорации — такие, как Microsoft, \nIBM, Oracle, EMC, а затем и Google, Apple, Facebook и Amazon. \nСегодня большие данные используют крупные компании во всех отраслях, а также — госорганы. \nПодробнее об этом — в материале Кто и зачем собирает большие данные?", "DE")
+```
+
 ### DeepL R-Code
+
+Dies ist der Übersetzungs-Code der **DeepL API** in **R** geschrieben:
 
 ```{r deepLRCode, code = readLines(system.file("extdata", "translate.R", package = "ourdata", mustWork = FALSE))}
 ```
 
 ### DeepL Python-Code
+
+Dies ist der Übersetzungs-Code der **DeepL API** in **Python** geschrieben:
 
 ```{python DeepLPythonCode, code = readLines(system.file("extdata", "py_deepl.py", package = "ourdata", mustWork = FALSE))}
 ```
@@ -368,7 +411,7 @@ print(result)
 include_graphics("images/cat.png")
 ```
 
-### BigData-Jobs
+### Big Data-Jobs
 
 Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) der die Jobs im **Big Data** Bereich auflistet und mögliche Gehälter (in Dollar) auflistet:
 
@@ -381,22 +424,24 @@ browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
 
 ## IV - Literaturverzeichnis {.tabset}
 
+Hier ist die **Literatur** die im Fach *Technical Applications & Data Analytics* zum Einsatz kam aufgelistet:
+<br /><br />
 <ul>
 <li>Cleve, J/Lämmel, U. [2020]<br />
 *Data Mining*, 3. Auflage, Berlin/Boston 2020</li>
-
+<br />
 <li>Romeijn, J. W. [2016]<br />
 *Philosophy of Statistics.* In E. N. Zalta (Hrsg.), The Stanford Encyclopedia of Philosophy, Stanford 2016</li>
-
+<br />
 <li>Sauer, S. [2019]<br />
 *Moderne Datenanalyse mit R*, Wiesbaden 2019</li>
-
+<br />
 <li>Tukey, J. W. [1962]<br />
 *The future of data analysis. The Annals of Mathematical Statistics*, Vol. 33, No. 1, Institute of Mathematical Statistics 1962</li>
-
+<br />
 <li>Wickham, H./Garrett G. [2017]<br />
 *R for Data Science*, O‘Reilly Media 2017</li>
-
+<br />
 <li>Wozabal, D. [2007]<br />
 *Statistisches Programmieren – Regressionen in R (Session 6)*, 2007</li>
 </ul>
