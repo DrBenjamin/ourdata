@@ -12,6 +12,17 @@ output:
         google: Prompt
       heading_font:
         google: Proza Libre
+    toc: true
+    toc_float: true
+    collapsed: true
+    smooth_scroll: true
+    number_sections: true
+    highlight: tango
+    df_print: paged
+    includes:
+      #in_header: header.html
+      before_body: prefix.html
+      after_body: suffix.html
   printcode:
     printcode: null
     label: 'Display Source-Code:'
@@ -33,42 +44,49 @@ pacman::p_load(ourdata, reticulate, VennDiagram, sqldf)
 #pacman::p_load(ggplot2, png, VennDiagram, arules, arulesViz, datasets, tcltk, sqldf, gsubfn, proto, RSQLite, ourdata)
 ```
 
-# R Markdown
+# R-Package `ourdata`
 
-Dies ist ein **R Markdown** Dokument. In einem Markdown Dokument kann man **Text**, **Code** und **Diagramme** darstellen. Es ist möglich den Code **ausführen** und die Diagramme **zeichnen** zu lassen. So kann man **komplexe Auswertungen** ansprechend, visuell und interaktiv gestalten und darüber hinaus die verwendete *R-Syntax* oder den *Python-Code* bereitstellen, um auch nach einiger Zeit noch auf den Code und die Auswertungen zurückgreifen zu können und diese zu verstehen.
+Das **R-Paket** `ourdata` ist im Rahmen der Vorlesungen in den Studiengängen **Audiovisuelle Medien & Online Publishing** und **Game Design & Management** entstanden. Es enthält einen Großteil der zu Übungszwecken verwendeten Datensätze, sowie einige selbst-programmierte Funktionen mit den sich diese Daten manipulieren bzw. Diagramme ausgeben lassen.
 
-Ein **R-Markdown** Dokument kann als `Word` oder `PDF` Datei exportiert werden, sowie interaktiv als `HTML` Dokument - *welches Du hier gerade siehst!* - erstellt werden. Mehrere Seiten umfassende Auswertungen kann man als **eBook** publizieren.
-
-# R-Paket `ourdata`
+## Daten
 
 Das R-Paket `ourdata` enthält folgende **Daten**:
 
-<ul>
-<li>`fragebogen` Kopfumfang und andere Merkmale aus dem **GD**- und **AVM-Kurs**</li>
-<li>`hdi` Weltweiter Index der **menschlichen Entwicklung**</li>
-<li>`imr` **Säuglingssterblichkeitsraten** weltweit</li>
-<li>`kirche` **Kirchenaustritte** in Deutschland von *2017* bis *2020*</li>
-<li>`koelsch` Konsum von **Kölsch** von *2017* bis *2020*</li>
-</ul>
+- `fragebogen` Kopfumfang und andere Merkmale aus dem **GD**- und **AVM-Kurs**.
+- `hdi` Weltweiter Index der **menschlichen Entwicklung**.
+- `imr` **Säuglingssterblichkeitsraten** weltweit.
+- `kirche` **Kirchenaustritte** in Deutschland von *2017* bis *2020*.
+- `koelsch` Konsum von **Kölsch** von *2017* bis *2020*.
 
-... und diese **Funktionen**:
+Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Datensätzen* anzeigen lassen. Z.B. `help(fragebogen)` erklärt den Inhalt des Datenpaketes `fragebogen`.
 
-<ul>
-<li>`combine(x, y, ...)` Kombiniert zwei Datensätze mit **ID** und **Fremdschlüsselabgleich**.</li>
-<li>`ourdata()` Druckt eine **Willkommensnachricht** aus.</li>
-<li>`plotter(...)` Zeichnet interaktiv mit variablen Daten verschiedene **Diagramme**.</li>
-<li>`transformer(x, ...)` Transformiert **Werte** vom **Typ** *char* in *numerische Werte*,<br />z.B. `female` zu `1`, `male` zu `2` 
-und `divers` zu `3`.</li>
-<li>`translate(x, target_lang)` Übersetzt Text in die *Zielsprache* mit der **DeepL API**.</li>
-</ul>
+## Funktionen
 
-Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Datensätzen* oder *Funktionen* anzeigen lassen. Z.B. `help(plotter)` erklärt die Funktonsweise von der Funktion `plotter()`.
+Das R-Paket `ourdata` enthält folgende **Funktionen**:
 
-## I - Diagramme {.tabset .tabset-pills}
+- `combine(x, y, ...)` Kombiniert zwei Datensätze mit **ID** und **Fremdschlüsselabgleich**.
+- `ourdata()` Druckt eine **Willkommensnachricht** aus.
+- `plotter(...)` Zeichnet interaktiv mit variablen Daten verschiedene **Diagramme**.</li>
+- `transformer(x, ...)` Transformiert **Werte** vom **Typ** *char* in *numerische Werte*,<br />z.B. `female` zu `1`, `male` zu `2` und `divers` zu `3`.
+- `translate(x, target_lang)` Übersetzt Text in die *Zielsprache* mit der **DeepL API**.
+
+Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Funktionen* anzeigen lassen. Z.B. `help(plotter)` erklärt die Funktonsweise von der Funktion `plotter()`.
+
+# GM_bac & AVM_bac
+
+In den Kursen **GM-bac5** und **AVM_bac5** im Fach **Technical Applications & Data Analytics** haben wir viele Themen der **Datenanalyse** betrachtetet und uns einige **technische Applikationen** genauer angeschaut. Der Schwerpunkt lag auf **R**, einer Statistik-Programmiersprache, mit der auch dieses Dokument erstellt wurde.
+
+Auf **Ilias** sind die Vorlesungsfolien sowie alle *R-Skripte* und sonstiges Material. Hier findest Du in ansprechender Weise aufbereitet **Diagramme** oder **statistische Methoden** und deren R-Code (dieser liegt zusätzlich auf Ilias im Ordner "*Beispiel-Datensätze, Python und R-Skripte*").
+
+**Viel Spaß hiermit!**
+
+*Benjamin*
+
+## Diagramme {.tabset .tabset-pills}
 
 In `R` oder `RStudio` kann man verschiedene **Diagramm-Typen** zur Visualisation verwenden. Zur Hilfe dient die **Funktion** `plottter()` mit der man alle Diagramme (bis auf das Tortendiagramm) mit eigenen Daten ausführen kann.
 
-```{r AbbIa, echo = FALSE, fig.cap = "Abb. I.a: Heatmap", out.width = '100%'}
+```{r AbbIa, echo = FALSE, fig.cap = "Abb. 1.1.a: Heatmap", out.width = '100%'}
 include_graphics("images/heatmap.png")
 ```
 
@@ -89,13 +107,13 @@ axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, co
 
 ### Box-Diagramm
 
-Das **Box-Diagramm** zeigt die **Verteilung** einer *numerischen* **Variablen** basierend auf fünf zusammenfassenden Statistiken: <ul>
-<li>minimaler Nicht-Ausreißer</li>
-<li>erstes Quartil</li>
-<li>Median</li>
-<li>drittes Quartil</li>
-<li>Nicht-Ausreißer</li>
-</ul>
+Das **Box-Diagramm** zeigt die **Verteilung** einer *numerischen* **Variablen** basierend auf fünf zusammenfassenden Statistiken:
+- minimaler Nicht-Ausreißer
+- erstes Quartil
+- Median
+- drittes Quartil
+- Nicht-Ausreißer
+
 Außerdem zeigen Boxplots die Positionierung von Ausreißern und ob die Daten verzerrt sind.
 
 ```{r Box-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
@@ -189,11 +207,11 @@ plot(df$HDI, df$IMR, main = "Einfluss des HDI auf IMR", ylab = "IMR", xlab = "HD
 ### Tortendiagramm
 
 **Kreis**- oder **Torten-Diagramm**, sind zwar weit verbreitet, weisen jedoch einige Nachteile auf: 
-<ul>
-<li>Unterschiede zwischen den Anteilswerte sind weniger gut erkennbar, da dazu die Fläche der Kreissegmente verglichen werden  muss</li>
-<li>bei vielen Kategorien wird die Darstellung schnell unübersichtlich</li>
-<li>sehr kleine Anteilswerte können oftmals nicht im Kreisdiagramm dargestellt werden</li>
-</ul>
+
+- Unterschiede zwischen den Anteilswerte sind weniger gut erkennbar, da dazu die Fläche der Kreissegmente verglichen werden  muss
+- bei vielen Kategorien wird die Darstellung schnell unübersichtlich
+- sehr kleine Anteilswerte können oftmals nicht im Kreisdiagramm dargestellt werden
+
 Aufgrund dieser **Nachteile** bietet sich die Verwendung von Kreisdiagramme nur in *selten Fällen* an, meist liefern **Punkt**- oder **Balkendiagramme** bessere Darstellungen.
 
 ```{r Pie-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
@@ -214,13 +232,13 @@ Ein **Venn-Diagramm** (oder **Primärdiagramm**; **Mengendiagramm**; **Logikdiag
 draw.triple.venn(area1 = koelsch$Koelsch[4], area2 = kirche$Austritte[4], area3 = 1000000, n12 = 220000, n23 = 50000, n13 = 600000, n123 = 40000, main = "Kölsch -> Kirchenaustritt -> Köln?", fill = c("yellow", "brown", "blue"), category = c("Kölsch", "Kirche", "Köln"), main.col = "white", sub.col = "white", col = "white")
 ```
 
-## II - Methoden des Data Mining {.tabset .tabset-pills}
+## Data Mining {.tabset .tabset-pills}
 
 Die **Methoden** des **Data Mining** lassen sich grundsätzlich in die Gruppen *Klassifikation*, *Prognose*, *Segmentierung* und *Abhängigkeitsentdeckung* einteilen. Dazu kommen **Algorithmen** zum Einsatz. 
 
 *Ein Algorithmus ist eine formale Handlungsvorschrift zur Lösung von Instanzen einer bestimmten Problemklasse.* ^[Sauer [2019]]
 
-```{r AbbIIa, echo = FALSE, fig.cap = "Abb. II.a: Heatmap", out.width = '50%'}
+```{r AbbIIa, echo = FALSE, fig.cap = "Abb. 2.2.a: Heatmap", out.width = '50%'}
 include_graphics("images/Gruppen_DataMining.png")
 ```
 
@@ -319,7 +337,7 @@ Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie au
 
 ```
 
-## III - Sonstiges {.tabset .tabset-pills}
+## Sonstiges {.tabset .tabset-pills}
 
 Hier findest Du **Code-Beispiele**, **Lustiges** und **Neuigkeiten** rund um das Thema *technische Applikationen & Datenanalyse*:
 
@@ -407,7 +425,7 @@ Dies ist der Übersetzungs-Code der **DeepL API** in **Python** geschrieben:
 
 1000 **Wissenschaftler** haben ganz *unabhängig* voneinander (unter der Einhaltung aller wissenschaftlichen Voraussetzungen) herausgefunden:
 
-```{r AbbIIIa, echo = FALSE, fig.cap = "Abb. III.a: Katzen-Statistik", out.width = '100%'}
+```{r AbbIIIa, echo = FALSE, fig.cap = "Abb. 2.3.a: Katzen-Statistik", out.width = '100%'}
 include_graphics("images/cat.png")
 ```
 
@@ -415,14 +433,14 @@ include_graphics("images/cat.png")
 
 Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) der die Jobs im **Big Data** Bereich auflistet und mögliche Gehälter (in Dollar) auflistet:
 
-```{r AbbIIIb, echo = FALSE, fig.cap = "Abb. III.a: Big Data Jobs", out.width = '100%'}
+```{r AbbIIIb, echo = FALSE, fig.cap = "Abb. 2.3.b: Big Data Jobs", out.width = '100%'}
 include_graphics("images/Top_7_Big_Data_Jobs.pdf")
 
 url <- as.character(system.file("rmd/images", "Top_7_Big_Data_Jobs.pdf", package = "ourdata", mustWork = FALSE))
 browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
 ```
 
-## IV - Literaturverzeichnis {.tabset}
+# Literaturverzeichnis {.tabset .unnumbered}
 
 Hier ist die **Literatur** die im Fach *Technical Applications & Data Analytics* zum Einsatz kam aufgelistet:
 <br /><br />
