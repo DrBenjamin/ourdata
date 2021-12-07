@@ -1,0 +1,20 @@
+.SCodeR {
+  border: 2px solid #EA80FC;
+  font-weight: normal;
+}
+.OCodeR {
+  color: #f8f8f8;
+  background-color: #303133;
+  border: 2px solid #EA80FC;
+  font-weight: normal;
+}
+.SCodeP {
+  border: 2px solid #00DAC6;
+  font-weight: normal;
+}
+.OCodeP {
+  color: #f8f8f8;
+  background-color: #303133;
+  border: 2px solid #00DAC6;
+  font-weight: normal;
+}
