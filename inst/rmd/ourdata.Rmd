@@ -87,9 +87,9 @@ Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Funktionen
 
 # GM_bac & AVM_bac `5.Sem.`
 
-In den Kursen **GM-bac5** und **AVM_bac5** im Fach **Technical Applications & Data Analytics** haben wir viele Themen der **Datenanalyse** betrachtetet und uns einige **technische Applikationen** genauer angeschaut. Der Schwerpunkt lag auf **R**, einer Statistik-Programmiersprache, mit der auch dieses Dokument erstellt wurde.
+In den Kursen **GM_bac5** und **AVM_bac5** im Fach **Technical Applications & Data Analytics** haben wir viele Themen der **Datenanalyse** betrachtet und uns einige **technische Applikationen** genauer angeschaut. Der Schwerpunkt lag auf **R**, einer *Statistik-Programmiersprache*, mit der übrigens auch dieses Dokument erstellt wurde.
 
-Auf **Ilias** sind die Vorlesungsfolien sowie alle *R-Skripte* und sonstiges Material. Hier findest Du in ansprechender Weise aufbereitet **Diagramme** oder **statistische Methoden** und deren R-Code (dieser liegt zusätzlich auf Ilias im Ordner "*Beispiel-Datensätze, Python und R-Skripte*").
+Auf **Ilias** sind die Vorlesungsfolien sowie alle *R-Skripte* und sonstiges Material. Hier findest Du in ansprechender Weise aufbereitet **Diagramme** oder **statistische Methoden** und deren *R-Code* (dieser liegt zusätzlich auf Ilias im Ordner "*Beispiel-Datensätze, Python und R-Skripte*"). Der Code wartet darauf von Dir ausprobiert zu werden!
 
 ## Diagramme `plots` {.tabset .tabset-pills}
 
@@ -557,8 +557,8 @@ Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4
 ```{r Abb2.3.8a, echo = FALSE, fig.cap = "Abb. 2.3.8a: Big Data Jobs", out.width = '100%'}
 include_graphics("images/Top_7_Big_Data_Jobs.pdf")
 
-url <- as.character(system.file("rmd/images", "Top_7_Big_Data_Jobs.pdf", package = "ourdata", mustWork = FALSE))
-browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
+#url <- as.character(system.file("rmd/images", "Top_7_Big_Data_Jobs.pdf", package = "ourdata", mustWork = FALSE))
+#browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
 ```
 
 # Literaturverzeichnis `lit.` {.tabset .unnumbered}
