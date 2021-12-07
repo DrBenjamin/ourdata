@@ -2,7 +2,8 @@
 title: "Technical Applications & Data Analytics"
 output:
   html_document:
-    code_folding: show
+    code_folding: hide
+    css: "style.css"
     theme:
       bg: '#202123'
       fg: '#B8BCC2'
@@ -20,73 +21,81 @@ output:
     highlight: tango
     df_print: paged
     includes:
-      #in_header: header.html
-      before_body: prefix.html
+      #in_header: suffix.html
+      #before_body: prefix.html
       after_body: suffix.html
   printcode:
     printcode: null
     label: 'Display Source-Code:'
     value: yes
 ---
-
 ```{r setup, include = FALSE}
 if (requireNamespace("thematic")) thematic::thematic_rmd(font = "auto")
-if(!require("knitr")){install.packages("knitr")}
+if(!require("knitr")){ install.packages("knitr")}
 library(knitr)
 knitr::opts_chunk$set(
   comment = NA,
   error = FALSE,
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  class.source = "SCodeR",
+  class.output = "OCodeR"
 )
 if(!require("pacman")){ install.packages("pacman")}
-pacman::p_load(ourdata, reticulate, VennDiagram, sqldf)
-#pacman::p_load(ggplot2, png, VennDiagram, arules, arulesViz, datasets, tcltk, sqldf, gsubfn, proto, RSQLite, ourdata)
+pacman::p_load(ourdata, reticulate, VennDiagram, htmltools, sqldf)
 ```
 
 # R-Package `ourdata`
 
-Das **R-Paket** `ourdata` ist im Rahmen der Vorlesungen in den Studiengängen **Audiovisuelle Medien & Online Publishing** und **Game Design & Management** entstanden. Es enthält einen Großteil der zu Übungszwecken verwendeten Datensätze, sowie einige selbst-programmierte Funktionen mit den sich diese Daten manipulieren bzw. Diagramme ausgeben lassen.
+Das **R-Paket** `ourdata` ist im Rahmen der Vorlesungen in den Studiengängen **Audiovisuelle Medien & Online Publishing** und **Game Design & Management** entstanden. Es enthält einen Großteil der zu Übungszwecken verwendeten **Datensätze**, sowie einige selbst-programmierte **Funktionen** mit den sich diese Daten manipulieren bzw. **Diagramme** ausgeben lassen.
 
-## Daten
+## Daten `data`
 
 Das R-Paket `ourdata` enthält folgende **Daten**:
 
-- `fragebogen` Kopfumfang und andere Merkmale aus dem **GD**- und **AVM-Kurs**.
-- `hdi` Weltweiter Index der **menschlichen Entwicklung**.
-- `imr` **Säuglingssterblichkeitsraten** weltweit.
-- `kirche` **Kirchenaustritte** in Deutschland von *2017* bis *2020*.
-- `koelsch` Konsum von **Kölsch** von *2017* bis *2020*.
+- `fragebogen` 
+  - Kopfumfang und andere Merkmale aus dem **GD**- und **AVM-Kurs**.
+  - Alter, Geschlecht, Mathenote, vor. Note, Angst, Interesse, Praxis 
+- `hdi` 
+  - Weltweiter Index der **menschlichen Entwicklung**.
+- `imr` 
+  - **Säuglingssterblichkeitsraten** weltweit.
+- `kirche` 
+  - **Kirchenaustritte** in Deutschland von *2017* bis *2020*.
+- `koelsch` 
+  - Konsum von **Kölsch** von *2017* bis *2020*.
 
 Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Datensätzen* anzeigen lassen. Z.B. `help(fragebogen)` erklärt den Inhalt des Datenpaketes `fragebogen`.
 
-## Funktionen
+## Funktionen `functions`
 
 Das R-Paket `ourdata` enthält folgende **Funktionen**:
 
-- `combine(x, y, ...)` Kombiniert zwei Datensätze mit **ID** und **Fremdschlüsselabgleich**.
-- `ourdata()` Druckt eine **Willkommensnachricht** aus.
-- `plotter(...)` Zeichnet interaktiv mit variablen Daten verschiedene **Diagramme**.</li>
-- `transformer(x, ...)` Transformiert **Werte** vom **Typ** *char* in *numerische Werte*,<br />z.B. `female` zu `1`, `male` zu `2` und `divers` zu `3`.
-- `translate(x, target_lang)` Übersetzt Text in die *Zielsprache* mit der **DeepL API**.
+- `combine(x, y, ...)` 
+  - Kombiniert zwei Datensätze mit **ID** und **Fremdschlüsselabgleich**.
+- `ourdata()`
+  - Druckt eine **Willkommensnachricht** aus.
+- `plotter(...)` 
+  - Zeichnet interaktiv mit variablen Daten verschiedene **Diagramme**.</li>
+- `transformer(x, ...)` 
+  - Transformiert **Werte** vom **Typ** *char* in *numerische Werte*,
+  - z.B. `female` zu `1`, `male` zu `2` und ´divers` zu `3`.
+- `translate(x, target_lang)`
+  - Übersetzt Text in die *Zielsprache* mit der **DeepL API**.
 
 Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Funktionen* anzeigen lassen. Z.B. `help(plotter)` erklärt die Funktonsweise von der Funktion `plotter()`.
 
-# GM_bac & AVM_bac
+# GM_bac & AVM_bac `5.Sem.`
 
 In den Kursen **GM-bac5** und **AVM_bac5** im Fach **Technical Applications & Data Analytics** haben wir viele Themen der **Datenanalyse** betrachtetet und uns einige **technische Applikationen** genauer angeschaut. Der Schwerpunkt lag auf **R**, einer Statistik-Programmiersprache, mit der auch dieses Dokument erstellt wurde.
 
 Auf **Ilias** sind die Vorlesungsfolien sowie alle *R-Skripte* und sonstiges Material. Hier findest Du in ansprechender Weise aufbereitet **Diagramme** oder **statistische Methoden** und deren R-Code (dieser liegt zusätzlich auf Ilias im Ordner "*Beispiel-Datensätze, Python und R-Skripte*").
 
-**Viel Spaß hiermit!**
+## Diagramme `plots` {.tabset .tabset-pills}
 
-*Benjamin*
+In **R** oder **RStudio** kann man verschiedene **Diagramm-Typen** zur Visualisation verwenden. Zur Hilfe dient die **Funktion** `plottter()` mit der man alle Diagramme (bis auf das Tortendiagramm) mit eigenen Daten ausführen kann.
 
-## Diagramme {.tabset .tabset-pills}
-
-In `R` oder `RStudio` kann man verschiedene **Diagramm-Typen** zur Visualisation verwenden. Zur Hilfe dient die **Funktion** `plottter()` mit der man alle Diagramme (bis auf das Tortendiagramm) mit eigenen Daten ausführen kann.
-
-```{r AbbIa, echo = FALSE, fig.cap = "Abb. 1.1.a: Heatmap", out.width = '100%'}
+```{r Abb2.1a, echo = FALSE, fig.cap = "Abb. 2.1a: Heatmap", out.width = '100%'}
 include_graphics("images/heatmap.png")
 ```
 
@@ -96,7 +105,7 @@ Hier eine Auswahl der **Diagramm-Typen**, mit dem dazugehörigen **Code**:
 
 Das **Balkendiagramm** veranschaulicht die Verbindung zwischen einer *numerischen* und einer *kategorialen* **Variablen**. Das Balkendiagramm stellt jede **Kategorie** als **Balken** dar und spiegelt den entsprechenden *numerischen* Wert mit der **Größe** des Balkens wider.
 
-```{r Bar-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+```{r Bar-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold', class.source = ".foldable"}
 # Balkendiagramm erstellen
 barplot(kirche$Austritte, kirche$Jahr, main = "Kichenaustritte", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Austritte (per 1.000)", xlab = "Jahreszahlen", names = c("2017", "2018", "2019", "2020"))
 # Beschriftung für x- und y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
@@ -232,13 +241,13 @@ Ein **Venn-Diagramm** (oder **Primärdiagramm**; **Mengendiagramm**; **Logikdiag
 draw.triple.venn(area1 = koelsch$Koelsch[4], area2 = kirche$Austritte[4], area3 = 1000000, n12 = 220000, n23 = 50000, n13 = 600000, n123 = 40000, main = "Kölsch -> Kirchenaustritt -> Köln?", fill = c("yellow", "brown", "blue"), category = c("Kölsch", "Kirche", "Köln"), main.col = "white", sub.col = "white", col = "white")
 ```
 
-## Data Mining {.tabset .tabset-pills}
+## Data Mining `data science` {.tabset .tabset-pills}
 
 Die **Methoden** des **Data Mining** lassen sich grundsätzlich in die Gruppen *Klassifikation*, *Prognose*, *Segmentierung* und *Abhängigkeitsentdeckung* einteilen. Dazu kommen **Algorithmen** zum Einsatz. 
 
 *Ein Algorithmus ist eine formale Handlungsvorschrift zur Lösung von Instanzen einer bestimmten Problemklasse.* ^[Sauer [2019]]
 
-```{r AbbIIa, echo = FALSE, fig.cap = "Abb. 2.2.a: Heatmap", out.width = '50%'}
+```{r Abb2.2a, echo = FALSE, fig.cap = "Abb. 2.2a: Gruppen des Data Mining", out.width = '50%'}
 include_graphics("images/Gruppen_DataMining.png")
 ```
 
@@ -296,48 +305,160 @@ Das Aufsuchen von **Verbindungen** zwischen verschiedenen Artikeln, die Kunden i
 
 Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie auf derselben Fahrt zum Supermarkt auch Brot (und welche Brotsorte) kaufen?* Diese Informationen können zu einer Umsatzsteigerung führen, indem sie Einzelhändlern helfen, **selektives Marketing** zu betreiben und ihren Verkaufsraum zu planen.
 
-```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, results = 'hold', echo = TRUE,  eval = FALSE}
+# Bibliotheken laden
+library(arules)     # Paket mit Mining Datensätzen und Assoziationsregeln
+library(arulesViz)  # Paket mit Visualisations-Assoziationsregeln
+library(datasets)   # OpenIntro Datensätze
+
 # Data frame laden
-#data(Groceries)
+data(Groceries)
 
 # Frequenz Diagramm für die Top 20 Artikel erstellen
-#itemFrequencyPlot(Groceries, topN = 20, type = "absolute", horiz = TRUE)
+itemFrequencyPlot(Groceries, topN = 20, type = "absolute", horiz = TRUE)
 # nach Milch suchen
-#itemFrequency(Groceries)[grep("milk", itemLabels(Groceries))]
+itemFrequency(Groceries)[grep("milk", itemLabels(Groceries))]
 
 # Die Regeln ableiten
-#rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8))
+rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8))
 
 # Zeige die Top 5 Regeln (nur 2 Nachkommastellen)
-#options(digits=2)
-#inspect(rules[1:5])
-#rules <- sort(rules, by="confidence", decreasing = TRUE)
-#rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8, maxlen=3))
+options(digits=2)
+inspect(rules[1:5])
+rules <- sort(rules, by="confidence", decreasing = TRUE)
+rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8, maxlen = 10))
 
-#subset.matrix <- is.subset(rules, rules)
-#subset.matrix[lower.tri(subset.matrix, diag = T)] <- NA
-#redundant <- colSums(subset.matrix, na.rm = T) >= 1
-#rules.pruned <- rules[!redundant]
-#rules<-rules.pruned
+subset.matrix <- is.subset(rules, rules)
+subset.matrix[lower.tri(subset.matrix, diag = T)] <- NA
+redundant <- colSums(subset.matrix, na.rm = T) >= 1
 
 # Diagramme ausgeben
-#plot(rules, method = "graph", engine= "interactive", shading = NA)
-#plot(rules, method = "graph", engine = "htmlwidget")
+plot(rules, method = "graph", engine = "htmlwidget")
+```
+```{r showHTML, echo = FALSE, fig.cap = "Abb. 2.2.3a: Basket Analyse"}
+htmltools::includeHTML("./basket_analysis.html")
 ```
 
 ### Cluster Analyse K-Means
 
-```{r K-Means, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+**K-Means** ist ein **Clustering-Verfahren**, bei dem die **Datensätze** in eine Reihe von `k` Gruppen unterteilt werden, wobei `k` die vom Analysten vorgegebene Anzahl von Gruppen ist.
 
+Die folgenden *R-Codes* zeigen, wie man die optimale Anzahl von Clustern bestimmt und wie man K-Means und PAM-Clustering in R berechnet.
+
+Bestimmung der **optimalen Anzahl von Clustern**:
+
+```{r K-Means, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
+# Bibliotheken laden
+library(cluster)
+library(factoextra)
+library(pheatmap)
+
+# Datensatz von Verbrechern in den USA erstellen
+mydata <- scale(USArrests) 
+
+# K-Means Clustering
+fviz_nbclust(mydata, kmeans, method = "gap_stat")
+```
+```{r Abb2.2.4a, echo = FALSE, fig.cap = "Abb. 2.2.4a: Optimal Number of Clusters", out.width = '100%'}
+include_graphics("images/opt_num_clusters.png")
+```
+
+Berechnen und visualisieren des **K-Means Cluster**:
+
+```{r K-Means2, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
+set.seed(123) # for reproducibility
+km.res <- kmeans(mydata, 3, nstart = 25)
+# Visualisieren
+fviz_cluster(km.res, data = mydata, palette = "jco", ggtheme = theme_minimal(), barfill = "red", barcolor	= "red", linecolor = "red")
+```
+```{r Abb2.2.4b, echo = FALSE, fig.cap = "Abb. 2.2.4b: Cluster", out.width = '100%'}
+include_graphics("images/cluster.png")
+```
+
+**Hierarchisches Clustering** ist ein alternativer Ansatz zum **partitionierenden Clustering**, um Gruppen in einem Datensatz zu identifizieren. Bei diesem Verfahren muss die Anzahl der zu erzeugenden Cluster nicht im Voraus festgelegt werden.
+
+Das Ergebnis des hierarchischen Clusterns ist eine *baumartige* Darstellung der Objekte, die auch als **Dendrogramm** bezeichnet wird. Die Beobachtungen können in Gruppen unterteilt werden, indem das Dendrogramm auf einem gewünschten **Ähnlichkeitsniveau** geschnitten wird:
+
+```{r K-Means3, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
+# Hierarchisches Clustering
+# Cluster Denrogramm
+res.hc <- hclust(dist(mydata),  method = "ward.D2")
+fviz_dend(res.hc, cex = 0.5, k = 4, palette = "jco")
+```
+```{r Abb2.2.4c, echo = FALSE, fig.cap = "Abb. 2.2.4c: Cluster Dendogramm", out.width = '100%'}
+include_graphics("images/cluster_dendogram.png")
+```
+
+Eine **Heatmap** ist eine weitere Möglichkeit, hierarchisches Clustering zu visualisieren. Sie wird auch als **Falschfarbenbild** bezeichnet, bei dem die Datenwerte in eine Farbskala umgewandelt werden. Mit Heatmaps können wir gleichzeitig Gruppen von Proben und Merkmalen visualisieren:
+
+```{r K-Means4, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
+# Heatmap erstellen
+pheatmap(t(mydata), cutree_cols = 4)
+````
+```{r Abb2.2.4d, echo = FALSE, fig.cap = "Abb. 2.2.4d: Cluster Heatmap", out.width = '100%'}
+include_graphics("images/pheatmap.png")
 ```
 
 ### Neuronale Netze-Analyse
 
-```{r NeuronaleNetze-Analyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+Ein **neuronales Netz** ist eine informationsverarbeitende Maschine und kann als Analogon zum **menschlichen Nervensystem** betrachtet werden. Genau wie das menschliche Nervensystem, das aus miteinander verbundenen Neuronen besteht, setzt sich ein neuronales Netz aus miteinander verbundenen **informationsverarbeitenden Einheiten** zusammen. Die informationsverarbeitenden Einheiten arbeiten nicht auf eine *lineare* Weise. Vielmehr bezieht das neuronale Netz seine Stärke aus der *parallelen* Verarbeitung von Informationen, die es ihm ermöglicht, mit **Nichtlinearität** umzugehen. Neuronale Netze sind nützlich, um aus komplexen Datensätzen eine Bedeutung abzuleiten und Muster zu erkennen.
 
+Hier wird das **neuronale Netz** visualisiert. Unser Modell hat **3 Neuronen** in seiner versteckten Schicht. Die schwarzen Linien zeigen die Verbindungen mit den Gewichten. Die Gewichte werden mit dem zuvor erläuterten Backpropagation-Algorithmus berechnet. Die gelben Linien stellen den Bias-Term dar:
+
+```{r NeuronaleNetze-Analyse, fig.height=4, fig.showtext = TRUE, echo = TRUE, eval = FALSE}
+# Bibliothek 'neuralnet' laden
+library(neuralnet)
+
+# Daten einlesen
+data <- read.csv(system.file("extdata", "cereals.csv", package = "ourdata", mustWork = FALSE), header=T)
+print(data)
+
+# Zufälliges Zusammenstellen
+samplesize = 0.60 * nrow(data)
+set.seed(80)
+index <- sample( seq_len ( nrow ( data ) ), size = samplesize )
+
+# Erstelle Trainings- und Testdaten-Set
+datatrain <- data[ index, ]
+datatest <- data[ -index, ]
+
+# Daten für neurales Netzwerk skalieren
+max <- apply(data , 2 , max)
+min <- apply(data, 2 , min)
+scaled <- as.data.frame(scale(data, center = min, scale = max - min))
+
+## Neuronales Netz anpassen 
+# Erstelle Trainings- und Testdaten-Set
+trainNN <- scaled[index , ]
+testNN <- scaled[-index , ]
+
+# Neuronales Netz anpassen 
+set.seed(2)
+NN <- neuralnet(rating ~ calories + protein + fat + sodium + fiber, trainNN, hidden = 3 , linear.output = T )
+
+# Diagramm erstellen
+plot(NN)
+````
+```{r Abb2.2.5a, echo = FALSE, fig.cap = "Abb. 2.2.5a: Neurales Netz", out.width = '100%'}
+include_graphics("images/neural_net.png")
 ```
 
-## Sonstiges {.tabset .tabset-pills}
+Hier wird die Bewertung des Modells mit Hilfe des **neuronalen Netzmodells** vorausgesagt. Die vorhergesagte Bewertung kann mit der realen Bewertung durch Visualisierung verglichen werden. Der RMSE für das neuronale Netzwerkmodell beträgt 6,05:
+
+```{r NeuronaleNetze-Analyse2, fig.height=4, fig.showtext = TRUE, echo = TRUE, eval = FALSE}
+## Vorhersage mit Hilfe dnes neuronalen Netzes
+predict_testNN <- compute(NN, testNN[,c(1:5)])
+predict_testNN <- (predict_testNN$net.result * (max(data$rating) - min(data$rating))) + min(data$rating)
+
+# Diagramm und Regressionsgrade erstellen
+plot(datatest$rating, predict_testNN, col='blue', pch=16, ylab = "predicted rating NN", xlab = "real rating")
+abline(0,1)
+```
+```{r Abb2.2.5b, echo = FALSE, fig.cap = "Abb. 2.2.5b: Neurales Netz", out.width = '100%'}
+include_graphics("images/prediction.png")
+```
+
+## Sonstiges `misc` {.tabset .tabset-pills}
 
 Hier findest Du **Code-Beispiele**, **Lustiges** und **Neuigkeiten** rund um das Thema *technische Applikationen & Datenanalyse*:
 
@@ -375,7 +496,7 @@ Big Data или большие данные — это структуриров�
 
 Hier wird gezeigt wie **Python Code** direkt ausgeführt werden kann:
 
-```{python pDeepL, fig.height=4, fig.showtext = TRUE, results = 'hold'}
+```{python pDeepL, fig.height=4, fig.showtext = TRUE, results = 'hold', class.source = "SCodeP", class.output = "OCodeP"}
 # Python Bibliothek 'DeepL' laden
 import deepl
 
@@ -418,14 +539,14 @@ Dies ist der Übersetzungs-Code der **DeepL API** in **R** geschrieben:
 
 Dies ist der Übersetzungs-Code der **DeepL API** in **Python** geschrieben:
 
-```{python DeepLPythonCode, code = readLines(system.file("extdata", "py_deepl.py", package = "ourdata", mustWork = FALSE))}
+```{python DeepLPythonCode, code = readLines(system.file("extdata", "py_deepl.py", package = "ourdata", mustWork = FALSE)), , class.source = "SCodeP", class.output = "OCodeP"}
 ```
 
 ### Katzen-Statistik
 
 1000 **Wissenschaftler** haben ganz *unabhängig* voneinander (unter der Einhaltung aller wissenschaftlichen Voraussetzungen) herausgefunden:
 
-```{r AbbIIIa, echo = FALSE, fig.cap = "Abb. 2.3.a: Katzen-Statistik", out.width = '100%'}
+```{r Abb2.3.7a, echo = FALSE, fig.cap = "Abb. 2.3.7a: Katzen-Statistik", out.width = '100%'}
 include_graphics("images/cat.png")
 ```
 
@@ -433,14 +554,14 @@ include_graphics("images/cat.png")
 
 Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) der die Jobs im **Big Data** Bereich auflistet und mögliche Gehälter (in Dollar) auflistet:
 
-```{r AbbIIIb, echo = FALSE, fig.cap = "Abb. 2.3.b: Big Data Jobs", out.width = '100%'}
+```{r Abb2.3.8a, echo = FALSE, fig.cap = "Abb. 2.3.8a: Big Data Jobs", out.width = '100%'}
 include_graphics("images/Top_7_Big_Data_Jobs.pdf")
 
 url <- as.character(system.file("rmd/images", "Top_7_Big_Data_Jobs.pdf", package = "ourdata", mustWork = FALSE))
 browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
 ```
 
-# Literaturverzeichnis {.tabset .unnumbered}
+# Literaturverzeichnis `lit.` {.tabset .unnumbered}
 
 Hier ist die **Literatur** die im Fach *Technical Applications & Data Analytics* zum Einsatz kam aufgelistet:
 <br /><br />
