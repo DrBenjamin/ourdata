@@ -2,7 +2,7 @@
 \alias{ourdata}
 \title{Data frames and functions}
 \description{
-Data frames and functions of the Technical Applications & Data Analytics course. See \url{https://www.benbox.org/R/ourdata.html} for more information and visualisation!. The data of this package contains:\cr\cr
+Data frames and functions of the Technical Applications & Data Analytics course. See \url{https://www.benbox.org/R/ourdata.html} for more information and visualisation. The data of this package contains:\cr\cr
 - \sQuote{fragebogen} Head circumference and other featrues of the GD und AVM courses\cr\cr
 - \sQuote{hdi} Human development index\cr\cr
 - \sQuote{imr} Infant mortality rates\cr\cr
