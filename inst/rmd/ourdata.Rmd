@@ -554,7 +554,7 @@ include_graphics("images/cat.png")
 
 ### Big Data-Jobs
 
-Ein [spannender Artikel](images/Top_7_Big_Data_Jobs.pdf) der die Jobs im **Big Data** Bereich auflistet und mögliche Gehälter (in Dollar) auflistet:
+Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) (*falls nicht mehr verfügbar - klick in den Artikel*) der die Jobs im **Big Data** Bereich identifiziert und mögliche **Gehälter** (in Dollar) auflistet:
 
 ```{r showPDF, echo = FALSE, fig.cap = "Abb. 2.3.8a: Big Data Jobs"}
 htmltools::includeHTML("pdf.html")
