@@ -2,13 +2,13 @@
 \alias{ourdata}
 \title{Data frames and functions}
 \description{
-Data frames and functions of the Technical Applications & Data Analytics course. The data contains\cr\cr
+Data frames and functions of the Technical Applications & Data Analytics course. See \url{system.file("rmd", "ourdata.html", package = "ourdata")} for more information and visualisation!. The dataof this package contains:\cr\cr
 - \sQuote{fragebogen} Head circumference and other featrues of the GD und AVM courses\cr\cr
 - \sQuote{hdi} Human development index\cr\cr
 - \sQuote{imr} Infant mortality rates\cr\cr
 - \sQuote{kirche} Church exits in Germany from 2017 to 2020\cr\cr
 - \sQuote{koelsch} Colgone brewed beer (Koelsch) consumption from 2017 to 2020\cr\cr\cr
-Functions of the course contains\cr\cr
+These functions are included:\cr\cr
 - \sQuote{combine(id, foreign_key, list1, list2, ...)} Combines two data frames.\cr\cr
 - \sQuote{ourddata()} Prints a welcome message.\cr\cr
 - \sQuote{plotter(...)} Plotting data with a menu to choose different plotting types.\cr\cr
