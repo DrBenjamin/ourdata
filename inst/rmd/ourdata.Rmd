@@ -21,8 +21,6 @@ output:
     highlight: tango
     df_print: paged
     includes:
-      #in_header: suffix.html
-      #before_body: prefix.html
       after_body: suffix.html
   printcode:
     printcode: null
@@ -305,10 +303,9 @@ Das Aufsuchen von **Verbindungen** zwischen verschiedenen Artikeln, die Kunden i
 
 Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie auf derselben Fahrt zum Supermarkt auch Brot (und welche Brotsorte) kaufen?* Diese Informationen können zu einer Umsatzsteigerung führen, indem sie Einzelhändlern helfen, **selektives Marketing** zu betreiben und ihren Verkaufsraum zu planen.
 
-```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, results = 'hold', echo = TRUE,  eval = FALSE}
+```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, echo = TRUE}
 # Bibliotheken laden
 library(arules)     # Paket mit Mining Datensätzen und Assoziationsregeln
-library(arulesViz)  # Paket mit Visualisations-Assoziationsregeln
 library(datasets)   # OpenIntro Datensätze
 
 # Data frame laden
@@ -327,16 +324,21 @@ options(digits=2)
 inspect(rules[1:5])
 rules <- sort(rules, by="confidence", decreasing = TRUE)
 rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8, maxlen = 10))
+```
+```{r BasketAnalyse2, fig.height=4, fig.showtext = TRUE, results = 'hold', echo = TRUE,  eval = FALSE}
+# Paket mit Visualisations-Assoziationsregeln laden
+library(arulesViz)
 
+# Berechnungen der Matrix
 subset.matrix <- is.subset(rules, rules)
 subset.matrix[lower.tri(subset.matrix, diag = T)] <- NA
 redundant <- colSums(subset.matrix, na.rm = T) >= 1
 
-# Diagramme ausgeben
+# Diagramm ausgeben
 plot(rules, method = "graph", engine = "htmlwidget")
 ```
 ```{r showHTML, echo = FALSE, fig.cap = "Abb. 2.2.3a: Basket Analyse"}
-htmltools::includeHTML("./basket_analysis.html")
+htmltools::includeHTML("basket_analysis.html")
 ```
 
 ### Cluster Analyse K-Means
@@ -410,7 +412,7 @@ Hier wird das **neuronale Netz** visualisiert. Unser Modell hat **3 Neuronen** i
 library(neuralnet)
 
 # Daten einlesen
-data <- read.csv(system.file("extdata", "cereals.csv", package = "ourdata", mustWork = FALSE), header=T)
+data <- read.csv("cereals.csv", header=T)
 print(data)
 
 # Zufälliges Zusammenstellen
@@ -552,13 +554,20 @@ include_graphics("images/cat.png")
 
 ### Big Data-Jobs
 
-Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) der die Jobs im **Big Data** Bereich auflistet und mögliche Gehälter (in Dollar) auflistet:
+Ein [spannender Artikel](images/Top_7_Big_Data_Jobs.pdf) der die Jobs im **Big Data** Bereich auflistet und mögliche Gehälter (in Dollar) auflistet:
 
-```{r Abb2.3.8a, echo = FALSE, fig.cap = "Abb. 2.3.8a: Big Data Jobs", out.width = '100%'}
-include_graphics("images/Top_7_Big_Data_Jobs.pdf")
+```{r showPDF, echo = FALSE, fig.cap = "Abb. 2.3.8a: Big Data Jobs"}
+htmltools::includeHTML("pdf.html")
+```
 
-#url <- as.character(system.file("rmd/images", "Top_7_Big_Data_Jobs.pdf", package = "ourdata", mustWork = FALSE))
-#browseURL(url, browser = getOption("browser"), encodeIfNeeded = FALSE)
+### BenBox.org
+
+Seit meiner Kindheit spiele ich **Computer-Spiele** allen Genres. Insbesondere **Adventure Games**, wie die Klassiker *Indiana Jones*, *Monkey Island* und der moderne Ableger *Baphomets Fluch* bzw. *Broken Sword*, haben mich immer wieder vor den Bildschirm gelockt. So lag es nicht fern, mal ein eigenes Adventure Game zu kreieren.
+
+Hier meine [**BenBox.org**](https://www.benbox.org) Webseite für meinen  *iPad* **Spiele-Prototypen**, den ich während meines Studiums an der **Hochschule Fresenius** im **Studiengang Gesundheit & Management (B. Sc.)** erstellt habe:
+
+```{r showBenBox.org, echo = FALSE, fig.cap = "Abb. 2.3.9a: BenBox.org Webseite"}
+htmltools::includeHTML("index.html")
 ```
 
 # Literaturverzeichnis `lit.` {.tabset .unnumbered}
