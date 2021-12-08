@@ -1,5 +1,5 @@
 # ourdata
-Functions and Data frames used in the Technical Applications & Data Analytics course in the study of Gamedesign & Management and Audio-Visuelle Medien at Hochschule Fresenius University of Applied Sciences in Cologne (2021).
+Functions and data frames used in the Technical Applications & Data Analytics course in the study of Gamedesign & Management and Audiovisuelle Medien at Hochschule Fresenius University of Applied Sciences in Cologne (2021).
 
 
 ## Contents
@@ -11,13 +11,12 @@ Data frames contains data:
 - 'kirche' Church exits in Germany from 2017 to 2020
 - 'koelsch' Colgone brewed beer (Koelsch) consumption from 2017 to 2020
 
-Notes that some (most) of these data sets were not published by the author of this pacakge. The original authors and the respective licences can be found in the desription of each data set.
+Notes that some of these data sets were not published by the author of this pacakge. The original authors can be found in the desription of each data set.
 
 Functions:
 - 'combine(x, y, ...)' Combines two data sets using id and foreign key matching.
 - 'ourdata()' Prints out a welcome message.
 - 'plotter(...)' Plotts the data in different plotts.
-- 'tminer(x, target_lang) A Simple text miner.
 - 'transformer(x, ...)' Transforms char type values in numeric values.
 - 'translate(x, target_lang)' Translates text to target language with deepl api.
 
