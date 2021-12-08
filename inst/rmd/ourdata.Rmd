@@ -368,8 +368,9 @@ include_graphics("images/opt_num_clusters.png")
 Berechnen und visualisieren des **K-Means Cluster**:
 
 ```{r K-Means2, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
-set.seed(123) # for reproducibility
+set.seed(123) # für die Reproduzierbarkeit
 km.res <- kmeans(mydata, 3, nstart = 25)
+
 # Visualisieren
 fviz_cluster(km.res, data = mydata, palette = "jco", ggtheme = theme_minimal(), barfill = "red", barcolor	= "red", linecolor = "red")
 ```
@@ -413,7 +414,6 @@ library(neuralnet)
 
 # Daten einlesen
 data <- read.csv("cereals.csv", header=T)
-print(data)
 
 # Zufälliges Zusammenstellen
 samplesize = 0.60 * nrow(data)
@@ -448,7 +448,7 @@ include_graphics("images/neural_net.png")
 Hier wird die Bewertung des Modells mit Hilfe des **neuronalen Netzmodells** vorausgesagt. Die vorhergesagte Bewertung kann mit der realen Bewertung durch Visualisierung verglichen werden. Der RMSE für das neuronale Netzwerkmodell beträgt 6,05:
 
 ```{r NeuronaleNetze-Analyse2, fig.height=4, fig.showtext = TRUE, echo = TRUE, eval = FALSE}
-## Vorhersage mit Hilfe dnes neuronalen Netzes
+## Vorhersage mit Hilfe des neuronalen Netzes
 predict_testNN <- compute(NN, testNN[,c(1:5)])
 predict_testNN <- (predict_testNN$net.result * (max(data$rating) - min(data$rating))) + min(data$rating)
 
