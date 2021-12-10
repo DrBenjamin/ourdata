@@ -21,7 +21,7 @@ PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
 
 PythonType: conda
-PythonVersion: 3.9.7
-PythonPath: ~/Library/r-miniconda-arm64/bin/python
+PythonVersion: 3.8.11
+PythonPath: ~/miniconda3/bin/python
 
 SpellingDictionary: en_GB
