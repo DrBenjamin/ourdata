@@ -1,6 +1,6 @@
 Package: ourdata
 Type: Package
-Title: Functions and Data frames
+Title: Functions and data frames
 Version: 0.4.4
 Author: Benjamin Groß
 Maintainer: Benjamin Groß <ben@benbox.org>
