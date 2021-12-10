@@ -1,9 +1,15 @@
 ---
 title: "Technical Applications & Data Analytics"
 output:
+  word_document:
+    toc: yes
+  printcode:
+    printcode: null
+    label: 'Display Source-Code:'
+    value: yes
   html_document:
     code_folding: hide
-    css: "style.css"
+    css: style.css
     theme:
       bg: '#202123'
       fg: '#B8BCC2'
@@ -13,19 +19,15 @@ output:
         google: Prompt
       heading_font:
         google: Proza Libre
-    toc: true
-    toc_float: true
-    collapsed: true
-    smooth_scroll: true
-    number_sections: true
+    toc: yes
+    toc_float: yes
+    collapsed: yes
+    smooth_scroll: yes
+    number_sections: yes
     highlight: tango
     df_print: paged
     includes:
       after_body: suffix.html
-  printcode:
-    printcode: null
-    label: 'Display Source-Code:'
-    value: yes
 ---
 ```{r setup, include = FALSE}
 if (requireNamespace("thematic")) thematic::thematic_rmd(font = "auto")

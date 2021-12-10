@@ -19,8 +19,8 @@ BuildType: Package
 PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
 
-PythonType: virtualenv
-PythonVersion: 3.9.9
-PythonPath: inst/extdata/my_env/bin/python
+PythonType: conda
+PythonVersion: 3.8.11
+PythonPath: ~/miniconda3/bin/python
 
 SpellingDictionary: en_GB
