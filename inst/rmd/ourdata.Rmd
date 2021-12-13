@@ -1,12 +1,6 @@
 ---
 title: "Technical Applications & Data Analytics"
 output:
-  word_document:
-    toc: yes
-  printcode:
-    printcode: null
-    label: 'Display Source-Code:'
-    value: yes
   html_document:
     code_folding: hide
     css: style.css
@@ -28,6 +22,12 @@ output:
     df_print: paged
     includes:
       after_body: suffix.html
+  printcode:
+    printcode: null
+    label: 'Display Source-Code:'
+    value: yes
+  word_document:
+    toc: yes
 ---
 ```{r setup, include = FALSE}
 if (requireNamespace("thematic")) thematic::thematic_rmd(font = "auto")
@@ -498,7 +498,7 @@ Big Data или большие данные — это структуриров�
 Сам термин «большие данные» предложил редактор журнала Nature Клиффорд Линч в спецвыпуске 2008 года [ ^1^ ](https://www.nature.com/nature/volumes/455/issues/7209). Он говорил о взрывном росте объемов информации в мире. К большим данным Линч отнес любые массивы неоднородных данных более 150 Гб в сутки, однако единого критерия до сих пор не существует.
 
 
-Hier wird gezeigt wie **Python Code** direkt ausgeführt werden kann:
+Hier wird gezeigt, wie **Python Code** direkt ausgeführt werden kann:
 
 ```{python pDeepL, fig.height=4, fig.showtext = TRUE, results = 'hold', class.source = "SCodeP", class.output = "OCodeP"}
 # Python Bibliothek 'DeepL' laden
@@ -522,7 +522,7 @@ Dieser Artikel kann [hier](https://trends.rbc.ru/trends/innovation/5d6c020b9a794
 
 С 2014 на Big Data обратили внимание ведущие мировые вузы, где обучают прикладным инженерным и ИТ-специальностям. Затем к сбору и анализу подключились ИТ-корпорации — такие, как Microsoft, IBM, Oracle, EMC, а затем и Google, Apple, Facebook и Amazon. Сегодня большие данные используют крупные компании во всех отраслях, а также — госорганы. Подробнее об этом — в материале [Кто и зачем собирает большие данные?](https://trends.rbc.ru/trends/industry/5ea9bfdf9a7947678acbf8b1)
 
-Hier wird gezeigt wie eine **Python Funktion** aus **R** ausgeführt werden kann:
+Hier wird gezeigt, wie eine **Python Funktion** aus **R** ausgeführt werden kann:
 
 ```{r rDeepL, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 # R lädt mit 'reticulate::source_python' die Python Datei 'py_deepl.py'
