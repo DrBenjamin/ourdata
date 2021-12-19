@@ -26,7 +26,6 @@ plotter(...)
 \tab \tab \code{V} for a (V)enn Diagram.\cr\cr
 \tab \code{header} \tab choose a header for the plott.\cr\cr
 \tab \code{regline} \tab logical, a regression line will be printed.\cr\cr
-\tab \code{language} \tab e.g. \sQuote{DE} for German or \sQuote{EN-GB} for British English. There are much more languages supported, let the menu you.\cr\cr
 \tab \code{pdf} \tab logical, indicating whether or not output of plots should be exported to a PDF file (on devices without a graphical interface like an iPad.\cr\cr
 \tab \code{verbose} \tab logical, indicating whether or not plotting details should be printed in console.
 }
@@ -40,6 +39,6 @@ plotter()
 ## With x data
 plotter(subset(fragebogen$alter)
 
-### With x & y data, plot_type, header, regline, language and verbose option set
-plotter(subset(fragebogen, select = alter), subset(fragebogen, select = kopf), plot_type = "S", header = "Alter bestimmt den Kopfumfang", regline = TRUE, language = "ger", verbose = TRUE)
+### With x & y data, plot_type, header, regline and verbose option set
+plotter(subset(fragebogen, select = alter), subset(fragebogen, select = kopf), plot_type = "S", header = "Alter bestimmt den Kopfumfang", regline = TRUE, verbose = TRUE)
 }

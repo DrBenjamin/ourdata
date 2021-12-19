@@ -1,4 +1,4 @@
-# ourdata
+## ourdata
 Functions and data frames used in the Technical Applications & Data Analytics course in the study of Gamedesign & Management and Audiovisuelle Medien at Hochschule Fresenius University of Applied Sciences in Cologne (2021).
 
 
@@ -18,7 +18,6 @@ Functions:
 - 'ourdata()' Prints out a welcome message.
 - 'plotter(...)' Plotts the data in different plotts.
 - 'transformer(x, ...)' Transforms char type values in numeric values.
-- 'translate(x, target_lang)' Translates text to target language with deepl api.
 
 
 ## Installation
