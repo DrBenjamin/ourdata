@@ -11,3 +11,4 @@ LazyData: true
 Depends: 
     R (>= 4.0)
 StagedInstall: no
+RoxygenNote: 7.1.2

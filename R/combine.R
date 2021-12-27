@@ -1,5 +1,26 @@
 # R/combine.R
-# function combine conjuncts two data frames (numeric values) using id and foreign_key for matching
+# Roxygen2:
+#' conjuncts two data frames
+#'
+#' `combine` conjuncts two data frames. In each data frame must be an identifier (id and foreign_key) and two lists containing numeric values.
+#' @usage
+#' combine(id, foreign_key, list1, list2, ...)
+#' @param id ID of the left list.
+#' @param foreign_key Foreign key of the right list.
+#' @param list1 Numeric values of the left list.
+#' @param list2 Numeric values of the right list.
+#' @param col1 Optionally, a name of id / foreign key column / variable.
+#' @param col2 Optionally, a name of list1 column / variable.
+#' @param col3 Optionally, a name of the list2 column / variable.
+#' @return Conjuncted data frame.
+#' @examples
+#' library(ourdata)
+#'
+#' # combines two data frames
+#' combined_list <- combine(imr$name, hdi$country, imr$value, hdi$hdi)
+#'
+#' ## With column names spezified
+#' combined_list <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Country", col2 = "IMR", col3 = "HDI")
 
 combine <- function(id, foreign_key, list1, list2, col1 = "C1", col2 = "C2", col3 = "C3") {
   # Two For-Loops for matchting two lists
