@@ -1,5 +1,5 @@
 ## ourdata
-Functions and data frames used in the Technical Applications & Data Analytics course in the study of Gamedesign & Management and Audiovisuelle Medien at Hochschule Fresenius University of Applied Sciences in Cologne (2021).
+Functions and data frames used in Data Science courses at Hochschule Fresenius University of Applied Sciences in Cologne (2025).
 
 
 ## Contents
