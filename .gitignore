@@ -4,3 +4,5 @@ ourdata.Rproj
 .RData
 .Ruserdata
 .DS_Store
+.Renviron
+.Rprofile

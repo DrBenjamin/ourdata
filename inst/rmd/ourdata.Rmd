@@ -260,13 +260,13 @@ include_graphics("images/Gruppen_DataMining.png")
 
 Here you will find the **data mining methods** from the lectures, with the corresponding **code**:
 
-### Korrelation Analyse
+### Correlation Analysis
 
-Will man einen **Zusammenhang** zwischen zwei **metrischen Variablen** untersuchen, zum Beispiel zwischen dem Alter und dem Gewicht von Kindern, so berechnet man eine **Korrelation**. Diese besteht aus einem **Korrelationskoeffizienten** (`rho` bei Spearman) und einem **p-Wert**.
+If you want to investigate a **relationship** between two **metric variables**, for example between the age and weight of children, you calculate a **correlation**. This consists of a **correlation coefficient** (`rho` for Spearman) and a **p-value**.
 
-Der **Korrelationskoeffizient** gibt die Stärke und die Richtung des Zusammenhangs an. Er liegt zwischen `-1` und `1`. Ein Wert nahe `-1` bezeichnet einen starken **negativen Zusammenhang** (z.B. *„Mehr zurückgelegte Strecke mit dem Auto, weniger Treibstoff im Tank“*). Ein Wert nahe `1` spricht für einen starken **positiven Zusammenhang** (z.B. *„mehr Futter, dickere Kühe“*). Kein Zusammenhang besteht, wenn der Wert nahe `0` liegt. 
+The **correlation coefficient** indicates the strength and direction of the relationship. It ranges between `-1` and `1`. A value near `-1` indicates a strong **negative relationship** (e.g. *"More distance traveled by car, less fuel in the tank"*). A value near `1` indicates a strong **positive relationship** (e.g. *"more feed, fatter cows"*). No relationship exists when the value is close to `0`. 
 
-Der **p-Wert** sagt aus, ob es einen **signifikanten Zusammenhang** gibt. **p-Werte** kleiner als `0,05` werden als **statistisch signifikant** bezeichnet.
+The **p-value** indicates whether there is a **significant relationship**. **p-values** less than `0.05` are considered **statistically significant**.
 
 ```{r Korrelationsanalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 # Combining both lists with 'SQL JOIN'
@@ -305,13 +305,13 @@ plot(df$HDI, df$IMR, xlab = "Predictor", ylab = "Result", col = "darkblue", pch 
 abline(mdl, col = "darkred")
 ```
 
-### Basket Analyse
+### Market Basket Analysis
 
-Die **Basket Analyse** kann zur Entdeckung von **Assoziationen** und **Korrelationen** zwischen Elementen in riesigen transaktionalen oder relationalen Datensätzen führen.
+**Market basket analysis** can lead to the discovery of **associations** and **correlations** between elements in huge transactional or relational datasets.
 
-Das Aufsuchen von **Verbindungen** zwischen verschiedenen Artikeln, die Kunden in ihre „Warenkörbe“ legen ist ein häufiger Einsatz der Analyse. Das Wissen um diese Assoziationen kann für Einzelhändler oder Vermarkter hilfreich sein, um Marketingstrategien zu entwickeln. Das geschieht, indem sie Erkenntnisse darüber gewinnen, welche Artikel von Kunden häufig zusammen gekauft werden.
+Finding **connections** between different items that customers put in their "shopping baskets" is a common application of the analysis. Knowledge of these associations can be helpful for retailers or marketers to develop marketing strategies. This happens by gaining insights into which items are frequently purchased together by customers.
 
-Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie auf derselben Fahrt zum Supermarkt auch Brot (und welche Brotsorte) kaufen?* Diese Informationen können zu einer Umsatzsteigerung führen, indem sie Einzelhändlern helfen, **selektives Marketing** zu betreiben und ihren Verkaufsraum zu planen.
+For example, if customers buy milk, *how likely is it that they will also buy bread (and which type of bread) on the same trip to the supermarket?* This information can lead to increased sales by helping retailers engage in **selective marketing** and plan their sales floor.
 
 ```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, echo = TRUE}
 # Loading libraries
@@ -408,7 +408,8 @@ A **heatmap** is another way to visualize hierarchical clustering. It is also ca
 ```{r K-Means4, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
 # Creating heatmap
 pheatmap(t(mydata), cutree_cols = 4)
-````
+```
+
 ```{r Abb2.2.4d, echo = FALSE, fig.cap = "Fig. 2.2.4d: Cluster Heatmap", out.width = '100%'}
 include_graphics("images/pheatmap.png")
 ```
@@ -451,7 +452,8 @@ NN <- neuralnet(rating ~ calories + protein + fat + sodium + fiber, trainNN, hid
 
 # Creating plot
 plot(NN)
-````
+```
+
 ```{r Abb2.2.5a, echo = FALSE, fig.cap = "Fig. 2.2.5a: Neural Network", out.width = '100%'}
 include_graphics("images/neural_net.png")
 ```
@@ -489,8 +491,10 @@ This **code** is in the file `example.R` and is read and executed by **R Markdow
 ```{r ExtCode, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = FALSE))
 ```
+
 ```{r variablesXY}
 ```
+
 ```{r plotXY}
 ```
 
@@ -510,13 +514,13 @@ An [interesting article](https://www.thebalancecareers.com/top-7-big-data-jobs-4
 htmltools::includeHTML("pdf.html")
 ```
 
-### BenBox.org
+### Serious Ben Entertainment
 
 Since my childhood I have been playing **computer games** of all genres. In particular **adventure games**, such as the classics *Indiana Jones*, *Monkey Island* and the modern offshoot *Broken Sword*, have always lured me to the screen. So it was not far-fetched to create my own adventure game.
 
-Here is my [**BenBox.org**](https://www.benbox.org) website for my *iPad* **game prototype**, which I created during my studies at **Fresenius University of Applied Sciences** in the **Health & Management (B. Sc.)** program:
+Here is my [**Serious Ben Entertainment**](https://www.benbox.org) website for my *iPad* **game prototype**, which I created during my studies at **Fresenius University of Applied Sciences** in the **Health & Management (B. Sc.)** program:
 
-```{r showBenBox.org, echo = FALSE, fig.cap = "Fig. 2.3.9a: BenBox.org Website"}
+```{r showBenBox.org, echo = FALSE, fig.cap = "Fig. 2.3.9a: Serious Ben Entertainment Website"}
 htmltools::includeHTML("index.html")
 ```
 
