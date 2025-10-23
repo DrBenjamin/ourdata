@@ -17,9 +17,9 @@ combine(id, foreign_key, list1, list2, ...)
 
 \item{col1}{Optionally, a name of id / foreign key column / variable.}
 
-\item{col2}{Optionally, a name of list1 column / variable.}
+\item{col2}{Optionally, a name of vector or list1 column / variable.}
 
-\item{col3}{Optionally, a name of the list2 column / variable.}
+\item{col3}{Optionally, a name of vector or list2 column / variable.}
 }
 \value{
 Conjuncted data frame.
