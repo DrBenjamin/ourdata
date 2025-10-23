@@ -11,7 +11,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   # PDF Export
   if(is.null(pdf)) {
-    user_text <- "PDF Export - wenn keine Grafikausgabe möglich! ('TRUE' oder 'FALSE')?"
+    user_text <- "PDF Export - when no graphic output is possible! ('TRUE' or 'FALSE')?"
     user_inputgfx <- readline(prompt = paste0(user_text, " "))
     if(user_inputgfx == "TRUE" | user_inputgfx == "true" | user_inputgfx == "True") {
       user_inputgfx <- TRUE
@@ -29,7 +29,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   if(is.null(x)) {
     user_inputx <- ""
     while (user_inputx == "") {
-      user_text <- "Bezeichnung des Data Frames oder Vektors ('x')?"
+      user_text <- "Name of the data frame or vector ('x')?"
       user_inputx <- readline(prompt = paste0(user_text, " "))
       if(grepl("$", user_inputx, fixed = TRUE)) {
         # To not check if file exists -> error
@@ -68,7 +68,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     no_datay <- TRUE
     user_inputy <- ""
     while (user_inputy == "") {
-      user_text <- "Sind noch mehr Daten ('y') einzubeziehen (<Enter> drücken für 'FALSE')?"
+      user_text <- "Should more data ('y') be included (press <Enter> for 'FALSE')?"
       user_inputy <- readline(prompt = paste0(user_text, " "))
       if(user_inputy == "" | user_inputy == "FALSE" | user_inputy == "False" | user_inputy == "false"| user_inputy == "f" | user_inputy == "F") {
         no_datay <- TRUE
@@ -119,12 +119,12 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     while (user_inputp == "") {
       # Checking if y data is available or not
       if(is.null(y)) {
-        user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Diagramm, 'D' - Dichtediagramm, 'Hi' - Histogramm, 'L' - Linien-Diagramm, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
+        user_text <- "'Ba' - Bar plot, 'Bo' - Box plot, 'D' - Density plot, 'Hi' - Histogram, 'L' - Line plot, 'S' - Scatter plot or 'V' - Venn diagram?"
       } else {
-        user_text <- "'Ba' - Balkendiagramm, 'Bo' - Box-Diagramm, 'He' - Heatmap, 'P' - Paar-Diagramm, 'Q' - Qqplot, 'S' - Streudiagramm oder 'V' - Venn-Diagramm?"
+        user_text <- "'Ba' - Bar plot, 'Bo' - Box plot, 'He' - Heatmap, 'P' - Pairs plot, 'Q' - Qqplot, 'S' - Scatter plot or 'V' - Venn diagram?"
       }
       cat(user_text, sep = "\n")
-      user_text <- "Welcher Diagramm Typ soll verwendet werden?"
+      user_text <- "Which plot type should be used?"
       user_inputp <- readline(prompt = paste0(user_text, " "))
       if(user_inputp == 'BA' | user_inputp == 'Ba' | user_inputp == 'ba' | user_inputp == 'BO' | user_inputp == 'Bo' | user_inputp == 'bo' | user_inputp == 'D' | user_inputp == 'd' | user_inputp == 'HE' | user_inputp == 'He' | user_inputp == 'he' | user_inputp == 'HI' | user_inputp == 'Hi' | user_inputp == 'hi' | user_inputp == 'L' | user_inputp == 'l' | user_inputp == 'P' | user_inputp == 'p' | user_inputp == 'Q' | user_inputp == 'q' | user_inputp == 'S' | user_inputp == 's' | user_inputp == 'V' | user_inputp == 'v' ) {
         plot_type <- user_inputp
@@ -139,7 +139,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   if(is.null(header)) {
     user_inputh <- ""
     while (user_inputh == "") {
-      user_text <- "Bitte die Bezeichnung für die Kopfzeile des Diagramms eingeben (<Enter> drücken für keinen Header):"
+      user_text <- "Please enter the plot header (press <Enter> for no header):"
       user_inputh <- readline(prompt = paste0(user_text, " "))
       if(user_inputh == "" | user_inputh == "FALSE" | user_inputh == "False" | user_inputh == "false" | user_inputh == "F"| user_inputh == "f") {
         user_inputh <- "FALSE"
@@ -150,7 +150,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'BA' | plot_type == 'Ba' | plot_type == 'ba') {
     if(pdf == TRUE) {
-      pdf("Balkendiagramm.pdf")
+      pdf("Barplot.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -174,7 +174,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'BO' | plot_type == 'Bo' | plot_type == 'bo') {
     if(pdf == TRUE) {
-      pdf("Kastengrafik.pdf")
+      pdf("Boxplot.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -198,7 +198,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'D' | plot_type == 'd') {
     if(pdf == TRUE) {
-      pdf("Dichtediagramm.pdf")
+      pdf("Densityplot.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -246,7 +246,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'HI' | plot_type == 'Hi' | plot_type == 'hi') {
     if(pdf == TRUE) {
-      pdf("Histogramm.pdf")
+      pdf("Histogram.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -270,7 +270,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'L' | plot_type == 'l') {
     if(pdf == TRUE) {
-      pdf("Liniendiagramm.pdf")
+      pdf("Lineplot.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -294,7 +294,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'P' | plot_type == 'p') {
     if(pdf == TRUE) {
-      pdf("Paar-Diagramm.pdf")
+      pdf("Pairsplot.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -342,7 +342,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'S' | plot_type == 's') {
     if(pdf == TRUE) {
-      pdf("Streudiagramm.pdf")
+      pdf("Scatterplot.pdf")
     }
     if(is.null(y)) {
       if(is.null(header)) {
@@ -366,7 +366,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
   }
   if(plot_type == 'V' | plot_type == 'v') {
     if(pdf == TRUE) {
-      pdf("Venndiagramm.pdf")
+      pdf("Venndiagram.pdf")
     }
     library("VennDiagram")
     plot.new()
@@ -389,7 +389,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     if(is.null(regline)) {
       user_inputrl <- ""
       while (user_inputrl == "") {
-        user_text <- "Soll eine Regressionsgrade gezeichnet werden ('TRUE' oder 'FALSE')?"
+        user_text <- "Should a regression line be drawn ('TRUE' or 'FALSE')?"
         user_inputrl <- readline(prompt = paste0(user_text, " "))
         if(user_inputrl == "" | user_inputrl == "FALSE" | user_inputrl == "False" | user_inputrl == "false" | user_inputrl == "F"| user_inputrl == "f") {
           user_inputrl <- FALSE
@@ -410,7 +410,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
     }
     user_inputcoe <- ""
     while (user_inputcoe == "") {
-      user_text <- "Soll der p-Wert und Korrelationskoeffizent berechnet werden ('TRUE' oder 'FALSE')?"
+      user_text <- "Should the p-value and correlation coefficient be calculated ('TRUE' or 'FALSE')?"
       user_inputcoe <- readline(prompt = paste0(user_text, " "))
 
       if(user_inputcoe == "" | user_inputcoe == "FALSE" | user_inputcoe == "False" | user_inputcoe == "false" | user_inputcoe == "F"| user_inputcoe == "f") {
@@ -431,7 +431,7 @@ plotter <- function(x = NULL, y = NULL, plot_type = NULL, header = NULL, regline
 
   ## Close function
   if(verbose == TRUE) {
-    user_text <- "Erledigt."
+    user_text <- "Done."
     return(cat(user_text, sep = "\n"))
   }
 }

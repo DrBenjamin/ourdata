@@ -37,8 +37,8 @@ library(ourdata)
 plotter()
 
 ## With x data
-plotter(subset(fragebogen$alter)
+plotter(subset(fragebogen$alter))
 
 ### With x & y data, plot_type, header, regline and verbose option set
-plotter(subset(fragebogen, select = alter), subset(fragebogen, select = kopf), plot_type = "S", header = "Alter bestimmt den Kopfumfang", regline = TRUE, verbose = TRUE)
+plotter(subset(fragebogen, select = alter), subset(fragebogen, select = kopf), plot_type = "S", header = "Age determines head circumference", regline = TRUE, verbose = TRUE)
 }
