@@ -101,7 +101,7 @@ include_graphics("images/heatmap.png")
 ```
 
 Here is a selection of **plot types** with the corresponding **code**:
- 
+
 ### Bar Plot
 
 The **bar plot** illustrates the connection between a *numerical* and a *categorical* **variable**. The bar plot displays each **category** as a **bar** and reflects the corresponding *numerical* value with the **size** of the bar.
