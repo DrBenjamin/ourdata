@@ -3,7 +3,7 @@
 \title{Data frames and functions}
 \description{
 Data frames and functions of Data Science courses. The data of this package contains:\cr\cr
-- \sQuote{fragebogen} Head circumference and other features of the GD und AVM courses\cr\cr
+- \sQuote{fragebogen} Head circumference and other features from student surveys\cr\cr
 - \sQuote{hdi} Human development index\cr\cr
 - \sQuote{imr} Infant mortality rates\cr\cr
 - \sQuote{kirche} Church exits in Germany from 2017 to 2020\cr\cr
