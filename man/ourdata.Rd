@@ -7,10 +7,12 @@ Data frames and functions of Data Science courses. The data of this package cont
 - \sQuote{hdi} Human development index\cr\cr
 - \sQuote{imr} Infant mortality rates\cr\cr
 - \sQuote{kirche} Church exits in Germany from 2017 to 2020\cr\cr
-- \sQuote{koelsch} Colgone brewed beer (Koelsch) consumption from 2017 to 2020\cr\cr\cr
+- \sQuote{koelsch} Colgone brewed beer (Koelsch) consumption from 2017 to 2020\cr\cr
+- \sQuote{oecd_preventable} OECD preventable mortality data from 2010 onwards\cr\cr\cr
 These functions are included:\cr\cr
 - \sQuote{combine(id, foreign_key, list1, list2, ...)} Combines two data frames.\cr\cr
 - \sQuote{ourddata()} Prints a welcome message.\cr\cr
+- \sQuote{ourdata_website()} Opens the package documentation website in your browser.\cr\cr
 - \sQuote{plotter(...)} Plotting data with a menu to choose different plotting types.\cr\cr
 - \sQuote{transformer(x, ...)} Transforms char type values in numeric values.\cr\cr
 }
@@ -26,10 +28,14 @@ print(hdi)
 print(imr)
 print(kirche)
 print(koelsch)
+print(oecd_preventable)
 
 ## Functions
 help(combine)
 help(plotter)
 help(transformer)
 help(translate)
+
+# Open the package website
+ourdata_website()
 }

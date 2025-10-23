@@ -9,6 +9,7 @@ hdi <- read.csv("data-raw/HDI.csv")
 koelsch <- read.csv("data-raw/Koelsch.csv")
 kirche <- read.csv("data-raw/Kirche.csv")
 fragebogen <- read.csv("data-raw/Fragebogen.csv")
+oecd_preventable <- read.csv("data-raw/OECD_Preventable_Deaths.csv")
 
 # Data cleaning code here...
 # (Do NOT put data analysis code here!)
@@ -17,4 +18,4 @@ fragebogen <- read.csv("data-raw/Fragebogen.csv")
 # Note that names are unquoted.
 # I like using overwrite = T so everytime I run the script the
 # updated objects are saved, but the default is overwrite = F
-usethis::use_data(imr, hdi, koelsch, kirche, fragebogen, overwrite = TRUE)
+usethis::use_data(imr, hdi, koelsch, kirche, fragebogen, oecd_preventable, overwrite = TRUE)

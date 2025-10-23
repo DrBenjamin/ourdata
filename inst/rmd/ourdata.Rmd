@@ -64,6 +64,9 @@ The R package `ourdata` contains the following **data**:
   - **Church exits** in Germany from *2017* to *2020*.
 - `koelsch` 
   - Consumption of **Cologne beer (Koelsch)** from *2017* to *2020*.
+- `oecd_preventable` 
+  - **OECD preventable mortality data** from *2010* onwards.
+  - Standardized death rates per 100,000 inhabitants across OECD countries.
 
 With the **function** `help()` you can display **help pages** for all *datasets*. E.g. `help(fragebogen)` explains the content of the data package `fragebogen`.
 
