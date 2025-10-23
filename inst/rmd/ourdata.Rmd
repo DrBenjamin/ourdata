@@ -516,9 +516,7 @@ htmltools::includeHTML("pdf.html")
 
 ### Serious Ben Entertainment
 
-Since my childhood I have been playing **computer games** of all genres. In particular **adventure games**, such as the classics *Indiana Jones*, *Monkey Island* and the modern offshoot *Broken Sword*, have always lured me to the screen. So it was not far-fetched to create my own adventure game.
-
-Here is my [**Serious Ben Entertainment**](https://www.benbox.org) website for my *iPad* **game prototype**, which I created during my studies at **Fresenius University of Applied Sciences** in the **Health & Management (B. Sc.)** program:
+Here is my [**Serious Ben Entertainment**](https://www.seriousbenentertainment.org) website for eHealth services which I created during my studies at **University of Edinburgh** in the **Data Science for Health and Social Care (M. Sc.)** program:
 
 ```{r showBenBox.org, echo = FALSE, fig.cap = "Fig. 2.3.9a: Serious Ben Entertainment Website"}
 htmltools::includeHTML("index.html")
