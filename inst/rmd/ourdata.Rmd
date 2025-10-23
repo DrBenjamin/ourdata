@@ -104,9 +104,10 @@ Here is a selection of **plot types** with the corresponding **code**:
 The **bar plot** illustrates the connection between a *numerical* and a *categorical* **variable**. The bar plot displays each **category** as a **bar** and reflects the corresponding *numerical* value with the **size** of the bar.
 
 ```{r Bar-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold', class.source = ".foldable"}
-# Create bar plot
+# Creating bar plot
 barplot(kirche$Austritte, kirche$Jahr, main = "Church Exits", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Exits (per 1,000)", xlab = "Years", names = c("2017", "2018", "2019", "2020"))
-# Improve labeling for x and y axis and adapt color scheme for dark theme
+
+# Improving labeling for x and y axis and adapt color scheme for dark theme
 axis(1, at = 1:4, lwd = 3, lwd.ticks = 3, col = "white", col.ticks = "white", col.lab = "white", col.axis = "white")
 ypos <- seq(0, 600000, by = 100000)
 axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
@@ -124,9 +125,10 @@ The **box plot** shows the **distribution** of a *numerical* **variable** based 
 Box plots also show the positioning of outliers and whether the data is skewed.
 
 ```{r Box-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create box plot
+# Creating box plot
 boxplot(koelsch$Koelsch, main = "Koelsch Consumption", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Koelsch Consumption in Mil. Liters", xlab = "over the period 2017 to 2020", names = "2020")
-# Improve labeling for y axis and adapt color scheme for dark theme
+
+# Improving labeling for y axis and adapt color scheme for dark theme
 ypos <- seq(160000000, 200000000, by = 10000000)
 axis(2, at = ypos, labels = sprintf("%1.0fM.", ypos/1000000), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
@@ -136,9 +138,10 @@ axis(2, at = ypos, labels = sprintf("%1.0fM.", ypos/1000000), lwd = 0.5, lwd.tic
 The **density plot** shows the distribution of a *numerical* **variable** over a **continuous interval**. *Peaks* of a density plot visualize where the values of *numerical* variables **concentrate**.
 
 ```{r Denstiy-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create density plot
+# Creating density plot
 plot(density(fragebogen$alter), main = "Age Distribution in Course", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Persons (Density)", xlab = "Age (in years)")
-# Improve labeling for y axis and adapt color scheme for dark theme
+
+# Improving labeling for y axis and adapt color scheme for dark theme
 ypos <- c(0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06)
 axis(2, at = ypos, labels = sprintf("%1.0fP", ypos*50), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
@@ -151,7 +154,8 @@ A **heatmap** visualizes individual values of a **matrix** with **colors**. **Mo
 data <- matrix(rnorm(81, 0, 9), nrow = 9, ncol = 9)     # Create example data
 colnames(data) <- paste0("Column ", 1:9)                # Set column names
 rownames(data) <- paste0("Row ", 1:9)                   # Set row names
-# Create heatmap
+
+# Creating heatmap
 heatmap(data, main = "Heatmap", col.main = "white", col.lab = "white")
 ```
 
@@ -160,7 +164,7 @@ heatmap(data, main = "Heatmap", col.main = "white", col.lab = "white")
 The **histogram** groups *continuous* **data** into ranges and displays this data as **bars**. The **height** of each bar shows the **number** of **observations** in each range.
 
 ```{r Histogram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create histogram
+# Creating histogram
 hist(fragebogen$kopf, main = "Head Circumferences", col.main = "white", col.lab = "white", ylab = "Persons (Count)", xlab = "Head Circumference (in cm)")
 ```
 
@@ -169,9 +173,10 @@ hist(fragebogen$kopf, main = "Head Circumferences", col.main = "white", col.lab 
 The **line plot** visualizes values along a **sequence** (e.g. *over time*). Line plots consist of an *x-axis* and a *y-axis*. The x-axis typically shows the **sequence** and the y-axis shows the values that **correspond** to each point in the sequence.
 
 ```{r Line-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create line plot
+# Creating line plot
 plot(fragebogen$note_mathe, type = "l", main = "Math Grades", ylab = "Grades", xlab = "Person x",  yaxt = "n", col.main = "white", col.lab = "white")
-# Improve labeling for y axis and adapt color scheme for dark theme
+
+# Improving labeling for y axis and adapt color scheme for dark theme
 ypos <- c(2, 3, 4, 5)
 axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
 ```
@@ -181,7 +186,7 @@ axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, co
 The **pairs plot** is a plot matrix that consists of **scatter plots** for each **variable combination** of a **data frame**.
 
 ```{r Pair-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create pairs plot
+# Creating pairs plot
 pairs(data.frame(fragebogen$interesse, fragebogen$note_annahme), main = "Relationship Interest and Expected Grade", labels = c("Interest", "Expected Grade"), col.main = "white", col.lab = "white")
 ```
 
@@ -191,9 +196,10 @@ A **QQplot** (or **Quantile-Quantile plot**) determines whether *two* **data sou
 
 
 ```{r Qqplot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create qqplot
+# Creating qqplot
 qqplot(fragebogen$geschlecht, fragebogen$note_mathe, main = "Gender and Math Grade", yaxt = "n", ylab = "Math Grade", xaxt = "n", xlab = "Gender (1 'female', 2 'male')", col.main = "white", col.lab = "white")
-# Improve labeling for x and y axis and adapt color scheme for dark theme
+
+# Improving labeling for x and y axis and adapt color scheme for dark theme
 xpos <- c(1, 2)
 axis(1, at = xpos, labels = sprintf("%1.0f", xpos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
 ypos <- c(2, 3, 4 , 5)
@@ -207,7 +213,8 @@ The **scatter plot** displays two *numerical* **variables** with **points**. Eac
 ```{r Scatter-Plot, fig.height=4, fig.showtext = TRUE}
 # Combine data
 df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Country", col2 = "IMR", col3 = "HDI")
-# Create scatter plot
+
+# Creating scatter plot
 plot(df$HDI, df$IMR, main = "Influence of HDI on IMR", ylab = "IMR", xlab = "HDI", col.main = "white", col.lab = "white")
 ```
 
@@ -222,11 +229,13 @@ plot(df$HDI, df$IMR, main = "Influence of HDI on IMR", ylab = "IMR", xlab = "HDI
 Due to these **disadvantages**, the use of pie charts is only recommended in *rare cases*; usually **dot plots** or **bar plots** provide better representations.
 
 ```{r Pie-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create labels with total and percentage
+# Creating labels with total and percentage
 pie_labels <- paste0(kirche$Austritte, " (", round(100 * kirche$Austritte/sum(kirche$Austritte), 2), "%)")
-# Create pie chart
+
+# Creating pie chart
 pie(kirche$Austritte, main = paste0("Church Exits per Year (total ", sum(kirche$Austritte), ")"), labels = pie_labels, col = c("white", "lightblue", "mistyrose", "brown"))
-# Create legend
+
+# Creating legend
 legend("topleft", legend = c("2017", "2018", "2019", "2020"), fill =  c("white", "lightblue", "mistyrose", "brown"))
 ```
 
@@ -235,7 +244,7 @@ legend("topleft", legend = c("2017", "2018", "2019", "2020"), fill =  c("white",
 A **Venn diagram** (or **set diagram**; **logic diagram**) illustrates all possible *logical* **relationships** between specific **data characteristics**. Each characteristic is represented as a **circle**, with *overlapping* parts of the circles representing **elements** that have both characteristics **simultaneously**.
 
 ```{r Venn-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hide', echo = TRUE}
-# Create triple Venn diagram
+# Creating triple Venn diagram
 draw.triple.venn(area1 = koelsch$Koelsch[4], area2 = kirche$Austritte[4], area3 = 1000000, n12 = 220000, n23 = 50000, n13 = 600000, n123 = 40000, main = "Koelsch -> Church Exit -> Cologne?", fill = c("yellow", "brown", "blue"), category = c("Koelsch", "Church", "Cologne"), main.col = "white", sub.col = "white", col = "white")
 ```
 
@@ -260,7 +269,7 @@ Der **Korrelationskoeffizient** gibt die Stärke und die Richtung des Zusammenha
 Der **p-Wert** sagt aus, ob es einen **signifikanten Zusammenhang** gibt. **p-Werte** kleiner als `0,05` werden als **statistisch signifikant** bezeichnet.
 
 ```{r Korrelationsanalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Combine both lists with 'SQL JOIN'
+# Combining both lists with 'SQL JOIN'
 imr_hdi <- sqldf('SELECT imr.name AS "country", imr.value As "imr", hdi.hdi AS "hdi" FROM imr INNER JOIN hdi ON imr.name = hdi.country ORDER BY imr.value DESC')
 
 # Scatter plot
@@ -275,23 +284,24 @@ cor.test(imr_hdi$imr, imr_hdi$hdi, method="spearman", exact=FALSE)
 **Linear regression** is one of the most useful tools in statistics. Regression analysis allows you to estimate **relationships** between parameters and thus provide an explanatory model for the occurrence of certain phenomena. True causality is not revealed by statistical analyses of this kind, but the results from such analyses can provide clues in this direction. ^[Wozabal [2007]]
 
 ```{r LinearRegressAnalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Create a comparable dataset with IMR and HDI using the 'combine' function from the R package 'ourdata'
+# Creating a comparable dataset with IMR and HDI using the 'combine' function from the R package 'ourdata'
 df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Country", col2 = "IMR", col3 = "HDI")
 
-# Create linear model with 'lm'
+# Creating linear model with 'lm'
 mdl <- lm(IMR ~ HDI, data=df)
 
-# 'summary' function
+# Showing model's summary
 summary(mdl)
 
-# Calculate the p-value for 'HDI'
+# Calculating the p-value for 'HDI'
 matCoef <- summary(mdl)$coefficients
 pval <- matCoef["HDI", 4]
 print(paste0("The effect of HDI on IMR is statistically significant p = ", round(pval, 2), " (", pval, ")."))
 
-# Create plot
+# Creating plot
 plot(df$HDI, df$IMR, xlab = "Predictor", ylab = "Result", col = "darkblue", pch = 16, main = "Linear Regression")
-# Create regression line
+
+# Creating regression line
 abline(mdl, col = "darkred")
 ```
 
@@ -304,29 +314,30 @@ Das Aufsuchen von **Verbindungen** zwischen verschiedenen Artikeln, die Kunden i
 Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie auf derselben Fahrt zum Supermarkt auch Brot (und welche Brotsorte) kaufen?* Diese Informationen können zu einer Umsatzsteigerung führen, indem sie Einzelhändlern helfen, **selektives Marketing** zu betreiben und ihren Verkaufsraum zu planen.
 
 ```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, echo = TRUE}
-# Load libraries
+# Loading libraries
 library(arules)     # Package with mining datasets and association rules
 library(datasets)   # OpenIntro datasets
 
-# Load data frame
+# Loading data frame
 data(Groceries)
 
-# Create frequency plot for the top 20 items
+# Creating frequency plot for the top 20 items
 itemFrequencyPlot(Groceries, topN = 20, type = "absolute", horiz = TRUE)
-# Search for milk
+
+# Searching for milk
 itemFrequency(Groceries)[grep("milk", itemLabels(Groceries))]
 
-# Derive the rules
+# Deriving the rules
 rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8))
 
-# Show the top 5 rules (only 2 decimal places)
+# Showing the top 5 rules (only 2 decimal places)
 options(digits=2)
 inspect(rules[1:5])
 rules <- sort(rules, by="confidence", decreasing = TRUE)
 rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8, maxlen = 10))
 ```
 ```{r BasketAnalyse2, fig.height=4, fig.showtext = TRUE, results = 'hold', echo = TRUE,  eval = FALSE}
-# Load package with visualization association rules
+# Loading package with visualization association rules
 library(arulesViz)
 
 # Matrix calculations
@@ -350,12 +361,12 @@ The following *R codes* show how to determine the optimal number of clusters and
 Determining the **optimal number of clusters**:
 
 ```{r K-Means, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
-# Load libraries
+# Loading libraries
 library(cluster)
 library(factoextra)
 library(pheatmap)
 
-# Create dataset of crime in the USA
+# Creating dataset of crime in the USA
 mydata <- scale(USArrests) 
 
 # K-Means Clustering
@@ -371,7 +382,7 @@ Computing and visualizing the **K-Means Cluster**:
 set.seed(123) # for reproducibility
 km.res <- kmeans(mydata, 3, nstart = 25)
 
-# Visualize
+# Visualizing K-Means clusters
 fviz_cluster(km.res, data = mydata, palette = "jco", ggtheme = theme_minimal(), barfill = "red", barcolor	= "red", linecolor = "red")
 ```
 ```{r Abb2.2.4b, echo = FALSE, fig.cap = "Fig. 2.2.4b: Cluster", out.width = '100%'}
@@ -395,7 +406,7 @@ include_graphics("images/cluster_dendogram.png")
 A **heatmap** is another way to visualize hierarchical clustering. It is also called a **false color image**, where data values are converted to a color scale. With heatmaps, we can simultaneously visualize groups of samples and features:
 
 ```{r K-Means4, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
-# Create heatmap
+# Creating heatmap
 pheatmap(t(mydata), cutree_cols = 4)
 ````
 ```{r Abb2.2.4d, echo = FALSE, fig.cap = "Fig. 2.2.4d: Cluster Heatmap", out.width = '100%'}
@@ -409,10 +420,10 @@ A **neural network** is an information processing machine and can be considered 
 Here the **neural network** is visualized. Our model has **3 neurons** in its hidden layer. The black lines show the connections with the weights. The weights are calculated using the backpropagation algorithm explained earlier. The yellow lines represent the bias term:
 
 ```{r NeuronaleNetze-Analyse, fig.height=4, fig.showtext = TRUE, echo = TRUE, eval = FALSE}
-# Load 'neuralnet' library
+# Loading 'neuralnet' library
 library(neuralnet)
 
-# Read data
+# Reading data
 data <- read.csv("cereals.csv", header=T)
 
 # Random sampling
@@ -420,25 +431,25 @@ samplesize = 0.60 * nrow(data)
 set.seed(80)
 index <- sample( seq_len ( nrow ( data ) ), size = samplesize )
 
-# Create training and test datasets
+# Creating training and test datasets
 datatrain <- data[ index, ]
 datatest <- data[ -index, ]
 
-# Scale data for neural network
+# Scaling data for neural network
 max <- apply(data , 2 , max)
 min <- apply(data, 2 , min)
 scaled <- as.data.frame(scale(data, center = min, scale = max - min))
 
-## Fit neural network 
-# Create training and test datasets
+## Fitting neural network
+# Creating training and test datasets
 trainNN <- scaled[index , ]
 testNN <- scaled[-index , ]
 
-# Fit neural network 
+# Fitting neural network
 set.seed(2)
 NN <- neuralnet(rating ~ calories + protein + fat + sodium + fiber, trainNN, hidden = 3 , linear.output = T )
 
-# Create plot
+# Creating plot
 plot(NN)
 ````
 ```{r Abb2.2.5a, echo = FALSE, fig.cap = "Fig. 2.2.5a: Neural Network", out.width = '100%'}
@@ -452,7 +463,7 @@ Here the model rating is predicted using the **neural network model**. The predi
 predict_testNN <- compute(NN, testNN[,c(1:5)])
 predict_testNN <- (predict_testNN$net.result * (max(data$rating) - min(data$rating))) + min(data$rating)
 
-# Create plot and regression line
+# Creating plot and regression line
 plot(datatest$rating, predict_testNN, col='blue', pch=16, ylab = "predicted rating NN", xlab = "real rating")
 abline(0,1)
 ```

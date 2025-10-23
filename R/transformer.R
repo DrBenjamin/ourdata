@@ -7,7 +7,7 @@ transformer <- function(x, verbose = FALSE) {
   x_name <- names(x)
   x <- as.vector(unlist(x))
 
-  # Search for different values which should be transformed
+  # Searching for different values which should be transformed
   counterValues <- 1
   charValues <- c("")
   counterBool <- TRUE

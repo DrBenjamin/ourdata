@@ -1,7 +1,7 @@
 Package: ourdata
 Type: Package
 Title: Functions and data frames
-Version: 0.4.5
+Version: 0.4.6
 Author: Benjamin Gross
 Maintainer: Benjamin Gross <ben@seriousbenentertainment.org>
 Description: Functions and Data frames used in Data Science courses at the Fresenius University of Applied Sciences (2025).
