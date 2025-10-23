@@ -47,209 +47,209 @@ pacman::p_load(ourdata, reticulate, VennDiagram, htmltools, sqldf)
 
 # R-Package `ourdata`
 
-Das **R-Paket** `ourdata` ist im Rahmen der Vorlesungen in den Studiengängen **Audiovisuelle Medien & Online Publishing** und **Game Design & Management** entstanden. Es enthält einen Großteil der zu Übungszwecken verwendeten **Datensätze**, sowie einige selbst-programmierte **Funktionen** mit den sich diese Daten manipulieren bzw. **Diagramme** ausgeben lassen.
+The **R package** `ourdata` was created for Data Science courses at the Fresenius University of Applied Sciences. It contains most of the **datasets** used for practice purposes, as well as some self-programmed **functions** with which this data can be manipulated and **plots** can be generated.
 
-## Daten `data`
+## Data `data`
 
-Das R-Paket `ourdata` enthält folgende **Daten**:
+The R package `ourdata` contains the following **data**:
 
 - `fragebogen` 
-  - Kopfumfang und andere Merkmale aus dem **GD**- und **AVM-Kurs**.
-  - Alter, Geschlecht, Mathenote, vor. Note, Angst, Interesse, Praxis 
+  - Head circumference and other features from student surveys.
+  - Age, gender, math grade, expected grade, fear, interest, practice 
 - `hdi` 
-  - Weltweiter Index der **menschlichen Entwicklung**.
+  - Worldwide **Human Development Index**.
 - `imr` 
-  - **Säuglingssterblichkeitsraten** weltweit.
+  - **Infant mortality rates** worldwide.
 - `kirche` 
-  - **Kirchenaustritte** in Deutschland von *2017* bis *2020*.
+  - **Church exits** in Germany from *2017* to *2020*.
 - `koelsch` 
-  - Konsum von **Kölsch** von *2017* bis *2020*.
+  - Consumption of **Cologne beer (Koelsch)** from *2017* to *2020*.
 
-Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Datensätzen* anzeigen lassen. Z.B. `help(fragebogen)` erklärt den Inhalt des Datenpaketes `fragebogen`.
+With the **function** `help()` you can display **help pages** for all *datasets*. E.g. `help(fragebogen)` explains the content of the data package `fragebogen`.
 
-## Funktionen `functions`
+## Functions `functions`
 
-Das R-Paket `ourdata` enthält folgende **Funktionen**:
+The R package `ourdata` contains the following **functions**:
 
 - `combine(x, y, ...)` 
-  - Kombiniert zwei Datensätze mit **ID** und **Fremdschlüsselabgleich**.
+  - Combines two datasets using **ID** and **foreign key matching**.
 - `ourdata()`
-  - Druckt eine **Willkommensnachricht** aus.
+  - Prints a **welcome message**.
 - `plotter(...)` 
-  - Zeichnet interaktiv mit variablen Daten verschiedene **Diagramme**.</li>
+  - Draws various **plots** interactively with variable data.</li>
 - `transformer(x, ...)` 
-  - Transformiert **Werte** vom **Typ** *char* in *numerische Werte*,
-  - z.B. `female` zu `1`, `male` zu `2` und ´divers` zu `3`.
+  - Transforms **values** of **type** *char* into *numeric values*,
+  - e.g. `female` to `1`, `male` to `2` and `divers` to `3`.
 
-Mit der **Funktion** `help()` kannst Du Dir **Hilfeseiten** zu allen *Funktionen* anzeigen lassen. Z.B. `help(plotter)` erklärt die Funktonsweise von der Funktion `plotter()`.
+With the **function** `help()` you can display **help pages** for all *functions*. E.g. `help(plotter)` explains the functionality of the function `plotter()`.
 
-# GM_bac & AVM_bac `5.Sem.`
+# Data Science Courses
 
-In den Kursen **GM_bac5** und **AVM_bac5** im Fach **Technical Applications & Data Analytics** haben wir viele Themen der **Datenanalyse** betrachtet und uns einige **technische Applikationen** genauer angeschaut. Der Schwerpunkt lag auf **R**, einer *Statistik-Programmiersprache*, mit der übrigens auch dieses Dokument erstellt wurde.
+In the Data Science courses at the Fresenius University of Applied Sciences, we have covered many topics of **data analysis** and examined some **technical applications** more closely. The focus was on **R**, a *statistical programming language*, which was also used to create this document.
 
-Auf **Ilias** sind die Vorlesungsfolien sowie alle *R-Skripte* und sonstiges Material. Hier findest Du in ansprechender Weise aufbereitet **Diagramme** oder **statistische Methoden** und deren *R-Code* (dieser liegt zusätzlich auf Ilias im Ordner "*Beispiel-Datensätze, Python und R-Skripte*"). Der Code wartet darauf von Dir ausprobiert zu werden!
+Course materials include lecture slides as well as all *R scripts* and other materials. Here you will find **plots** and **statistical methods** and their *R code* presented in an appealing way. The code is waiting for you to try it out!
 
-## Diagramme `plots` {.tabset .tabset-pills}
+## Plots `plots` {.tabset .tabset-pills}
 
-In **R** oder **RStudio** kann man verschiedene **Diagramm-Typen** zur Visualisation verwenden. Zur Hilfe dient die **Funktion** `plottter()` mit der man alle Diagramme (bis auf das Tortendiagramm) mit eigenen Daten ausführen kann.
+In **R** or **RStudio**, you can use various **plot types** for visualization. The **function** `plotter()` helps you create all plots (except the pie chart) with your own data.
 
-```{r Abb2.1a, echo = FALSE, fig.cap = "Abb. 2.1a: Heatmap", out.width = '100%'}
+```{r Abb2.1a, echo = FALSE, fig.cap = "Fig. 2.1a: Heatmap", out.width = '100%'}
 include_graphics("images/heatmap.png")
 ```
 
-Hier eine Auswahl der **Diagramm-Typen**, mit dem dazugehörigen **Code**:
+Here is a selection of **plot types** with the corresponding **code**:
  
-### Balkendiagramm
+### Bar Plot
 
-Das **Balkendiagramm** veranschaulicht die Verbindung zwischen einer *numerischen* und einer *kategorialen* **Variablen**. Das Balkendiagramm stellt jede **Kategorie** als **Balken** dar und spiegelt den entsprechenden *numerischen* Wert mit der **Größe** des Balkens wider.
+The **bar plot** illustrates the connection between a *numerical* and a *categorical* **variable**. The bar plot displays each **category** as a **bar** and reflects the corresponding *numerical* value with the **size** of the bar.
 
 ```{r Bar-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold', class.source = ".foldable"}
-# Balkendiagramm erstellen
-barplot(kirche$Austritte, kirche$Jahr, main = "Kichenaustritte", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Austritte (per 1.000)", xlab = "Jahreszahlen", names = c("2017", "2018", "2019", "2020"))
-# Beschriftung für x- und y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+# Create bar plot
+barplot(kirche$Austritte, kirche$Jahr, main = "Church Exits", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Exits (per 1,000)", xlab = "Years", names = c("2017", "2018", "2019", "2020"))
+# Improve labeling for x and y axis and adapt color scheme for dark theme
 axis(1, at = 1:4, lwd = 3, lwd.ticks = 3, col = "white", col.ticks = "white", col.lab = "white", col.axis = "white")
 ypos <- seq(0, 600000, by = 100000)
 axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
 
-### Box-Diagramm
+### Box Plot
 
-Das **Box-Diagramm** zeigt die **Verteilung** einer *numerischen* **Variablen** basierend auf fünf zusammenfassenden Statistiken:
-- minimaler Nicht-Ausreißer
-- erstes Quartil
-- Median
-- drittes Quartil
-- Nicht-Ausreißer
+The **box plot** shows the **distribution** of a *numerical* **variable** based on five summary statistics:
+- minimum non-outlier
+- first quartile
+- median
+- third quartile
+- maximum non-outlier
 
-Außerdem zeigen Boxplots die Positionierung von Ausreißern und ob die Daten verzerrt sind.
+Box plots also show the positioning of outliers and whether the data is skewed.
 
 ```{r Box-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Box-Diagramm erstellen
-boxplot(koelsch$Koelsch, main = "Kölschkonsum", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Kölschkonsum in Mil. Litern", xlab = "über den Zeitraum 2017 bis 2020", names = "2020")
-# Beschriftung für die y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+# Create box plot
+boxplot(koelsch$Koelsch, main = "Koelsch Consumption", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Koelsch Consumption in Mil. Liters", xlab = "over the period 2017 to 2020", names = "2020")
+# Improve labeling for y axis and adapt color scheme for dark theme
 ypos <- seq(160000000, 200000000, by = 10000000)
 axis(2, at = ypos, labels = sprintf("%1.0fM.", ypos/1000000), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
 
-### Dichtediagramm
+### Density Plot
 
-Das **Dichtediagramm** zeigt die Verteilung einer *numerischen* **Variablen** über ein **kontinuierliches Intervall**. *Peaks* eines Dichtediagramms visualisieren, wo sich die Werte *numerischer* Variablen **konzentrieren**.
+The **density plot** shows the distribution of a *numerical* **variable** over a **continuous interval**. *Peaks* of a density plot visualize where the values of *numerical* variables **concentrate**.
 
 ```{r Denstiy-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Dichtediagramm erstellen
-plot(density(fragebogen$alter), main = "Verteilung des Alters im Kurs", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Personen (Dichte)", xlab = "Alter (in Jahren)")
-# Beschriftung für die y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+# Create density plot
+plot(density(fragebogen$alter), main = "Age Distribution in Course", col.main = "white", col.lab = "white", yaxt = "n", ylab = "Persons (Density)", xlab = "Age (in years)")
+# Improve labeling for y axis and adapt color scheme for dark theme
 ypos <- c(0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06)
 axis(2, at = ypos, labels = sprintf("%1.0fP", ypos*50), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white",  col.axis = "grey")
 ```
 
 ### Heatmap
 
-Eine **Heatmap*-Diagramm** visualisiert einzelne Werte einer **Matrix** mit **Farben**. **Häufigere Werte** werden typischerweise durch *hellere rötliche* Farben angezeigt und **weniger häufige** Werte werden typischerweise durch *dunklere* Farben angezeigt.
+A **heatmap** visualizes individual values of a **matrix** with **colors**. **More frequent values** are typically displayed by *lighter reddish* colors and **less frequent** values are typically displayed by *darker* colors.
 
 ```{r Heatmap, fig.height=4, fig.showtext = TRUE}
-data <- matrix(rnorm(81, 0, 9), nrow = 9, ncol = 9)     # Beispiel Daten erstellen
-colnames(data) <- paste0("Spalte ", 1:9)                # Spaltennamen setzen
-rownames(data) <- paste0("Zeile ", 1:9)                 # Zeilennamen setzen
-# Heatmap erstellen
+data <- matrix(rnorm(81, 0, 9), nrow = 9, ncol = 9)     # Create example data
+colnames(data) <- paste0("Column ", 1:9)                # Set column names
+rownames(data) <- paste0("Row ", 1:9)                   # Set row names
+# Create heatmap
 heatmap(data, main = "Heatmap", col.main = "white", col.lab = "white")
 ```
 
-### Histogramm
+### Histogram
 
-Das **Histogramm** gruppiert *kontinuierliche* **Daten** in Bereiche und stellt diese Daten als **Balken** dar. Die **Höhe** jedes Balkens zeigt die **Anzahl** der **Beobachtungen** in jedem Bereich an.
+The **histogram** groups *continuous* **data** into ranges and displays this data as **bars**. The **height** of each bar shows the **number** of **observations** in each range.
 
 ```{r Histogram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Histogramm erstellen
-hist(fragebogen$kopf, main = "Kopfumfänge", col.main = "white", col.lab = "white", ylab = "Personen (Anzahl)", xlab = "Kopfumfang (in cm)")
+# Create histogram
+hist(fragebogen$kopf, main = "Head Circumferences", col.main = "white", col.lab = "white", ylab = "Persons (Count)", xlab = "Head Circumference (in cm)")
 ```
 
-### Liniendiagramm
+### Line Plot
 
-Das **Liniendiagramm** visualisiert Werte entlang einer **Sequenz** (z.B. *über die Zeit*). Liniendiagramme bestehen aus einer *x-Achse* und einer *y-Achse*. Die x-Achse zeigt normalerweise die **Sequenz** und die y-Achse die Werte an, die jedem Punkt der Sequenz **entsprechen**.
+The **line plot** visualizes values along a **sequence** (e.g. *over time*). Line plots consist of an *x-axis* and a *y-axis*. The x-axis typically shows the **sequence** and the y-axis shows the values that **correspond** to each point in the sequence.
 
 ```{r Line-Plot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Liniendiagramm erstellen
-plot(fragebogen$note_mathe, type = "l", main = "Mathenoten", ylab = "Noten", xlab = "Person x",  yaxt = "n", col.main = "white", col.lab = "white")
-# Beschriftung für die y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+# Create line plot
+plot(fragebogen$note_mathe, type = "l", main = "Math Grades", ylab = "Grades", xlab = "Person x",  yaxt = "n", col.main = "white", col.lab = "white")
+# Improve labeling for y axis and adapt color scheme for dark theme
 ypos <- c(2, 3, 4, 5)
 axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
 ```
 
-### Paar-Diagramm
+### Pairs Plot
 
-Das **Paar-Diagramm** ist eine Diagrammmatrix, die aus **Streudiagrammen** für jede **Variablenkombination** eines **Datenrahmens** besteht.
+The **pairs plot** is a plot matrix that consists of **scatter plots** for each **variable combination** of a **data frame**.
 
 ```{r Pair-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Paar-Diagramm erstellen
-pairs(data.frame(fragebogen$interesse, fragebogen$note_annahme), main = "Zusammenhang Interesse und erwarteter Note", labels = c("Interesse", "erwartete Note"), col.main = "white", col.lab = "white")
+# Create pairs plot
+pairs(data.frame(fragebogen$interesse, fragebogen$note_annahme), main = "Relationship Interest and Expected Grade", labels = c("Interest", "Expected Grade"), col.main = "white", col.lab = "white")
 ```
 
 ### Qqplot
 
-Ein **QQplot** (oder **Quantil-Quantil-Diagramm**), bestimmt ob *zwei* **Datenquellen** aus einer **gemeinsamen Verteilung** stammen. QQplots ziehen die **Quantile** der beiden *numerischen* Datenquellen gegeneinander. Wenn beide Datenquellen aus derselben Verteilung stammen, fallen die **Punkte** auf einen **Winkel** von *45°*.
+A **QQplot** (or **Quantile-Quantile plot**) determines whether *two* **data sources** come from a **common distribution**. QQplots plot the **quantiles** of the two *numerical* data sources against each other. If both data sources come from the same distribution, the **points** fall on an **angle** of *45°*.
 
 
 ```{r Qqplot, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Qqplot erstellen
-qqplot(fragebogen$geschlecht, fragebogen$note_mathe, main = "Geschlecht und Mathenote", yaxt = "n", ylab = "Mathenote", xaxt = "n", xlab = "Geschlecht (1 'weiblich', 2 'männlich')", col.main = "white", col.lab = "white")
-# Beschriftung für x- und y-Achse verbessern und die Farbgebung für das Dark-Theme anpassen
+# Create qqplot
+qqplot(fragebogen$geschlecht, fragebogen$note_mathe, main = "Gender and Math Grade", yaxt = "n", ylab = "Math Grade", xaxt = "n", xlab = "Gender (1 'female', 2 'male')", col.main = "white", col.lab = "white")
+# Improve labeling for x and y axis and adapt color scheme for dark theme
 xpos <- c(1, 2)
 axis(1, at = xpos, labels = sprintf("%1.0f", xpos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
 ypos <- c(2, 3, 4 , 5)
 axis(2, at = ypos, labels = sprintf("%1.0f", ypos), lwd = 0.5, lwd.ticks = 1, col = "white", col.ticks = "white", col.lab = "grey", col.axis = "white")
 ```
 
-### Streudiagramm
+### Scatter Plot
 
-Das **Streudiagramm** zeigt zwei *numerische* **Variablen** mit **Punkten** an. Jeder Punkt zeigt den Wert einer Variablen auf der *x-Achse* und den Wert der anderen Variablen auf der *y-Achse* an.
+The **scatter plot** displays two *numerical* **variables** with **points**. Each point shows the value of one variable on the *x-axis* and the value of the other variable on the *y-axis*.
 
 ```{r Scatter-Plot, fig.height=4, fig.showtext = TRUE}
-# Daten zusammenfügen
-df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Land", col2 = "IMR", col3 = "HDI")
-# Streudiagramm erstellen
-plot(df$HDI, df$IMR, main = "Einfluss des HDI auf IMR", ylab = "IMR", xlab = "HDI", col.main = "white", col.lab = "white")
+# Combine data
+df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Country", col2 = "IMR", col3 = "HDI")
+# Create scatter plot
+plot(df$HDI, df$IMR, main = "Influence of HDI on IMR", ylab = "IMR", xlab = "HDI", col.main = "white", col.lab = "white")
 ```
 
-### Tortendiagramm
+### Pie Chart
 
-**Kreis**- oder **Torten-Diagramm**, sind zwar weit verbreitet, weisen jedoch einige Nachteile auf: 
+**Pie charts** are widely used, but have some disadvantages: 
 
-- Unterschiede zwischen den Anteilswerte sind weniger gut erkennbar, da dazu die Fläche der Kreissegmente verglichen werden  muss
-- bei vielen Kategorien wird die Darstellung schnell unübersichtlich
-- sehr kleine Anteilswerte können oftmals nicht im Kreisdiagramm dargestellt werden
+- Differences between proportional values are less recognizable, since the area of the circle segments must be compared
+- with many categories, the representation quickly becomes confusing
+- very small proportional values often cannot be displayed in pie charts
 
-Aufgrund dieser **Nachteile** bietet sich die Verwendung von Kreisdiagramme nur in *selten Fällen* an, meist liefern **Punkt**- oder **Balkendiagramme** bessere Darstellungen.
+Due to these **disadvantages**, the use of pie charts is only recommended in *rare cases*; usually **dot plots** or **bar plots** provide better representations.
 
 ```{r Pie-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Beschriftung Gesamtzahl Jahr mit Prozentangabe erstellen
+# Create labels with total and percentage
 pie_labels <- paste0(kirche$Austritte, " (", round(100 * kirche$Austritte/sum(kirche$Austritte), 2), "%)")
-# Kuchendiagramm erstellen
-pie(kirche$Austritte, main = paste0("Kirchenaustritte pro Jahr (insg. ", sum(kirche$Austritte), ")"), labels = pie_labels, col = c("white", "lightblue", "mistyrose", "brown"))
-# Legende erstellen
+# Create pie chart
+pie(kirche$Austritte, main = paste0("Church Exits per Year (total ", sum(kirche$Austritte), ")"), labels = pie_labels, col = c("white", "lightblue", "mistyrose", "brown"))
+# Create legend
 legend("topleft", legend = c("2017", "2018", "2019", "2020"), fill =  c("white", "lightblue", "mistyrose", "brown"))
 ```
 
-### Venn-Diagramm
+### Venn Diagram
 
-Ein **Venn-Diagramm** (oder **Primärdiagramm**; **Mengendiagramm**; **Logikdiagramm**), veranschaulicht alle möglichen *logischen* **Beziehungen** zwischen bestimmten **Datenmerkmalen**. Jedes Merkmal wird als **Kreis** dargestellt, wobei *überlappende* Teile der Kreise **Elemente** darstellen, die beide Merkmale **gleichzeitig aufweisen**.
+A **Venn diagram** (or **set diagram**; **logic diagram**) illustrates all possible *logical* **relationships** between specific **data characteristics**. Each characteristic is represented as a **circle**, with *overlapping* parts of the circles representing **elements** that have both characteristics **simultaneously**.
 
 ```{r Venn-Diagram, fig.height=4, fig.showtext = TRUE, results = 'hide', echo = TRUE}
-# Triple Venn Diagramm erstellen
-draw.triple.venn(area1 = koelsch$Koelsch[4], area2 = kirche$Austritte[4], area3 = 1000000, n12 = 220000, n23 = 50000, n13 = 600000, n123 = 40000, main = "Kölsch -> Kirchenaustritt -> Köln?", fill = c("yellow", "brown", "blue"), category = c("Kölsch", "Kirche", "Köln"), main.col = "white", sub.col = "white", col = "white")
+# Create triple Venn diagram
+draw.triple.venn(area1 = koelsch$Koelsch[4], area2 = kirche$Austritte[4], area3 = 1000000, n12 = 220000, n23 = 50000, n13 = 600000, n123 = 40000, main = "Koelsch -> Church Exit -> Cologne?", fill = c("yellow", "brown", "blue"), category = c("Koelsch", "Church", "Cologne"), main.col = "white", sub.col = "white", col = "white")
 ```
 
 ## Data Mining `data science` {.tabset .tabset-pills}
 
-Die **Methoden** des **Data Mining** lassen sich grundsätzlich in die Gruppen *Klassifikation*, *Prognose*, *Segmentierung* und *Abhängigkeitsentdeckung* einteilen. Dazu kommen **Algorithmen** zum Einsatz. 
+The **methods** of **data mining** can basically be divided into the groups *classification*, *prediction*, *segmentation* and *dependency discovery*. **Algorithms** are used for this purpose. 
 
-*Ein Algorithmus ist eine formale Handlungsvorschrift zur Lösung von Instanzen einer bestimmten Problemklasse.* ^[Sauer [2019]]
+*An algorithm is a formal instruction for solving instances of a specific problem class.* ^[Sauer [2019]]
 
-```{r Abb2.2a, echo = FALSE, fig.cap = "Abb. 2.2a: Gruppen des Data Mining", out.width = '50%'}
+```{r Abb2.2a, echo = FALSE, fig.cap = "Fig. 2.2a: Data Mining Groups", out.width = '50%'}
 include_graphics("images/Gruppen_DataMining.png")
 ```
 
-Hier findest Du die Data **Mining Methoden** aus den Vorlesungen, mit dem dazugehörigen **Code**:
+Here you will find the **data mining methods** from the lectures, with the corresponding **code**:
 
 ### Korrelation Analyse
 
@@ -260,38 +260,38 @@ Der **Korrelationskoeffizient** gibt die Stärke und die Richtung des Zusammenha
 Der **p-Wert** sagt aus, ob es einen **signifikanten Zusammenhang** gibt. **p-Werte** kleiner als `0,05` werden als **statistisch signifikant** bezeichnet.
 
 ```{r Korrelationsanalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Beide Listen mit 'SQL JOIN' kombinieren
+# Combine both lists with 'SQL JOIN'
 imr_hdi <- sqldf('SELECT imr.name AS "country", imr.value As "imr", hdi.hdi AS "hdi" FROM imr INNER JOIN hdi ON imr.name = hdi.country ORDER BY imr.value DESC')
 
-# Streudiagramm (Scatterplot)
-plot(imr_hdi$imr ~ imr_hdi$hdi, main = "HDI IMR Korrelation", ylab = "Säuglingssterblichkeit (per 1.000)", xlab = "Human Development Index", xlim = range(0:1), ylim = range(1:110))
+# Scatter plot
+plot(imr_hdi$imr ~ imr_hdi$hdi, main = "HDI IMR Correlation", ylab = "Infant Mortality (per 1,000)", xlab = "Human Development Index", xlim = range(0:1), ylim = range(1:110))
 
-# Quantifizierung der Zusammenhänge mittels Spearman Korrelation Funktion
+# Quantify relationships using Spearman correlation function
 cor.test(imr_hdi$imr, imr_hdi$hdi, method="spearman", exact=FALSE)
 ```
 
-### Linear Regress Analyse
+### Linear Regression Analysis
 
-**Lineare Regression** ist eines der nützlichsten Werkzeuge in der Statistik. Regressionsanalyse erlaubt es **Zusammenhänge** zwischen Parametern zu schätzen und somit ein erklärendes Model für das Auftreten gewisser Phänomene zu geben. Wirkliche Kausalität wird durch statistische Analysen dieser Art zwar nicht aufgedeckt, die Ergebnisse aus solchen Analysen können aber Hinweise in diese Richtung geben. ^[Wozabal [2007]]
+**Linear regression** is one of the most useful tools in statistics. Regression analysis allows you to estimate **relationships** between parameters and thus provide an explanatory model for the occurrence of certain phenomena. True causality is not revealed by statistical analyses of this kind, but the results from such analyses can provide clues in this direction. ^[Wozabal [2007]]
 
 ```{r LinearRegressAnalyse, fig.height=4, fig.showtext = TRUE, results = 'hold'}
-# Mittels Funktion 'combine' aus dem R-Paket 'ourdata' einen vergleichbaren Datensatz erstellen mit IMR und HDI
-df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Land", col2 = "IMR", col3 = "HDI")
+# Create a comparable dataset with IMR and HDI using the 'combine' function from the R package 'ourdata'
+df <- combine(imr$name, hdi$country, imr$value, hdi$hdi, col1 = "Country", col2 = "IMR", col3 = "HDI")
 
-# Lineares Modell mit 'lm' erstellen
+# Create linear model with 'lm'
 mdl <- lm(IMR ~ HDI, data=df)
 
-# 'summary' Funktion
+# 'summary' function
 summary(mdl)
 
-# Den p-Wert für 'HDI' errechnen
+# Calculate the p-value for 'HDI'
 matCoef <- summary(mdl)$coefficients
 pval <- matCoef["HDI", 4]
-print(paste0("Der Effekt vom HDI auf IMR ist statistisch signifikant p = ", round(pval, 2), " (", pval, ")."))
+print(paste0("The effect of HDI on IMR is statistically significant p = ", round(pval, 2), " (", pval, ")."))
 
-# Diagramm erstellen
-plot(df$HDI, df$IMR, xlab = "Prädiktor", ylab = "Ergebnis", col = "darkblue", pch = 16, main = "Lineare Regression")
-# Regressionsgrade erstellen
+# Create plot
+plot(df$HDI, df$IMR, xlab = "Predictor", ylab = "Result", col = "darkblue", pch = 16, main = "Linear Regression")
+# Create regression line
 abline(mdl, col = "darkred")
 ```
 
@@ -304,176 +304,176 @@ Das Aufsuchen von **Verbindungen** zwischen verschiedenen Artikeln, die Kunden i
 Wenn Kunden beispielsweise Milch kaufen, *wie wahrscheinlich ist es, dass sie auf derselben Fahrt zum Supermarkt auch Brot (und welche Brotsorte) kaufen?* Diese Informationen können zu einer Umsatzsteigerung führen, indem sie Einzelhändlern helfen, **selektives Marketing** zu betreiben und ihren Verkaufsraum zu planen.
 
 ```{r BasketAnalyse, fig.height=4, fig.showtext = TRUE, echo = TRUE}
-# Bibliotheken laden
-library(arules)     # Paket mit Mining Datensätzen und Assoziationsregeln
-library(datasets)   # OpenIntro Datensätze
+# Load libraries
+library(arules)     # Package with mining datasets and association rules
+library(datasets)   # OpenIntro datasets
 
-# Data frame laden
+# Load data frame
 data(Groceries)
 
-# Frequenz Diagramm für die Top 20 Artikel erstellen
+# Create frequency plot for the top 20 items
 itemFrequencyPlot(Groceries, topN = 20, type = "absolute", horiz = TRUE)
-# nach Milch suchen
+# Search for milk
 itemFrequency(Groceries)[grep("milk", itemLabels(Groceries))]
 
-# Die Regeln ableiten
+# Derive the rules
 rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8))
 
-# Zeige die Top 5 Regeln (nur 2 Nachkommastellen)
+# Show the top 5 rules (only 2 decimal places)
 options(digits=2)
 inspect(rules[1:5])
 rules <- sort(rules, by="confidence", decreasing = TRUE)
 rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8, maxlen = 10))
 ```
 ```{r BasketAnalyse2, fig.height=4, fig.showtext = TRUE, results = 'hold', echo = TRUE,  eval = FALSE}
-# Paket mit Visualisations-Assoziationsregeln laden
+# Load package with visualization association rules
 library(arulesViz)
 
-# Berechnungen der Matrix
+# Matrix calculations
 subset.matrix <- is.subset(rules, rules)
 subset.matrix[lower.tri(subset.matrix, diag = T)] <- NA
 redundant <- colSums(subset.matrix, na.rm = T) >= 1
 
-# Diagramm ausgeben
+# Output plot
 plot(rules, method = "graph", engine = "htmlwidget")
 ```
-```{r showHTML, echo = FALSE, fig.cap = "Abb. 2.2.3a: Basket Analyse"}
+```{r showHTML, echo = FALSE, fig.cap = "Fig. 2.2.3a: Basket Analysis"}
 htmltools::includeHTML("basket_analysis.html")
 ```
 
-### Cluster Analyse K-Means
+### Cluster Analysis K-Means
 
-**K-Means** ist ein **Clustering-Verfahren**, bei dem die **Datensätze** in eine Reihe von `k` Gruppen unterteilt werden, wobei `k` die vom Analysten vorgegebene Anzahl von Gruppen ist.
+**K-Means** is a **clustering method** in which the **datasets** are divided into a series of `k` groups, where `k` is the number of groups specified by the analyst.
 
-Die folgenden *R-Codes* zeigen, wie man die optimale Anzahl von Clustern bestimmt und wie man K-Means und PAM-Clustering in R berechnet.
+The following *R codes* show how to determine the optimal number of clusters and how to compute K-Means and PAM clustering in R.
 
-Bestimmung der **optimalen Anzahl von Clustern**:
+Determining the **optimal number of clusters**:
 
 ```{r K-Means, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
-# Bibliotheken laden
+# Load libraries
 library(cluster)
 library(factoextra)
 library(pheatmap)
 
-# Datensatz von Verbrechern in den USA erstellen
+# Create dataset of crime in the USA
 mydata <- scale(USArrests) 
 
 # K-Means Clustering
 fviz_nbclust(mydata, kmeans, method = "gap_stat")
 ```
-```{r Abb2.2.4a, echo = FALSE, fig.cap = "Abb. 2.2.4a: Optimal Number of Clusters", out.width = '100%'}
+```{r Abb2.2.4a, echo = FALSE, fig.cap = "Fig. 2.2.4a: Optimal Number of Clusters", out.width = '100%'}
 include_graphics("images/opt_num_clusters.png")
 ```
 
-Berechnen und visualisieren des **K-Means Cluster**:
+Computing and visualizing the **K-Means Cluster**:
 
 ```{r K-Means2, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
-set.seed(123) # für die Reproduzierbarkeit
+set.seed(123) # for reproducibility
 km.res <- kmeans(mydata, 3, nstart = 25)
 
-# Visualisieren
+# Visualize
 fviz_cluster(km.res, data = mydata, palette = "jco", ggtheme = theme_minimal(), barfill = "red", barcolor	= "red", linecolor = "red")
 ```
-```{r Abb2.2.4b, echo = FALSE, fig.cap = "Abb. 2.2.4b: Cluster", out.width = '100%'}
+```{r Abb2.2.4b, echo = FALSE, fig.cap = "Fig. 2.2.4b: Cluster", out.width = '100%'}
 include_graphics("images/cluster.png")
 ```
 
-**Hierarchisches Clustering** ist ein alternativer Ansatz zum **partitionierenden Clustering**, um Gruppen in einem Datensatz zu identifizieren. Bei diesem Verfahren muss die Anzahl der zu erzeugenden Cluster nicht im Voraus festgelegt werden.
+**Hierarchical clustering** is an alternative approach to **partitioning clustering** to identify groups in a dataset. In this method, the number of clusters to be generated does not need to be specified in advance.
 
-Das Ergebnis des hierarchischen Clusterns ist eine *baumartige* Darstellung der Objekte, die auch als **Dendrogramm** bezeichnet wird. Die Beobachtungen können in Gruppen unterteilt werden, indem das Dendrogramm auf einem gewünschten **Ähnlichkeitsniveau** geschnitten wird:
+The result of hierarchical clustering is a *tree-like* representation of the objects, which is also called a **dendrogram**. Observations can be divided into groups by cutting the dendrogram at a desired **similarity level**:
 
 ```{r K-Means3, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
-# Hierarchisches Clustering
-# Cluster Denrogramm
+# Hierarchical clustering
+# Cluster dendrogram
 res.hc <- hclust(dist(mydata),  method = "ward.D2")
 fviz_dend(res.hc, cex = 0.5, k = 4, palette = "jco")
 ```
-```{r Abb2.2.4c, echo = FALSE, fig.cap = "Abb. 2.2.4c: Cluster Dendogramm", out.width = '100%'}
+```{r Abb2.2.4c, echo = FALSE, fig.cap = "Fig. 2.2.4c: Cluster Dendrogram", out.width = '100%'}
 include_graphics("images/cluster_dendogram.png")
 ```
 
-Eine **Heatmap** ist eine weitere Möglichkeit, hierarchisches Clustering zu visualisieren. Sie wird auch als **Falschfarbenbild** bezeichnet, bei dem die Datenwerte in eine Farbskala umgewandelt werden. Mit Heatmaps können wir gleichzeitig Gruppen von Proben und Merkmalen visualisieren:
+A **heatmap** is another way to visualize hierarchical clustering. It is also called a **false color image**, where data values are converted to a color scale. With heatmaps, we can simultaneously visualize groups of samples and features:
 
 ```{r K-Means4, fig.height=4, fig.showtext = TRUE, echo = TRUE, error = FALSE, warning = FALSE, eval = FALSE}
-# Heatmap erstellen
+# Create heatmap
 pheatmap(t(mydata), cutree_cols = 4)
 ````
-```{r Abb2.2.4d, echo = FALSE, fig.cap = "Abb. 2.2.4d: Cluster Heatmap", out.width = '100%'}
+```{r Abb2.2.4d, echo = FALSE, fig.cap = "Fig. 2.2.4d: Cluster Heatmap", out.width = '100%'}
 include_graphics("images/pheatmap.png")
 ```
 
 ### Neuronale Netze-Analyse
 
-Ein **neuronales Netz** ist eine informationsverarbeitende Maschine und kann als Analogon zum **menschlichen Nervensystem** betrachtet werden. Genau wie das menschliche Nervensystem, das aus miteinander verbundenen Neuronen besteht, setzt sich ein neuronales Netz aus miteinander verbundenen **informationsverarbeitenden Einheiten** zusammen. Die informationsverarbeitenden Einheiten arbeiten nicht auf eine *lineare* Weise. Vielmehr bezieht das neuronale Netz seine Stärke aus der *parallelen* Verarbeitung von Informationen, die es ihm ermöglicht, mit **Nichtlinearität** umzugehen. Neuronale Netze sind nützlich, um aus komplexen Datensätzen eine Bedeutung abzuleiten und Muster zu erkennen.
+A **neural network** is an information processing machine and can be considered an analog to the **human nervous system**. Just like the human nervous system, which consists of interconnected neurons, a neural network is composed of interconnected **information processing units**. The information processing units do not work in a *linear* way. Rather, the neural network derives its strength from the *parallel* processing of information, which enables it to deal with **nonlinearity**. Neural networks are useful for deriving meaning from complex datasets and recognizing patterns.
 
-Hier wird das **neuronale Netz** visualisiert. Unser Modell hat **3 Neuronen** in seiner versteckten Schicht. Die schwarzen Linien zeigen die Verbindungen mit den Gewichten. Die Gewichte werden mit dem zuvor erläuterten Backpropagation-Algorithmus berechnet. Die gelben Linien stellen den Bias-Term dar:
+Here the **neural network** is visualized. Our model has **3 neurons** in its hidden layer. The black lines show the connections with the weights. The weights are calculated using the backpropagation algorithm explained earlier. The yellow lines represent the bias term:
 
 ```{r NeuronaleNetze-Analyse, fig.height=4, fig.showtext = TRUE, echo = TRUE, eval = FALSE}
-# Bibliothek 'neuralnet' laden
+# Load 'neuralnet' library
 library(neuralnet)
 
-# Daten einlesen
+# Read data
 data <- read.csv("cereals.csv", header=T)
 
-# Zufälliges Zusammenstellen
+# Random sampling
 samplesize = 0.60 * nrow(data)
 set.seed(80)
 index <- sample( seq_len ( nrow ( data ) ), size = samplesize )
 
-# Erstelle Trainings- und Testdaten-Set
+# Create training and test datasets
 datatrain <- data[ index, ]
 datatest <- data[ -index, ]
 
-# Daten für neurales Netzwerk skalieren
+# Scale data for neural network
 max <- apply(data , 2 , max)
 min <- apply(data, 2 , min)
 scaled <- as.data.frame(scale(data, center = min, scale = max - min))
 
-## Neuronales Netz anpassen 
-# Erstelle Trainings- und Testdaten-Set
+## Fit neural network 
+# Create training and test datasets
 trainNN <- scaled[index , ]
 testNN <- scaled[-index , ]
 
-# Neuronales Netz anpassen 
+# Fit neural network 
 set.seed(2)
 NN <- neuralnet(rating ~ calories + protein + fat + sodium + fiber, trainNN, hidden = 3 , linear.output = T )
 
-# Diagramm erstellen
+# Create plot
 plot(NN)
 ````
-```{r Abb2.2.5a, echo = FALSE, fig.cap = "Abb. 2.2.5a: Neurales Netz", out.width = '100%'}
+```{r Abb2.2.5a, echo = FALSE, fig.cap = "Fig. 2.2.5a: Neural Network", out.width = '100%'}
 include_graphics("images/neural_net.png")
 ```
 
-Hier wird die Bewertung des Modells mit Hilfe des **neuronalen Netzmodells** vorausgesagt. Die vorhergesagte Bewertung kann mit der realen Bewertung durch Visualisierung verglichen werden. Der RMSE für das neuronale Netzwerkmodell beträgt 6,05:
+Here the model rating is predicted using the **neural network model**. The predicted rating can be compared with the real rating through visualization. The RMSE for the neural network model is 6.05:
 
 ```{r NeuronaleNetze-Analyse2, fig.height=4, fig.showtext = TRUE, echo = TRUE, eval = FALSE}
-## Vorhersage mit Hilfe des neuronalen Netzes
+## Prediction using the neural network
 predict_testNN <- compute(NN, testNN[,c(1:5)])
 predict_testNN <- (predict_testNN$net.result * (max(data$rating) - min(data$rating))) + min(data$rating)
 
-# Diagramm und Regressionsgrade erstellen
+# Create plot and regression line
 plot(datatest$rating, predict_testNN, col='blue', pch=16, ylab = "predicted rating NN", xlab = "real rating")
 abline(0,1)
 ```
-```{r Abb2.2.5b, echo = FALSE, fig.cap = "Abb. 2.2.5b: Neurales Netz", out.width = '100%'}
+```{r Abb2.2.5b, echo = FALSE, fig.cap = "Fig. 2.2.5b: Neural Network", out.width = '100%'}
 include_graphics("images/prediction.png")
 ```
 
-## Sonstiges `misc` {.tabset .tabset-pills}
+## Miscellaneous `misc` {.tabset .tabset-pills}
 
-Hier findest Du **Code-Beispiele**, **Lustiges** und **Neuigkeiten** rund um das Thema *technische Applikationen & Datenanalyse*:
+Here you will find **code examples**, **fun stuff** and **news** about *technical applications & data analysis*:
 
-### Beispiel R-Code
+### Example R Code
 
-Dieses Beispiel zeigt die Verwendung von **Schleifen** in R. Schleifen kommen in der **Programmierung** häufig zum Einsatz, z.B. zum Überprüfen von **Übereinstimmungen** in zwei verschiedenen Datensätzen.
+This example shows the use of **loops** in R. Loops are frequently used in **programming**, e.g. to check **matches** in two different datasets.
 
 ```{r RloopCode, code = readLines(system.file("extdata", "Komplexeres_R_Skript.R", package = "ourdata", mustWork = FALSE))}
 ```
 
-### Ext. R-Code ausführen
+### Execute External R Code
 
-Dieser **Code** steht in der Datei `example.R` und wir von **R-Markdown** eingelesen und ausgeführt.
+This **code** is in the file `example.R` and is read and executed by **R Markdown**.
 
 ```{r ExtCode, echo = FALSE, fig.height=4, fig.showtext = TRUE, results = 'hold'}
 read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = FALSE))
@@ -483,35 +483,35 @@ read_chunk(system.file("extdata", "example.R", package = "ourdata", mustWork = F
 ```{r plotXY}
 ```
 
-### Katzen-Statistik
+### Cat Statistics
 
-1000 **Wissenschaftler** haben ganz *unabhängig* voneinander (unter der Einhaltung aller wissenschaftlichen Voraussetzungen) herausgefunden:
+1000 **scientists** have found out completely *independently* from each other (in compliance with all scientific requirements):
 
-```{r Abb2.3.7a, echo = FALSE, fig.cap = "Abb. 2.3.7a: Katzen-Statistik", out.width = '100%'}
+```{r Abb2.3.7a, echo = FALSE, fig.cap = "Fig. 2.3.7a: Cat Statistics", out.width = '100%'}
 include_graphics("images/cat.png")
 ```
 
-### Big Data-Jobs
+### Big Data Jobs
 
-Ein [spannender Artikel](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) (*falls nicht mehr verfügbar - klick in den Artikel*) der die Jobs im **Big Data** Bereich identifiziert und mögliche **Gehälter** (in Dollar) auflistet:
+An [interesting article](https://www.thebalancecareers.com/top-7-big-data-jobs-4588947) (*if no longer available - click on the article*) that identifies jobs in the **Big Data** field and lists possible **salaries** (in dollars):
 
-```{r showPDF, echo = FALSE, fig.cap = "Abb. 2.3.8a: Big Data Jobs"}
+```{r showPDF, echo = FALSE, fig.cap = "Fig. 2.3.8a: Big Data Jobs"}
 htmltools::includeHTML("pdf.html")
 ```
 
 ### BenBox.org
 
-Seit meiner Kindheit spiele ich **Computer-Spiele** allen Genres. Insbesondere **Adventure Games**, wie die Klassiker *Indiana Jones*, *Monkey Island* und der moderne Ableger *Baphomets Fluch* bzw. *Broken Sword*, haben mich immer wieder vor den Bildschirm gelockt. So lag es nicht fern, mal ein eigenes Adventure Game zu kreieren.
+Since my childhood I have been playing **computer games** of all genres. In particular **adventure games**, such as the classics *Indiana Jones*, *Monkey Island* and the modern offshoot *Broken Sword*, have always lured me to the screen. So it was not far-fetched to create my own adventure game.
 
-Hier meine [**BenBox.org**](https://www.benbox.org) Webseite für meinen  *iPad* **Spiele-Prototypen**, den ich während meines Studiums an der **Hochschule Fresenius** im **Studiengang Gesundheit & Management (B. Sc.)** erstellt habe:
+Here is my [**BenBox.org**](https://www.benbox.org) website for my *iPad* **game prototype**, which I created during my studies at **Fresenius University of Applied Sciences** in the **Health & Management (B. Sc.)** program:
 
-```{r showBenBox.org, echo = FALSE, fig.cap = "Abb. 2.3.9a: BenBox.org Webseite"}
+```{r showBenBox.org, echo = FALSE, fig.cap = "Fig. 2.3.9a: BenBox.org Website"}
 htmltools::includeHTML("index.html")
 ```
 
-# Literaturverzeichnis `lit.` {.tabset .unnumbered}
+# References `lit.` {.tabset .unnumbered}
 
-Hier ist die **Literatur** die im Fach *Technical Applications & Data Analytics* zum Einsatz kam aufgelistet:
+Here is the **literature** used in Data Science courses:
 <br /><br />
 <ul>
 <li>Cleve, J/Lämmel, U. [2020]<br />
