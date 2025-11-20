@@ -6,8 +6,8 @@ Functions and data frames used in Data Science courses at the Fresenius Universi
 Data frames contains data:
 
 - 'fragebogen' Head circumference and other characteristics from student surveys
-- 'hdi' Human development index world wide
-- 'imr' Infant mortality rates worldwide
+- 'hdi' Human development index world wide for 2024
+- 'imr' Infant mortality rates worldwide for 2024
 - 'kirche' Church exits in Germany from 2017 to 2020
 - 'koelsch' Colgone brewed beer (Koelsch) consumption from 2017 to 2020
 
